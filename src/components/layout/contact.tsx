@@ -3,7 +3,7 @@ import { IoMdMail, IoIosPhonePortrait } from 'react-icons/io'
 import { IoLocationSharp } from 'react-icons/io5'
 import { TiArrowRight } from 'react-icons/ti'
 import { FaFacebook, FaLinkedin, FaInstagram } from 'react-icons/fa'
-import { freshMoeLogo } from '@/lib/file-provider/images'
+import freshMoeLogo from "@/public/images/freshmoeLogo.png"
 import CBaseButton from '@/components/custom/c-base-button'
 import styles from "./contact.module.css"
 

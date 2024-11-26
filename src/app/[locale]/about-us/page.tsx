@@ -1,11 +1,11 @@
 import Image from 'next/image'
-import AboutUs1 from '../../../../public/images/about-us/aboutus-1.png'
-import AboutUs2 from '../../../../public/images/about-us/aboutus-2.png'
-import AboutUs3 from '../../../../public/images/about-us/aboutus-3.png'
-import AboutUs4 from '../../../../public/images/about-us/aboutus-4.png'
-import AboutUs5 from '../../../../public/images/about-us/aboutus-5.png'
-import missionMM from '../../../../public/images/about-us/ourmissionmm.png'
-import visionMM from '../../../../public/images/about-us/ourvisionmm.png'
+import AboutUs1 from '@/public/images/about-us/aboutus-1.png'
+import AboutUs2 from '@/public/images/about-us/aboutus-2.png'
+import AboutUs3 from '@/public/images/about-us/aboutus-3.png'
+import AboutUs4 from '@/public/images/about-us/aboutus-4.png'
+import AboutUs5 from '@/public/images/about-us/aboutus-5.png'
+import missionMM from '@/public/images/about-us/ourmissionmm.png'
+import visionMM from '@/public/images/about-us/ourvisionmm.png'
 import { fetchAboutUsContent } from '@/services/page/fetch-about-us-content'
 import BannerHeader from '@/components/layout/banner-header'
 import AboutUsBanner from "../../../../public/images/about-us/br-contact-us-header-1.png"
@@ -13,7 +13,7 @@ import { getTranslations } from 'next-intl/server'
 import ReactHtmlParser from 'html-react-parser'
 
 export default async function AboutUs({ params }: { params: Promise<{ locale: string }> }) {
-    const t = await getTranslations('LandingPage')
+    const t = await getTranslations('AboutUsPage')
     const IMAGE_URL = process.env.NEXT_PUBLIC_IMAGE_URL;
     const { locale } = await params;
 
