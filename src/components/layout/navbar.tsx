@@ -64,7 +64,6 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
     const [sidebar, setSidebar] = useState(true)
     const [upperMenu, setUpperMenu] = useState(true)
     const localActive = useLocale()
-    const [isAuth, setIsAuth] = useState(false);
     const baseUrl = process.env.NEXT_PUBLIC_APP_REDIRECT_URL;
     const [selectedCountry, setSelectedCountry] = useState(countryOptions[0].countries[0]);
     const [selectedLanguage, setSelectedLanguage] = useState<LanguageCodes>('en');
@@ -137,6 +136,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
         }
     }
 
+    // making the navbar transparent on scroll
     useEffect(() => {
         const lang = pathname.split('/')[1]
         setLang(lang)
@@ -183,6 +183,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
         }
         scrollFunction();
     }, [pathname])
+    // end making the navbar transparent on scroll
 
     const handleToggle = () => {
         const sidebarElement = document.querySelector<HTMLDivElement>('#sidebar')
@@ -247,6 +248,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
         }
     }
 
+    // handle language select modal
     const handleUpperMenuToggle = () => {
         // if(localActive !== 'en_global'){
         // alert("Sidebar "+sidebar+" Upper "+upperMenu)
@@ -301,9 +303,13 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
             }
         }
     }
+    // end handle language select modal
+
+    // language select modal open
     const handleOpen = () => {
         setOpen(!open)
     }
+    // end language select modal open
 
     const handleConfirmChangeLanguage = () => {
         let newPrefix = `${selectedLanguage}_${selectedCountry.value}`
@@ -314,144 +320,145 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
 
     return (
         <>
-            <div className="bg-c-primary w-full p-[20px] brand-line-green"></div>
-            <div className="bg-[#fff] w-full p-[1px] brand-line-white"></div>
-            <div className="bg-c-secondary w-full p-[3.95px] brand-line-red"></div>
-            <nav className="fixed shadow-lg w-full flex lg:justify-between items-center z-40" id='navbar'>
-                {open ? <ChooseLang onClickParent={() => setOpen(false)} /> : ''}
-                <div className="container mx-auto flex lg:justify-between items-center py-[0.8rem] max-w-[1790px] px-[2rem] md:px-[4rem] lg:px-[5rem]">
-                    <ul className="poppins font-bold hidden md:flex nav  items-center" id="nav-item">
-                        <li
-                            className={`hover:text-[#ED1C24] font-bold ${lang == 'en' ? 'px-3' : 'px-2'} py-3 text-[0.75vw]  ${pathname === `/${lang}` ? 'text-[#ED1C24]' : ''
-                                } `}
-                        >
-                            {sidebar ? (
-                                <span
-                                    className="mt-0"
-                                    id="close-sidebar"
-                                    onClick={() => handleToggle()}
-                                >
-                                    <FaBars className="text-black sm:text-[2.6vw] md:text-[2.1vw] lg:text-[1.7vw] xl:text-[1.5vw]" />
-                                </span>
-                            ) : (
-                                <span
-                                    className="mt-0"
-                                    id="open-sidebar"
-                                    onClick={() => handleToggle()}
-                                >
-                                    <RxCross1 className="text-black sm:text-[2.6vw] md:text-[2.1vw] lg:text-[1.7vw] xl:text-[1.5vw]" />
-                                </span>
-                            )}
-                        </li>
-                        <li
-                            className={`hover:text-[#ED1C24] font-bold ${lang == 'en' ? 'px-3' : 'px-2'} py-3 text-[0.75vw] lg:text-[1vw] xl:text-[0.75vw] hidden lg:flex 
+            <div className='fixed w-full top-0'>
+                <div className="bg-c-primary w-full p-[20px] brand-line-green"></div>
+                <div className="bg-[#fff] w-full p-[1px] brand-line-white"></div>
+                <div className="bg-c-secondary w-full p-[3.95px] brand-line-red"></div>
+                <nav className="shadow-lg w-full flex lg:justify-between items-center z-40" id='navbar'>
+                    {open ? <ChooseLang onClickParent={() => setOpen(false)} /> : ''}
+                    <div className="container mx-auto flex lg:justify-between items-center py-[0.8rem] max-w-[1790px] px-[2rem] md:px-[4rem] lg:px-[5rem]">
+                        <ul className="poppins font-bold hidden md:flex nav  items-center" id="nav-item">
+                            <li
+                                className={`hover:text-[#ED1C24] font-bold ${lang == 'en' ? 'px-3' : 'px-2'} py-3 text-[0.75vw]  ${pathname === `/${lang}` ? 'text-[#ED1C24]' : ''
+                                    } `}
+                            >
+                                {sidebar ? (
+                                    <span
+                                        className="mt-0"
+                                        id="close-sidebar"
+                                        onClick={() => handleToggle()}
+                                    >
+                                        <FaBars className="text-black sm:text-[2.6vw] md:text-[2.1vw] lg:text-[1.7vw] xl:text-[1.5vw]" />
+                                    </span>
+                                ) : (
+                                    <span
+                                        className="mt-0"
+                                        id="open-sidebar"
+                                        onClick={() => handleToggle()}
+                                    >
+                                        <RxCross1 className="text-black sm:text-[2.6vw] md:text-[2.1vw] lg:text-[1.7vw] xl:text-[1.5vw]" />
+                                    </span>
+                                )}
+                            </li>
+                            <li
+                                className={`hover:text-[#ED1C24] font-bold ${lang == 'en' ? 'px-3' : 'px-2'} py-3 text-[0.75vw] lg:text-[1vw] xl:text-[0.75vw] hidden lg:flex 
               ${(pathname === '/' && localActive === 'en_global') || (pathname === `/${lang}` && localActive !== 'en_global') || (pathname === `/${lang}` && localActive === 'en_global') ? 'text-[#ED1C24]' : ''}
 
               `}
-                            onClick={closeAllMenu}
-                        >
-                            <Link href={`${localActive === 'en_global' ? '/' : `/${lang}`}`} prefetch>{navData.home}</Link>
-                        </li>
-                        <li
-                            className={`hover:text-[#ED1C24] font-bold ${lang == 'en' ? 'px-3' : 'px-2'}  py-3 text-[0.75vw] lg:text-[1vw] xl:text-[0.75vw] hidden lg:flex 
+                                onClick={closeAllMenu}
+                            >
+                                <Link href={`${localActive === 'en_global' ? '/' : `/${lang}`}`} prefetch>{navData.home}</Link>
+                            </li>
+                            <li
+                                className={`hover:text-[#ED1C24] font-bold ${lang == 'en' ? 'px-3' : 'px-2'}  py-3 text-[0.75vw] lg:text-[1vw] xl:text-[0.75vw] hidden lg:flex 
               ${(pathname === '/aboutus' && localActive === 'en_global') || (pathname === `/${lang}/aboutus` && localActive !== 'en_global') || (pathname === `/${lang}/aboutus` && localActive === 'en_global') ? 'text-[#ED1C24]' : ''}
                `}
-                        >
-                            <Link href={`${localActive === 'en_global' ? '/aboutus' : `/${lang}/aboutus`}`} prefetch>{navData.aboutUs}</Link>
-                        </li>
-                        <li
-                            className={`hover:text-[#ED1C24] font-bold ${lang == 'en' ? 'px-3' : 'px-2'} py-3 text-[0.75vw] lg:text-[1vw] xl:text-[0.75vw] hidden lg:flex 
+                            >
+                                <Link href={`${localActive === 'en_global' ? '/aboutus' : `/${lang}/aboutus`}`} prefetch>{navData.aboutUs}</Link>
+                            </li>
+                            <li
+                                className={`hover:text-[#ED1C24] font-bold ${lang == 'en' ? 'px-3' : 'px-2'} py-3 text-[0.75vw] lg:text-[1vw] xl:text-[0.75vw] hidden lg:flex 
               ${(pathname === '/ourservices' && localActive === 'en_global') || (pathname === `/${lang}/ourservices` && localActive !== 'en_global') || (pathname === `/${lang}/ourservices` && localActive === 'en_global') ? 'text-[#ED1C24]' : ''}
                `}
-                        >
-                            <Link href={`${localActive === 'en_global' ? '/ourservices' : `/${lang}/ourservices`}`} prefetch>{navData.ourServices}</Link>
-                        </li>
-                    </ul>
+                            >
+                                <Link href={`${localActive === 'en_global' ? '/ourservices' : `/${lang}/ourservices`}`} prefetch>{navData.ourServices}</Link>
+                            </li>
+                        </ul>
 
 
-                    {sidebar ? (
-                        <span
-                            className="block md:hidden mt-0 w-[4vw]"
-                            id="close-sidebar"
-                            onClick={() => handleToggle()}
-                        >
-                            <FaBars className="text-black" />
-                        </span>
-                    ) : (
-                        <span
-                            className="block md:hidden mt-0 w-[6.3vw]  sm:w-[4vw]"
-                            id="open-sidebar"
-                            onClick={() => handleToggle()}
-                        >
-                            <RxCross1 className="text-[#000] text-semibold" />
-                        </span>
-                    )}
-
-                    <div
-                        className={`${(currentLanguage?.value === 'mm') ?
-                            'pl-[2vw] md:pl-0'
-                            :
-                            'pl-[2vw]'
-                            }`}
-                    >
-                        <a href="/" className="">
-                            <Image
-                                src={freshMoeLogo}
-                                alt=""
-                                className=
-                                {`w-[100px] sm:w-[85px] md:w-[90px] lg:w-[8vw] xl:w-[6.5vw] h-auto md:ml-0 ${isAuth ? 'mechant_logo' : ''
-                                    }`}
-                            />
-                        </a>
-                    </div>
-                    <div className='ml-auto lg:ml-0' onClick={() => { handleOpen }}>
-                        {/* Desktop , tablet and mobile*/}
-                        <button
-                            className={`relative px-0 xl:pl-1 rounded-xl text-sm font-normal flex justify-between items-center`}
-                            id="locale-button"
-                            // onClick={handleOpen}
-                            onClick={handleUpperMenuToggle}
-                        >
-                            <span className="flex items-center space-x-2">
-                                <div>
-                                    {currentCountry?.value !== 'global' ? (
-                                        <CiGlobe
-                                            className={`${currentCountry?.value === 'global' ?
-                                                'w-[4vw] lg:w-[25px] h-auto lg:left-[-20px] xl:left-[-15px] mt-[1px] md:mt-0 rounded-3xl globe text-[#5B5B5B]' :
-                                                'w-[25px] h-auto mt-[1px] md:mt-0 rounded-3xl globe text-[#5B5B5B]'
-                                                }`}
-                                        />
-                                    ) : (
-                                        <Flag code={selectedCountry?.flag} className="w-[25px] lg:w-[22px] h-auto globe text-[#5B5B5B]" />
-
-                                    )}
-                                </div>
-                                <span className={`'text-[1vw] xl:text-[0.8vw] nav-mm pt-1 hidden lg:block`}>
-                                    {selectedCountry?.label}
-                                </span>
-
-                                <span className={`${(currentCountry?.label === 'Myanmar') ?
-                                    'lg:pl-[13px] xl:pl-[8px] 2xl:pl-[25px]' :
-                                    (currentCountry?.label === 'Thailand') ?
-                                        'lg:pl-[10px] xl:pl-[15px]' :
-                                        'p-0'} 
-                             hidden lg:block`}>|</span>
-                                <PiTranslate className="w-[22px] h-auto rounded-3xl globe text-[#5B5B5B] hidden lg:block" />
-
-                                <span className={`
-                            text-base nav-mm pt-1`}>
-                                    {getLanguageName(`${selectedLanguage}`)}
-                                </span>
-                                {!upperMenu ? (
-                                    <MdOutlineKeyboardArrowUp className="md:w-[30px] lg:w-[25px] h-auto lg:pt-[4px] xl:pt-[2px] " />
-                                ) : (
-                                    <MdOutlineKeyboardArrowDown className="md:w-[30px] lg:w-[25px] h-auto lg:pt-[4px] xl:pt-[2px] " />
-                                )}
+                        {sidebar ? (
+                            <span
+                                className="block md:hidden mt-0 w-[4vw]"
+                                id="close-sidebar"
+                                onClick={() => handleToggle()}
+                            >
+                                <FaBars className="text-black" />
                             </span>
-                        </button>
+                        ) : (
+                            <span
+                                className="block md:hidden mt-0 w-[6.3vw]  sm:w-[4vw]"
+                                id="open-sidebar"
+                                onClick={() => handleToggle()}
+                            >
+                                <RxCross1 className="text-[#000] text-semibold" />
+                            </span>
+                        )}
+
+                        <div
+                            className={`${(currentLanguage?.value === 'mm') ?
+                                'pl-[2vw] md:pl-0'
+                                :
+                                'pl-[2vw]'
+                                }`}
+                        >
+                            <a href="/" className="">
+                                <Image
+                                    src={freshMoeLogo}
+                                    alt=""
+                                    className=
+                                    {`w-[100px] sm:w-[85px] md:w-[90px] lg:w-[8vw] xl:w-[6.5vw] h-auto md:ml-0`}
+                                />
+                            </a>
+                        </div>
+                        <div className='ml-auto lg:ml-0' onClick={() => { handleOpen }}>
+                            {/* Desktop , tablet and mobile*/}
+                            <button
+                                className={`relative px-0 xl:pl-1 rounded-xl text-sm font-normal flex justify-between items-center`}
+                                id="locale-button"
+                                // onClick={handleOpen}
+                                onClick={handleUpperMenuToggle}
+                            >
+                                <span className="flex items-center space-x-2">
+                                    <div>
+                                        {currentCountry?.value !== 'global' ? (
+                                            <CiGlobe
+                                                className={`${currentCountry?.value === 'global' ?
+                                                    'w-[4vw] lg:w-[25px] h-auto lg:left-[-20px] xl:left-[-15px] mt-[1px] md:mt-0 rounded-3xl globe text-[#5B5B5B]' :
+                                                    'w-[25px] h-auto mt-[1px] md:mt-0 rounded-3xl globe text-[#5B5B5B]'
+                                                    }`}
+                                            />
+                                        ) : (
+                                            <Flag code={selectedCountry?.flag} className="w-[25px] lg:w-[22px] h-auto globe text-[#5B5B5B]" />
+
+                                        )}
+                                    </div>
+                                    <span className={`'text-[1vw] xl:text-[0.8vw] nav-mm pt-1 hidden lg:block`}>
+                                        {selectedCountry?.label}
+                                    </span>
+
+                                    <span className={`${(currentCountry?.label === 'Myanmar') ?
+                                        'lg:pl-[13px] xl:pl-[8px] 2xl:pl-[25px]' :
+                                        (currentCountry?.label === 'Thailand') ?
+                                            'lg:pl-[10px] xl:pl-[15px]' :
+                                            'p-0'} 
+                             hidden lg:block`}>|</span>
+                                    <PiTranslate className="w-[22px] h-auto rounded-3xl globe text-[#5B5B5B] hidden lg:block" />
+
+                                    <span className={`
+                            text-base nav-mm pt-1`}>
+                                        {getLanguageName(`${selectedLanguage}`)}
+                                    </span>
+                                    {!upperMenu ? (
+                                        <MdOutlineKeyboardArrowUp className="md:w-[30px] lg:w-[25px] h-auto lg:pt-[4px] xl:pt-[2px] " />
+                                    ) : (
+                                        <MdOutlineKeyboardArrowDown className="md:w-[30px] lg:w-[25px] h-auto lg:pt-[4px] xl:pt-[2px] " />
+                                    )}
+                                </span>
+                            </button>
+                        </div>
                     </div>
-                </div>
-            </nav>
+                </nav>
+            </div>
             {/* <!-- start mobile sidebar --> */}
             <div
                 className="z-30 fixed h-full left-0 top-[105px] md:top-[111px] lg:top-[115px] xl:top-[119px] 2xl:top-[130px]  invisible transition-all duration-500 bg-[#000] bg-opacity-20"
