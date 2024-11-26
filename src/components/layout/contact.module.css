@@ -1,0 +1,11 @@
+.bgContact {
+    background-image: url('/images/home/contact-bg-mobile.png');
+    background-size: cover;
+}
+
+@media (min-width: 600px) {
+    .bgContact {
+        background-image: url('/images/home/contact-bg.png');
+        background-size: cover;
+    }
+}

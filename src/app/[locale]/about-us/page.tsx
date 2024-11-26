@@ -1,0 +1,97 @@
+import Image from 'next/image'
+import AboutUs1 from '../../../../public/images/about-us/aboutus-1.png'
+import AboutUs2 from '../../../../public/images/about-us/aboutus-2.png'
+import AboutUs3 from '../../../../public/images/about-us/aboutus-3.png'
+import AboutUs4 from '../../../../public/images/about-us/aboutus-4.png'
+import AboutUs5 from '../../../../public/images/about-us/aboutus-5.png'
+import missionMM from '../../../../public/images/about-us/ourmissionmm.png'
+import visionMM from '../../../../public/images/about-us/ourvisionmm.png'
+import { fetchAboutUsContent } from '@/services/page/fetch-about-us-content'
+import BannerHeader from '@/components/layout/banner-header'
+import AboutUsBanner from "../../../../public/images/about-us/br-contact-us-header-1.png"
+import { getTranslations } from 'next-intl/server'
+import ReactHtmlParser from 'html-react-parser'
+
+export default async function AboutUs({ params }: { params: Promise<{ locale: string }> }) {
+    const t = await getTranslations('LandingPage')
+    const IMAGE_URL = process.env.NEXT_PUBLIC_IMAGE_URL;
+    const { locale } = await params;
+
+    const formData = new FormData()
+    formData.append('country', locale);
+
+    const { data: content }: any = await fetchAboutUsContent(formData)
+    console.log(content)
+
+    return (
+        <div className="bg-white h-auto relative  pb-[7rem] md:pb-[9rem] mt-[104px] sm:mt-[110px] md:mt-[115px] lg:mt-[100px] xl:mt-[110px] 2xl:mt-[120px]">
+            <BannerHeader locale={locale} imageSrc={AboutUsBanner} text={content?.title_1 || t('about')} />
+            <div className="about-us-section flex flex-col gap-16 lg:gap-24 py-[3.5rem]">
+                <div className="flex flex-col lg:flex-row gap-16 items-center px-[2rem] md:px-[4rem] lg:px-[5rem] max-w-[110rem] mx-auto">
+                    <div className="w-full lg:w-1/2 p-0 text-gray-600">
+                        <h1 className="text-xl lg:text-3xl xl:text-5xl font-c-primary text-c-primary-2 mb-3 text-shadow font-bold w-full">
+                            {content ? (content.title_2) : t('title')}
+                        </h1>
+                        <h2 className={`text-xss lg:text-base xl:text-2xl w-full md:leading-4 lg:leading-6 xl:w-[90%] 2xl:w-[85%] xl:mt-5`}>
+                            {typeof content?.content_2 === 'string' ? ReactHtmlParser(content.content_2) : (<>{t('description1')}<br />{t('description2')}</>)}
+                        </h2>
+                    </div>
+                    <div className="w-full lg:w-1/2">
+                        <Image
+                            src={content?.image_2 ? `${IMAGE_URL}/${content.image_2}` : AboutUs1}
+                            alt="about1"
+                            unoptimized
+                            width={100}
+                            height={100}
+                            className="object-cover w-full h-auto filter object-center rounded-lg"
+                        />
+                    </div>
+                </div>
+                <div className="flex flex-row justify-between gap-5">
+                    <div className="w-[63%]">
+                        <Image
+                            src={content?.image_3 ? `${IMAGE_URL}/${content.image_3}` : locale == "mm_mm" ? missionMM : AboutUs2}
+                            alt=""
+                            unoptimized
+                            width={100}
+                            height={100}
+                            className="object-cover w-full h-auto filter object-center transition duration-200"
+                        />
+                    </div>
+                    <div className="w-[37%]">
+                        <Image
+                            src={content?.image_4 ? `${IMAGE_URL}/${content.image_4}` : AboutUs3}
+                            unoptimized
+                            width={100}
+                            height={100}
+                            alt=""
+                            className="object-cover w-full h-auto filter object-center transition duration-200"
+                        />
+                    </div>
+                </div>
+                <div className="flex flex-row justify-between gap-5 mt-[-48px] md:mt-[-44px] lg:mt-[-70px]">
+                    <div className="w-[37%]">
+                        <Image
+                            src={content?.image_5 ? `${IMAGE_URL}/${content.image_5}` : AboutUs5}
+                            alt=""
+                            unoptimized
+                            width={100}
+                            height={100}
+                            className="object-cover w-full h-auto filter object-center transition duration-200"
+                        />
+                    </div>
+                    <div className="w-[63%]">
+                        <Image
+                            src={content?.image_6 ? `${IMAGE_URL}/${content.image_6}` : locale == "mm_mm" ? visionMM : AboutUs4}
+                            unoptimized
+                            width={100}
+                            height={100}
+                            alt=""
+                            className="object-cover w-full h-auto filter object-center transition duration-200"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}

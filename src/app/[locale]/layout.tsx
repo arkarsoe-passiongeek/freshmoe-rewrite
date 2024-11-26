@@ -7,6 +7,7 @@ import "./globals.css"
 import { Poppins } from 'next/font/google'
 import Navbar from '@/components/layout/navbar';
 import Footer from '@/components/layout/footer';
+import Contact from '@/components/layout/contact';
 
 type LangMap = {
     [key: string]: string; // or more specifically, you can define known locales like 'en', 'my', etc.
@@ -59,6 +60,25 @@ export default async function LocaleLayout({
         download: t('download')
     }
 
+    const contactData = {
+        phone: t('contact-phone'),
+        email: t('contact-email'),
+        address: t('contact-address'),
+        followUs: t('follow-us'),
+        quickLinks: t('quick-links'),
+        link1: t('link1'),
+        link2: t('link2'),
+        link3: t('link3'),
+        link4: t('link4'),
+        link5: t('link5'),
+        link6: t('link6'),
+        contactForm: t('contact-form'),
+        name: t('name-input'),
+        emailInput: t('email-input'),
+        message: t('message-input'),
+        btn: t('submit-button'),
+    }
+
     return (
         <html lang={lang[locale]}>
             <body className={poppins.className}>
@@ -66,10 +86,11 @@ export default async function LocaleLayout({
                     <div className="bg-white-2 h-full w-full">
                         <div>
                             <Navbar locale={locale} navData={navData} />
-                            <div className='mt-[94px] md:mt-[114px] h-[3000px] bg-red-600'>
+                            <div className='mt-[94px] md:mt-[114px]'>
                                 {children}
                             </div>
                         </div>
+                        <Contact locale={locale} contactData={contactData} />
                         <Footer />
                     </div>
                 </NextIntlClientProvider>

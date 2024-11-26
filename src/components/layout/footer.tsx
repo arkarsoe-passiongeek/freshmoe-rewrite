@@ -1,13 +1,7 @@
-const Footer = () => {
+export default function Footer() {
     return (
-        <footer className="bg-white">
-            <div className="mx-auto py-10">
-                <p className="text-center text-xs text-black">
-                    &copy; 2024 company, Inc. All rights reserved.
-                </p>
-            </div>
-        </footer>
-    );
+        <div className="text-sm md:text-md border border-t border-t-slate-300 h-16 w-full flex justify-center items-center text-gray-500 font-sans">
+            Copyright © 2024 FreshMoe. All rights reserved.
+        </div>
+    )
 }
-
-export default Footer;

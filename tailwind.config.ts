@@ -53,12 +53,19 @@ export default {
 
 				// custom colors
 				"c-primary": "#5BBA47",
+				"c-primary-2": "#418432",
 				"c-secondary": "#ED1C24"
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			fontFamily: {
+				'c-primary': 'Sriracha'
+			},
+			fontSize: {
+				'xss': '10px'
 			}
 		}
 	},

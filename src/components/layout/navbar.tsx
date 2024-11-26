@@ -1,7 +1,6 @@
 'use client'
 import { useRouter } from 'next/navigation'
 import { useLocale } from 'next-intl'
-import Link from 'next/link'
 import Image from 'next/image'
 import freshMoeLogo from '../../../public/images/freshmoeLogo.png'
 import {
@@ -11,7 +10,6 @@ import {
 import { FaBars } from 'react-icons/fa6'
 import { RxCross1 } from "react-icons/rx";
 import { useState, useEffect } from 'react'
-import { usePathname } from 'next/navigation'
 import { CiGlobe } from "react-icons/ci";
 import { PiTranslate } from "react-icons/pi";
 import Flag from 'react-world-flags';
@@ -19,6 +17,7 @@ import ChooseLang from '../modals/choose-lang'
 import { CCountrySelect } from '../custom/c-country-select'
 import { CLanguageSelect } from '../custom/c-language-select'
 import { getLanguageName, LanguageCodes } from '@/lib/utils'
+import { Link, usePathname } from '@/i18n/routing'
 
 interface NavbarProps {
     locale: string;
@@ -69,6 +68,37 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
     const [selectedLanguage, setSelectedLanguage] = useState<LanguageCodes>('en');
     const [currentCountry, setCurrentCountry] = useState<any>(locale.split('_')[0])
     const [currentLanguage, setCurrentLanguage] = useState<any>({})
+
+    const navList = [
+        {
+            name: navData['home'],
+            url: '/'
+        },
+        {
+            name: navData['aboutUs'],
+            url: '/about-us'
+        },
+        {
+            name: navData['ourServices'],
+            url: '/our-services'
+        },
+        {
+            name: navData['profile'],
+            url: '/profile'
+        },
+        {
+            name: navData['contact'],
+            url: '/contact'
+        },
+        {
+            name: navData['download'],
+            url: '/download'
+        },
+    ]
+
+    const isNavActive = (url: string) => {
+        return pathname === url
+    }
 
     const handleChangeCountry = (value: any) => {
         let countries: any[] = []
@@ -320,14 +350,14 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
 
     return (
         <>
-            <div className='fixed w-full top-0'>
+            <div className='fixed w-full top-0 z-40'>
                 <div className="bg-c-primary w-full p-[20px] brand-line-green"></div>
                 <div className="bg-[#fff] w-full p-[1px] brand-line-white"></div>
                 <div className="bg-c-secondary w-full p-[3.95px] brand-line-red"></div>
-                <nav className="shadow-lg w-full flex lg:justify-between items-center z-40" id='navbar'>
+                <nav className="shadow-lg w-full flex lg:justify-between items-center " id='navbar'>
                     {open ? <ChooseLang onClickParent={() => setOpen(false)} /> : ''}
                     <div className="container mx-auto flex lg:justify-between items-center py-[0.8rem] max-w-[1790px] px-[2rem] md:px-[4rem] lg:px-[5rem]">
-                        <ul className="poppins font-bold hidden md:flex nav  items-center" id="nav-item">
+                        <ul className="flex-1 poppins font-bold hidden md:flex nav  items-center" id="nav-item">
                             <li
                                 className={`hover:text-[#ED1C24] font-bold ${lang == 'en' ? 'px-3' : 'px-2'} py-3 text-[0.75vw]  ${pathname === `/${lang}` ? 'text-[#ED1C24]' : ''
                                     } `}
@@ -350,29 +380,21 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                                     </span>
                                 )}
                             </li>
-                            <li
-                                className={`hover:text-[#ED1C24] font-bold ${lang == 'en' ? 'px-3' : 'px-2'} py-3 text-[0.75vw] lg:text-[1vw] xl:text-[0.75vw] hidden lg:flex 
-              ${(pathname === '/' && localActive === 'en_global') || (pathname === `/${lang}` && localActive !== 'en_global') || (pathname === `/${lang}` && localActive === 'en_global') ? 'text-[#ED1C24]' : ''}
-
-              `}
-                                onClick={closeAllMenu}
-                            >
-                                <Link href={`${localActive === 'en_global' ? '/' : `/${lang}`}`} prefetch>{navData.home}</Link>
-                            </li>
-                            <li
-                                className={`hover:text-[#ED1C24] font-bold ${lang == 'en' ? 'px-3' : 'px-2'}  py-3 text-[0.75vw] lg:text-[1vw] xl:text-[0.75vw] hidden lg:flex 
-              ${(pathname === '/aboutus' && localActive === 'en_global') || (pathname === `/${lang}/aboutus` && localActive !== 'en_global') || (pathname === `/${lang}/aboutus` && localActive === 'en_global') ? 'text-[#ED1C24]' : ''}
-               `}
-                            >
-                                <Link href={`${localActive === 'en_global' ? '/aboutus' : `/${lang}/aboutus`}`} prefetch>{navData.aboutUs}</Link>
-                            </li>
-                            <li
-                                className={`hover:text-[#ED1C24] font-bold ${lang == 'en' ? 'px-3' : 'px-2'} py-3 text-[0.75vw] lg:text-[1vw] xl:text-[0.75vw] hidden lg:flex 
-              ${(pathname === '/ourservices' && localActive === 'en_global') || (pathname === `/${lang}/ourservices` && localActive !== 'en_global') || (pathname === `/${lang}/ourservices` && localActive === 'en_global') ? 'text-[#ED1C24]' : ''}
-               `}
-                            >
-                                <Link href={`${localActive === 'en_global' ? '/ourservices' : `/${lang}/ourservices`}`} prefetch>{navData.ourServices}</Link>
-                            </li>
+                            {
+                                navList.map((each, index) => {
+                                    if (index < 3) {
+                                        return (
+                                            <li
+                                                key={each.url} className={`hover:text-[#ED1C24] font-bold ${lang == 'en' ? 'px-3' : 'px-2'} py-3 text-[0.75vw] lg:text-[1vw] xl:text-[0.75vw] hidden lg:flex 
+                  ${isNavActive(each.url) ? 'text-[#ED1C24]' : ''}
+                  `}
+                                            >
+                                                <Link href={`${each.url}`} prefetch>{each.name}</Link>
+                                            </li>
+                                        )
+                                    }
+                                })
+                            }
                         </ul>
 
 
@@ -395,7 +417,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                         )}
 
                         <div
-                            className={`${(currentLanguage?.value === 'mm') ?
+                            className={`flex-1 flex justify-center ${(currentLanguage?.value === 'mm') ?
                                 'pl-[2vw] md:pl-0'
                                 :
                                 'pl-[2vw]'
@@ -410,7 +432,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                                 />
                             </a>
                         </div>
-                        <div className='ml-auto lg:ml-0' onClick={() => { handleOpen }}>
+                        <div className='flex-1 flex justify-end ml-auto lg:ml-0' onClick={() => { handleOpen }}>
                             {/* Desktop , tablet and mobile*/}
                             <button
                                 className={`relative px-0 xl:pl-1 rounded-xl text-sm font-normal flex justify-between items-center`}
@@ -457,8 +479,8 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                             </button>
                         </div>
                     </div>
-                </nav>
-            </div>
+                </nav >
+            </div >
             {/* <!-- start mobile sidebar --> */}
             <div
                 className="z-30 fixed h-full left-0 top-[105px] md:top-[111px] lg:top-[115px] xl:top-[119px] 2xl:top-[130px]  invisible transition-all duration-500 bg-[#000] bg-opacity-20"
@@ -469,57 +491,22 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                     id="sidebar"
                 >
                     <div className="text-[#000] pl-6 pt-12">
-                        <div className="ml-4 mt-1">
-                            <Link href={`${localActive === 'en_global' ? '/' : `/${lang}`}`} prefetch
-                                className={`flex flex-start font-bold text-lg hover:text-[#ed1c24] text-poppins 
-                  ${(pathname === '/' && localActive === 'en_global') || (pathname === `/${lang}` && localActive !== 'en_global') || (pathname === `/${lang}` && localActive === 'en_global') ? 'text-[#ED1C24]' : ''}
+                        {
+                            navList.map(each => {
+                                return (
+                                    <div key={each.name} className="ml-4 mt-1">
+                                        <Link href={`${each.url}`} prefetch
+                                            className={`flex flex-start font-bold text-lg hover:text-[#ed1c24] text-poppins 
+                  ${isNavActive(each.url) ? 'text-[#ED1C24]' : ''}
                   `}
-                                onClick={closeAllMenu}
-                            >
-                                {navData.home}
-                            </Link>
-                        </div>
-                        <div className="ml-4 mt-8">
-                            <Link href={`${localActive === 'en_global' ? '/aboutus' : `/${lang}/aboutus`}`} prefetch
-                                className={`flex flex-start font-bold text-lg hover:text-[#ed1c24] text-poppins 
-                ${(pathname === '/aboutus' && localActive === 'en_global') || (pathname === `/${lang}/aboutus` && localActive !== 'en_global') || (pathname === `/${lang}/aboutus` && localActive === 'en_global') ? 'text-[#ED1C24]' : ''}                    `}
-                            >
-                                {navData.aboutUs}
-                            </Link>
-                        </div>
-                        <div className="ml-4 mt-8">
-                            <Link href={`${localActive === 'en_global' ? '/ourservices' : `/${lang}/ourservices`}`} prefetch
-                                className={`flex flex-start font-bold text-lg hover:text-[#ed1c24] text-poppins 
-                    ${(pathname === '/ourservices' && localActive === 'en_global') || (pathname === `/${lang}/ourservices` && localActive !== 'en_global') || (pathname === `/${lang}/ourservices` && localActive === 'en_global') ? 'text-[#ED1C24]' : ''}
-                  `}
-                            >
-                                {navData.ourServices}
-                            </Link>
-                        </div>
-                        <div className="ml-4 mt-8">
-                            <Link href={`${localActive === 'en_global' ? '/profile' : `/${lang}/profile`}`} prefetch
-                                className={`flex flex-start font-bold text-lg hover:text-[#ed1c24] text-poppins 
-                ${(pathname === '/profile' && localActive === 'en_global') || (pathname === `/${lang}/profile` && localActive !== 'en_global') || (pathname === `/${lang}/profile` && localActive === 'en_global') ? 'text-[#ED1C24]' : ''}                  `}
-                            >
-                                {navData.profile}
-                            </Link>
-                        </div>
-                        <div className="ml-4 mt-8">
-                            <Link href={`${localActive === 'en_global' ? '/contact' : `/${lang}/contact`}`} prefetch
-                                className={`flex flex-start font-bold text-lg hover:text-[#ed1c24] text-poppins 
-              ${(pathname === '/contact' && localActive === 'en_global') || (pathname === `/${lang}/contact` && localActive !== 'en_global') || (pathname === `/${lang}/contact` && localActive === 'en_global') ? 'text-[#ED1C24]' : ''}                  `}
-                            >
-                                {navData.contact}
-                            </Link>
-                        </div>
-                        <div className="ml-4 mt-8">
-                            <Link href={`${baseUrl}`} prefetch
-                                className={`flex flex-start font-bold text-lg hover:text-[#ed1c24] text-poppins 
-                ${(pathname === '/download' && localActive === 'en_global') || (pathname === `/${lang}/download` && localActive !== 'en_global') || (pathname === `/${lang}/download` && localActive === 'en_global') ? 'text-[#ED1C24]' : ''}                  `}
-                            >
-                                {navData.download}
-                            </Link>
-                        </div>
+                                            onClick={closeAllMenu}
+                                        >
+                                            {each.name}
+                                        </Link>
+                                    </div>
+                                )
+                            })
+                        }
                     </div>
                 </div>
             </div>
