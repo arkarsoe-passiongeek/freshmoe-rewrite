@@ -1,8 +1,9 @@
 import { INTL_PREFIX_BY_COUNTRY } from '@/lib/constant';
 import Image, { StaticImageData } from 'next/image';
+import pageBanner from "@/public/images/layout/page-banner.png"
 
 interface BannerHeaderProps {
-    imageSrc: StaticImageData | string;
+    imageSrc?: StaticImageData | string;
     text: string;
     locale: string
 }
@@ -12,7 +13,7 @@ const BannerHeader: React.FC<BannerHeaderProps> = ({ text, imageSrc, locale }) =
         <div className="bg-white h-auto relative z-100">
             <div className="bg-cover bg-center relative">
                 <Image
-                    src={imageSrc}
+                    src={imageSrc ?? pageBanner}
                     alt=""
                     className="object-cover w-full h-auto filter object-center transition duration-200"
                 />
