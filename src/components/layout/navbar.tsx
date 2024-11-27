@@ -62,11 +62,9 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
     const [open, setOpen] = useState(false)
     const [sidebar, setSidebar] = useState(true)
     const [upperMenu, setUpperMenu] = useState(true)
-    const localActive = useLocale()
-    const baseUrl = process.env.NEXT_PUBLIC_APP_REDIRECT_URL;
     const [selectedCountry, setSelectedCountry] = useState(countryOptions[0].countries[0]);
-    const [selectedLanguage, setSelectedLanguage] = useState<LanguageCodes>('en');
-    const [currentCountry, setCurrentCountry] = useState<any>(locale.split('_')[0])
+    const [selectedLanguage, setSelectedLanguage] = useState<LanguageCodes>(locale.split('_')[0] as LanguageCodes);
+    const [currentCountry, setCurrentCountry] = useState<any>(locale.split('_')[1])
     const [currentLanguage, setCurrentLanguage] = useState<any>({})
 
     const navList = [
@@ -356,7 +354,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                 <div className="bg-c-secondary w-full p-[3.95px] brand-line-red"></div>
                 <nav className="shadow-lg w-full flex lg:justify-between items-center " id='navbar'>
                     {open ? <ChooseLang onClickParent={() => setOpen(false)} /> : ''}
-                    <div className="container mx-auto flex lg:justify-between items-center py-[0.8rem] max-w-[1790px] px-[2rem] md:px-[4rem] lg:px-[5rem]">
+                    <div className="container mx-auto flex lg:justify-between items-center py-[0.8rem]">
                         <ul className="flex-1 poppins font-bold hidden md:flex nav  items-center" id="nav-item">
                             <li
                                 className={`hover:text-[#ED1C24] font-bold ${lang == 'en' ? 'px-3' : 'px-2'} py-3 text-[0.75vw]  ${pathname === `/${lang}` ? 'text-[#ED1C24]' : ''
@@ -385,7 +383,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                                     if (index < 3) {
                                         return (
                                             <li
-                                                key={each.url} className={`hover:text-[#ED1C24] font-bold ${lang == 'en' ? 'px-3' : 'px-2'} py-3 text-[0.75vw] lg:text-[1vw] xl:text-[0.75vw] hidden lg:flex 
+                                                key={each.url} className={`hover:text-[#ED1C24] font-medium ${lang == 'en' ? 'px-3' : 'px-2'} py-3 text-c-transform-primary hidden lg:flex 
                   ${isNavActive(each.url) ? 'text-[#ED1C24]' : ''}
                   `}
                                             >
@@ -396,11 +394,9 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                                 })
                             }
                         </ul>
-
-
                         {sidebar ? (
                             <span
-                                className="block md:hidden mt-0 w-[4vw]"
+                                className="block md:hidden mt-0 w-[16px]"
                                 id="close-sidebar"
                                 onClick={() => handleToggle()}
                             >
@@ -408,16 +404,16 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                             </span>
                         ) : (
                             <span
-                                className="block md:hidden mt-0 w-[6.3vw]  sm:w-[4vw]"
+                                className="block md:hidden mt-0 w-[16px]"
                                 id="open-sidebar"
                                 onClick={() => handleToggle()}
                             >
-                                <RxCross1 className="text-[#000] text-semibold" />
+                                <RxCross1 className="text-black text-semibold" />
                             </span>
                         )}
 
                         <div
-                            className={`flex-1 flex justify-center ${(currentLanguage?.value === 'mm') ?
+                            className={`lg:flex-1 flex justify-center ${(currentLanguage?.value === 'mm') ?
                                 'pl-[2vw] md:pl-0'
                                 :
                                 'pl-[2vw]'
@@ -428,7 +424,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                                     src={freshMoeLogo}
                                     alt=""
                                     className=
-                                    {`w-[100px] sm:w-[85px] md:w-[90px] lg:w-[8vw] xl:w-[6.5vw] h-auto md:ml-0`}
+                                    {`w-[70px] sm:w-[85px] md:w-[90px] lg:w-[8vw] xl:w-[6.5vw] h-auto md:ml-0`}
                                 />
                             </a>
                         </div>
@@ -442,39 +438,38 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                             >
                                 <span className="flex items-center space-x-2">
                                     <div>
-                                        {currentCountry?.value !== 'global' ? (
+                                        {currentCountry == 'global' ? (
                                             <CiGlobe
-                                                className={`${currentCountry?.value === 'global' ?
-                                                    'w-[4vw] lg:w-[25px] h-auto lg:left-[-20px] xl:left-[-15px] mt-[1px] md:mt-0 rounded-3xl globe text-[#5B5B5B]' :
-                                                    'w-[25px] h-auto mt-[1px] md:mt-0 rounded-3xl globe text-[#5B5B5B]'
+                                                className={`w-[15px] h-[15px] md:w-[30px] md:h-[30px] lg:w-[40px] lg:h-[40px] ${currentCountry == 'global' ?
+                                                    'text-[#5B5B5B]' :
+                                                    ''
                                                     }`}
                                             />
                                         ) : (
-                                            <Flag code={selectedCountry?.flag} className="w-[25px] lg:w-[22px] h-auto globe text-[#5B5B5B]" />
-
+                                            <Flag code={selectedCountry?.flag} className="w-[25px] md:h-[30px] lg:w-[40px] lg:h-[40px] globe text-[#5B5B5B]" />
                                         )}
                                     </div>
-                                    <span className={`'text-[1vw] xl:text-[0.8vw] nav-mm pt-1 hidden lg:block`}>
+                                    <span className={`text-c-transform-primary hidden lg:block`}>
                                         {selectedCountry?.label}
                                     </span>
-
-                                    <span className={`${(currentCountry?.label === 'Myanmar') ?
+                                    <span className={`${(currentCountry == 'mm') ?
                                         'lg:pl-[13px] xl:pl-[8px] 2xl:pl-[25px]' :
-                                        (currentCountry?.label === 'Thailand') ?
+                                        (currentCountry == 'th') ?
                                             'lg:pl-[10px] xl:pl-[15px]' :
                                             'p-0'} 
                              hidden lg:block`}>|</span>
                                     <PiTranslate className="w-[22px] h-auto rounded-3xl globe text-[#5B5B5B] hidden lg:block" />
-
                                     <span className={`
-                            text-base nav-mm pt-1`}>
+                            text-c-transform-primary`}>
                                         {getLanguageName(`${selectedLanguage}`)}
                                     </span>
-                                    {!upperMenu ? (
-                                        <MdOutlineKeyboardArrowUp className="md:w-[30px] lg:w-[25px] h-auto lg:pt-[4px] xl:pt-[2px] " />
-                                    ) : (
-                                        <MdOutlineKeyboardArrowDown className="md:w-[30px] lg:w-[25px] h-auto lg:pt-[4px] xl:pt-[2px] " />
-                                    )}
+                                    <div>
+                                        {!upperMenu ? (
+                                            <MdOutlineKeyboardArrowUp className="md:w-[30px] md:h-[30px] lg:w-[40px] lg:h-[40px]" />
+                                        ) : (
+                                            <MdOutlineKeyboardArrowDown className="md:w-[30px] md:h-[30px] lg:w-[40px] lg:h-[40px]" />
+                                        )}
+                                    </div>
                                 </span>
                             </button>
                         </div>
@@ -496,8 +491,8 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                                 return (
                                     <div key={each.name} className="ml-4 mt-1">
                                         <Link href={`${each.url}`} prefetch
-                                            className={`flex flex-start font-bold text-lg hover:text-[#ed1c24] text-poppins 
-                  ${isNavActive(each.url) ? 'text-[#ED1C24]' : ''}
+                                            className={`text-c-transform-primary flex flex-start font-medium hover:text-c-secondary text-poppins 
+                  ${isNavActive(each.url) ? 'text-c-secondary' : ''}
                   `}
                                             onClick={closeAllMenu}
                                         >
@@ -511,6 +506,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                 </div>
             </div>
             {/* <!-- end mobile sidebar --> */}
+
             {/* start language menu */}
             <div
                 className="z-30 fixed  h-full left-0 top-[138px] lg:top-[115px] xl:top-[120px] 2xl:top-[130px] invisible  transition-all duration-500 bg-[#000] bg-opacity-20"
@@ -522,14 +518,14 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                 >
                     <div className="container mx-auto flex flex-col gap-6 lg:gap-0 lg:flex-row w-full items-center py-[0.8rem] max-w-[1790px] px-[2rem] mt-10">
                         <div className="pl-[1rem] w-full lg:w-[50%]">
-                            <label htmlFor="country" className="block text-lg font-semibold text-[#000] mb-2">
+                            <label htmlFor="country" className="block text-c-transform-primary font-semibold text-[#000] mb-2">
                                 Select Your Country
                             </label>
                             <CCountrySelect defaultValue='global' onValueChange={handleChangeCountry} continents={countryOptions} placeholder="Select Your Country" />
                         </div>
 
                         <div className="pl-[1rem] w-full lg:w-[50%]">
-                            <label htmlFor="country" className="block text-lg font-semibold text-[#000] mb-2">
+                            <label htmlFor="country" className="block text-c-transform-primary font-semibold text-[#000] mb-2">
                                 Choose Language
                             </label>
                             <CLanguageSelect items={selectedCountry.languages} placeholder='Select Your Language' onValueChange={setSelectedLanguage} defaultValue='en' />

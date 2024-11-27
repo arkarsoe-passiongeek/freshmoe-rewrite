@@ -11,6 +11,8 @@ import BannerHeader from '@/components/layout/banner-header'
 import AboutUsBanner from "../../../../public/images/about-us/br-contact-us-header-1.png"
 import { getTranslations } from 'next-intl/server'
 import ReactHtmlParser from 'html-react-parser'
+import ContentHeader from '@/components/custom/content/content-header'
+import ContentDescription from '@/components/custom/content/content-description'
 
 export default async function AboutUs({ params }: { params: Promise<{ locale: string }> }) {
     const t = await getTranslations('AboutUsPage')
@@ -29,12 +31,12 @@ export default async function AboutUs({ params }: { params: Promise<{ locale: st
             <div className="about-us-section flex flex-col gap-16 lg:gap-24 py-[3.5rem]">
                 <div className="flex flex-col lg:flex-row gap-16 items-center px-[2rem] md:px-[4rem] lg:px-[5rem] max-w-[110rem] mx-auto">
                     <div className="w-full lg:w-1/2 p-0 text-gray-600">
-                        <h1 className="text-xl lg:text-3xl xl:text-5xl font-c-primary text-c-primary-2 mb-3 text-shadow font-bold w-full">
+                        <ContentHeader>
                             {content ? (content.title_2) : t('title')}
-                        </h1>
-                        <h2 className={`text-xss lg:text-base xl:text-2xl w-full md:leading-4 lg:leading-6 xl:w-[90%] 2xl:w-[85%] xl:mt-5`}>
+                        </ContentHeader>
+                        <ContentDescription>
                             {typeof content?.content_2 === 'string' ? ReactHtmlParser(content.content_2) : (<>{t('description1')}<br />{t('description2')}</>)}
-                        </h2>
+                        </ContentDescription>
                     </div>
                     <div className="w-full lg:w-1/2">
                         <Image
@@ -47,6 +49,7 @@ export default async function AboutUs({ params }: { params: Promise<{ locale: st
                         />
                     </div>
                 </div>
+
                 <div className="flex flex-row justify-between gap-5">
                     <div className="w-[63%]">
                         <Image

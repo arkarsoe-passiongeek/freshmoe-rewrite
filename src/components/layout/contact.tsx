@@ -6,6 +6,8 @@ import { FaFacebook, FaLinkedin, FaInstagram } from 'react-icons/fa'
 import freshMoeLogo from "@/public/images/freshmoeLogo.png"
 import CBaseButton from '@/components/custom/c-base-button'
 import styles from "./contact.module.css"
+import ContactBg from "@/public/images/home/contact-bg.png"
+import ContactBgMobile from "@/public/images/home/contact-bg-mobile.png"
 
 interface ContactProps {
     contactData: {
@@ -32,8 +34,13 @@ interface ContactProps {
 
 const Contact: React.FC<ContactProps> = ({ contactData, locale }) => {
     return (
-        <div className={`relative mt-[-7rem] md:mt-[-6rem] lg:mt-[-2rem] xl:mt-[-3rem] 2xl:mt-[-3.5rem] z-10 pt-[8rem] md:pt-[7rem] lg:pt-[8rem] xl:pt-[8rem] 2xl:pt-[10rem] bg-cover bg-no-repeat ${styles.bgContact}`}>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between px-[2rem] md:px-[4rem] lg:px-[5rem] md:pt-0 pb-12 max-w-[110rem] mx-auto h-auto">
+        <div className={`relative z-10 bg-cover bg-no-repeat ${styles.bgContact}`}>
+            <Image
+                src={ContactBg}
+                alt=""
+                className="absolute top-[-10%] w-full h-[110%]"
+            />
+            <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between px-[2rem] md:px-[4rem] lg:px-[5rem] py-12 max-w-[110rem] mx-auto h-auto">
                 <div className="flex flex-col gap-5">
                     <a href="#" className="">
                         <Image

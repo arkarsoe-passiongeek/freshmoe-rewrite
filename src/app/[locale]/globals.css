@@ -55,6 +55,7 @@ body {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
   .dark {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
@@ -87,8 +88,13 @@ body {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
+  }
+
+  .text-c-transform-primary {
+    @apply !text-xs sm:!text-sm xl:!text-lg 2xl:!text-xl
   }
 }
 
@@ -114,10 +120,13 @@ body {
     top: 65% !important;
   }
 }
+
 /* end global configuration for swiper */
 
 /* global util */
 .text-shadow {
   text-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
+
+
 /* end global util */

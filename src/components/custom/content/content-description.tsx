@@ -1,10 +1,10 @@
 import React from 'react'
 
-const ContentDescription = ({ children }: { children: any }) => {
+const ContentDescription = ({ children, className }: { children: any, className?: any }) => {
     return (
-        <h2 className={`text-xss lg:text-sm`}>
+        <p className={`text-xs sm:text-base xl:text-lg ${className}`}>
             {children}
-        </h2>
+        </p>
     )
 }
 

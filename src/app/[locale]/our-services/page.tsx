@@ -11,10 +11,12 @@ import { getTranslations } from 'next-intl/server'
 import { fetchOurServicesContent } from '@/services/page/fetch-our-services-content'
 import BannerHeader from '@/components/layout/banner-header'
 import OurServicesBanner from "@/public/images/our-services/br-our-services-header-1.png"
+import ContentHeader from '@/components/custom/content/content-header';
+import ContentDescription from '@/components/custom/content/content-description';
 
 
 export default async function Contact({ params }: { params: { locale: string } }) {
-    const t = await getTranslations('AboutUsPage')
+    const t = await getTranslations('OurServicePage')
     const IMAGE_URL = process.env.NEXT_PUBLIC_IMAGE_URL;
     const { locale } = await params;
 
@@ -23,21 +25,19 @@ export default async function Contact({ params }: { params: { locale: string } }
 
     const { data: content }: any = await fetchOurServicesContent(formData)
 
+    console.log(content)
+
     return (
         <div className="bg-white h-auto relative pb-[7rem] md:pb-[9rem] mt-[98px] sm:mt-[110px] md:mt-[115px] lg:mt-[100px] xl:mt-[110px] 2xl:mt-[120px]">
             <BannerHeader locale={locale} imageSrc={OurServicesBanner} text={content?.title_1 || t('service')} />
             <div className="contact-section flex flex-col gap-10 lg:gap-16 max-w-[110rem] px-[2rem] md:px-[4rem] lg:px-[5rem] mx-auto py-[3.5rem]">
                 <div className="text-center text-gray-600">
-                    <h1 className="text-xl lg:text-3xl xl:text-5xl font-c-primary text-c-primary-2 mb-3 text-shadow font-bold w-full">
+                    <ContentHeader>
                         {content ? content.title_2 : t('title')}
-                    </h1>
-                    <h2 className={`text-xss lg:text-base xl:text-2xl w-full md:leading-4 lg:leading-6 xl:w-[90%] 2xl:w-[85%] xl:mt-5 mx-auto`}>
+                    </ContentHeader>
+                    <ContentDescription>
                         {content && typeof content?.content_2 === 'string' ? ReactHtmlParser(content.content_2) : t('description')}
-                    </h2>
-                    {/* <p className={`text-poppins ${lang == 'mm'?'leading-[30px] md:leading-[35px] lg:leading-[28px] xl:leading-[35px]':'leading-[25px]  lg:leading-[26px]'} text-[16px] md:text-[18px]  w-full mt-3 xl:mt-5 font-normal`}>
-            {content && typeof content?.content_3 === 'string' ? ReactHtmlParser(content.content_2 ) : t('description')}
-          </p> */}
-
+                    </ContentDescription>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 text-[0.7rem] py-[1rem] text-gray-600">
                     <div className="p-5 bg-[#EFF8ED] rounded-lg w-full duration-500 transition-all hover:scale-105 hover:shadow-xl">
@@ -100,12 +100,12 @@ export default async function Contact({ params }: { params: { locale: string } }
                     <div className="lg:w-2/4 xl:w-2/5 w-full mt-[8rem] md:mt-[10rem] lg:mt-0">
                         <div className="p-2">
                             <div className="text-slate-600 text-left">
-                                <h1 className="text-xl lg:text-3xl xl:text-5xl font-c-primary text-c-primary-2 mb-3 text-shadow font-bold w-full">
+                                <ContentHeader>
                                     {content?.title_6 || t('about-four-title')}
-                                </h1>
-                                <h2 className={`text-xss lg:text-base xl:text-2xl w-full md:leading-4 lg:leading-6 xl:w-[90%] 2xl:w-[85%] xl:mt-5`}>
+                                </ContentHeader>
+                                <ContentDescription>
                                     {content && typeof content?.content_6 === 'string' ? ReactHtmlParser(content.content_6) : (<>{t('about-four-description-1')}<br />{t('about-four-description-2')}</>)}
-                                </h2>
+                                </ContentDescription>
                                 <div className="flex justify-center lg:justify-start gap-7 md:gap-3 mt-5 ">
                                     <div className="">
                                         <Image
@@ -154,12 +154,12 @@ export default async function Contact({ params }: { params: { locale: string } }
                     />
                 </div>
                 <div className="w-full lg:w-1/2 p-0 md:py-[3rem] lg:pl-[3rem] text-justify mb-8">
-                    <h1 className="text-xl lg:text-3xl xl:text-5xl font-c-primary text-c-primary-2 mb-3 text-shadow font-bold w-full">
+                    <ContentHeader>
                         {content?.title_7 || t('retail-title')}
-                    </h1>
-                    <h2 className={`text-xss lg:text-base xl:text-2xl w-full md:leading-4 lg:leading-6 xl:w-[90%] 2xl:w-[85%] xl:mt-5`}>
+                    </ContentHeader>
+                    <ContentDescription>
                         {content && typeof content?.content_7 === 'string' ? ReactHtmlParser(content?.content_7) : (<>{t('retail-des-1')}<br />{t('retail-des-2')}</>)}
-                    </h2>
+                    </ContentDescription>
                 </div>
             </div>
         </div>
