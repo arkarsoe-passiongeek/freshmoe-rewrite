@@ -1,4 +1,7 @@
 {
+    "NotFoundPage": {
+        "title": "Not found"
+    },
     "LandingPage": {
         "home": "Home",
         "about-us": "About Us",

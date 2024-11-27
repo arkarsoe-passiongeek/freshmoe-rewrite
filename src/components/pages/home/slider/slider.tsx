@@ -3,16 +3,17 @@ import React, { useEffect } from "react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
-import Slider1 from '../../../../../public/images/home/slider1.jpg'
-import FruitBasket from '../../../../../public/images/home/fruitbasket.png'
-import IconHeart from '../../../../../public/images/home/icon_heart.png'
-import IconCar from '../../../../../public/images/home/icon_car.png'
-import IconCart from '../../../../../public/images/home/icon_cart.png'
-import IconCheck from '../../../../../public/images/home/icon_check.png'
-import IconPhone from '../../../../../public/images/home/icon_phone.png'
-import IconFruit from '../../../../../public/images/home/icon_fruit.png'
-import UnderSlider3 from '../../../../../public/images/home/under-slider-3.png'
-import GreenMobile3 from '../../../../../public/images/home/GreenMobile-3.png'
+import Slider1 from '@/public/images/home/slider1.jpg'
+import FruitBasket from '@/public/images/home/fruitbasket.png'
+import IconHeart from '@/public/images/home/icon_heart.png'
+import IconCar from '@/public/images/home/icon_car.png'
+import IconCart from '@/public/images/home/icon_cart.png'
+import IconCheck from '@/public/images/home/icon_check.png'
+import IconPhone from '@/public/images/home/icon_phone.png'
+import IconFruit from '@/public/images/home/icon_fruit.png'
+import UnderSlider3 from '@/public/images/home/under-slider-3.png'
+import GreenMobile3 from '@/public/images/home/GreenMobile-3.png'
+import UnderlineBar from "@/public/images/home/underline.png"
 import 'swiper/css';
 import 'swiper/css/pagination';
 import CBaseButton from "@/components/custom/c-base-button";
@@ -99,7 +100,6 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
                                         unoptimized
                                         src={Slider1 || image}
                                         alt={title}
-                                        layout="responsive"
                                         className="object-cover w-full h-full filter object-center"
                                         width={100}
                                         height={100}
@@ -130,15 +130,13 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
                     <Image
                         src={UnderSlider3}
                         alt="Green Background"
-                        layout="fill"
-                        objectFit="cover"
                         priority
-                        className="relative z-0 bg-no-repeat"
+                        className="relative z-0 bg-no-repeat w-full h-full"
                     />
                     <div className='max-w-[1790px] px-[2rem] md:px-[4rem] lg:px-[5rem] w-full h-300 absolute top-[24%] left-1/2 transform -translate-x-1/2'>
                         <div className="tile flex flex-col justify-center items-center lg:mb-[1.5rem] 2xl:mb-[0.5rem]">
                             <h1 className='text-white text-[50px] xl:text-[50px] mb-5' style={{ fontFamily: 'Sriracha' }}>{sliderData.chooseTitle}</h1>
-                            <Image src='/images/underline.png' alt="underline" className='underline mb-6' width={210} height={30} priority />
+                            <Image src={UnderlineBar} alt="underline" className='underline mb-6' width={210} height={30} priority />
                         </div>
                         <div className="grid grid-cols-12 items-center justify-center lg:mb-[1rem] xl:mb-[4rem] 2xl:mb-[4.5rem]">
                             <div className="col-span-1"></div>
@@ -148,11 +146,11 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
                                     <div className='w-16  h-[2px] rounded-sm  bg-white mb-1'></div>
                                     <p className='text-white text-[10px] 2xl:text-[15px]  tracking-tight'>{sliderData.chooseOneDes}</p>
                                 </div>
-                                <Image unoptimized src={sliderData.chooseImage1 || '/images/icon_check.png'} alt="underline" className='underline' width={90} height={92} />
+                                <Image unoptimized src={sliderData.chooseImage1 || IconCheck} alt="underline" className='underline' width={90} height={92} />
                             </div>
                             <div className="col-span-2"></div>
                             <div className="col-span-4 w-full flex items-center justify-center ml-[25px] xl:ml-[40px]">
-                                <Image unoptimized src={sliderData.chooseImage2 || '/images/icon_heart.png'} alt="underline" className='underline' width={90} height={92} />
+                                <Image unoptimized src={sliderData.chooseImage2 || IconHeart} alt="underline" className='underline' width={90} height={92} />
                                 <div className='flex flex-col justify-start items-start ml-3 lg:ml-6'>
                                     <p className='text-white text-[16px] 2xl:text-[23px] font-semibold mb-1'>{sliderData.chooseTwoTitle}</p>
                                     <div className='w-16  h-[2px] rounded-sm  bg-white mb-1'></div>
@@ -168,11 +166,11 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
                                     <div className='w-16  h-[2px] rounded-sm bg-white mb-1'></div>
                                     <p className='text-white text-[10px]  2xl:text-[15px]  tracking-tight'>{sliderData.chooseThreeDes}</p>
                                 </div>
-                                <Image unoptimized src={sliderData.chooseImage3 || '/images/icon_car.png'} alt="underline" className='underline' width={90} height={92} />
+                                <Image unoptimized src={sliderData.chooseImage3 || IconCar} alt="underline" className='underline' width={90} height={92} />
                             </div>
                             <div className="col-span-4"></div>
                             <div className="col-span-4 w-full flex items-center justify-center  ml-0 lg:ml-[35px] xl:ml-[40px]">
-                                <Image unoptimized src={sliderData.chooseImage4 || '/images/icon_fruit.png'} alt="underline" className='underline' width={90} height={92} />
+                                <Image unoptimized src={sliderData.chooseImage4 || IconFruit} alt="underline" className='underline' width={90} height={92} />
                                 <div className='flex flex-col justify-start items-start ml-3 lg:ml-6'>
                                     <p className='text-white text-[16px] 2xl:text-[23px] font-semibold mb-1'>{sliderData.chooseFourTitle}</p>
                                     <div className='w-16  h-[2px] rounded-sm bg-white mb-1'></div>
@@ -187,11 +185,11 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
                                     <div className='w-16  h-[2px] rounded-sm bg-white mb-1'></div>
                                     <p className='text-white text-[10px]  2xl:text-[15px]  tracking-tight'>{sliderData.chooseFiveDes}</p>
                                 </div>
-                                <Image unoptimized src={sliderData.chooseImage5 || '/images/icon_phone.png'} alt="underline" className='underline' width={90} height={92} />
+                                <Image unoptimized src={sliderData.chooseImage5 || IconPhone} alt="underline" className='underline' width={90} height={92} />
                             </div>
                             <div className="col-span-4"></div>
                             <div className="col-span-4 w-full flex items-center justify-center  ml-0 lg:ml-[35px] xl:ml-[40px]">
-                                <Image unoptimized src={sliderData.chooseImage6 || '/images/icon_cart.png'} alt="underline" className='underline' width={90} height={92} />
+                                <Image unoptimized src={sliderData.chooseImage6 || IconCart} alt="underline" className='underline' width={90} height={92} />
                                 <div className='flex flex-col justify-start items-start ml-3 lg:ml-6'>
                                     <p className='text-white text-[16px] 2xl:text-[23px] font-semibold mb-1'>{sliderData.chooseSixTitle}</p>
                                     <div className='w-16 h-[2px] rounded-sm bg-white mb-1'></div>
@@ -208,12 +206,9 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
                     <Image
                         src={GreenMobile3}
                         alt="Green Background"
-                        layout="fill"
-                        objectFit="cover"
                         priority
-                        className="relative z-0 green_bg"
+                        className="z-0 green_bg object-cover absolute h-full w-full"
                     />
-
                     <div className="absolute mt-[100px] sm:mt-[250px] md:mt-[150px]">
                         <div className="tile flex flex-col justify-center items-center">
                             <h1 className='text-white text-[22px] sm:text-[25px] md:text-[30px] mb-[2.5rem] md:mb-[3.5rem] md:mt-0' style={{ fontFamily: 'Sriracha' }}>{sliderData.chooseTitle}</h1>
