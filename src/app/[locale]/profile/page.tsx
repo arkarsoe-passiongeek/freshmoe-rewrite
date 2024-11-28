@@ -188,7 +188,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
                                 width={100}
                                 height={100}
                                 alt="logo1"
-                                className="object-cover  w-[180px] sm:w-full h-auto filter object-center transition duration-200"
+                                className="object-cover w-[180px] sm:w-full h-auto filter object-center transition duration-200"
                             />
                         </div>
                         <div className="col-span-6 sm:col-span-1">
@@ -228,7 +228,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
                                 width={100}
                                 height={100}
                                 alt="logo5"
-                                className="logo5 object-cover w-[180px] sm:w-full h-auto filter object-center transition duration-200 px-2 sm:px-0"
+                                className="object-cover w-[180px] sm:w-full h-auto filter object-center transition duration-200 px-2 sm:px-0"
                             />
                         </div>
                     </div>

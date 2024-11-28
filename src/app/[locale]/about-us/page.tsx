@@ -13,6 +13,7 @@ import { getTranslations } from 'next-intl/server'
 import ReactHtmlParser from 'html-react-parser'
 import ContentHeader from '@/components/custom/content/content-header'
 import ContentDescription from '@/components/custom/content/content-description'
+import { INTL_PREFIX_BY_COUNTRY } from '@/lib/constant'
 
 export default async function AboutUs({ params }: { params: Promise<{ locale: string }> }) {
     const t = await getTranslations('AboutUsPage')
@@ -26,9 +27,9 @@ export default async function AboutUs({ params }: { params: Promise<{ locale: st
     console.log(content)
 
     return (
-        <div className="bg-white h-auto relative  pb-[7rem] md:pb-[9rem] mt-[104px] sm:mt-[110px] md:mt-[115px] lg:mt-[100px] xl:mt-[110px] 2xl:mt-[120px]">
+        <div className="bg-white h-auto relative pb-[7rem] md:pb-[9rem] mt-[104px] sm:mt-[110px] md:mt-[115px] lg:mt-[100px] xl:mt-[110px] 2xl:mt-[120px]">
             <BannerHeader locale={locale} imageSrc={AboutUsBanner} text={content?.title_1 || t('about')} />
-            <div className="about-us-section flex flex-col gap-16 lg:gap-24 py-[3.5rem]">
+            <div className="flex flex-col gap-16 lg:gap-24 py-[3.5rem]">
                 <div className="flex flex-col lg:flex-row gap-16 items-center px-[2rem] md:px-[4rem] lg:px-[5rem] max-w-[110rem] mx-auto">
                     <div className="w-full lg:w-1/2 p-0 text-gray-600">
                         <ContentHeader>
@@ -42,10 +43,9 @@ export default async function AboutUs({ params }: { params: Promise<{ locale: st
                         <Image
                             src={content?.image_2 ? `${IMAGE_URL}/${content.image_2}` : AboutUs1}
                             alt="about1"
-                            unoptimized
                             width={100}
                             height={100}
-                            className="object-cover w-full h-auto filter object-center rounded-lg"
+                            className="object-cover w-full h-auto object-center rounded-lg"
                         />
                     </div>
                 </div>
@@ -53,18 +53,16 @@ export default async function AboutUs({ params }: { params: Promise<{ locale: st
                 <div className="flex flex-row justify-between gap-5">
                     <div className="w-[63%]">
                         <Image
-                            src={content?.image_3 ? `${IMAGE_URL}/${content.image_3}` : locale == "mm_mm" ? missionMM : AboutUs2}
+                            src={content?.image_3 ? `${IMAGE_URL}/${content.image_3}` : locale == INTL_PREFIX_BY_COUNTRY.myanmar ? missionMM : AboutUs2}
                             alt=""
-                            unoptimized
                             width={100}
                             height={100}
-                            className="object-cover w-full h-auto filter object-center transition duration-200"
+                            className="object-cover w-full h-auto object-center transition duration-200"
                         />
                     </div>
                     <div className="w-[37%]">
                         <Image
                             src={content?.image_4 ? `${IMAGE_URL}/${content.image_4}` : AboutUs3}
-                            unoptimized
                             width={100}
                             height={100}
                             alt=""
@@ -77,20 +75,18 @@ export default async function AboutUs({ params }: { params: Promise<{ locale: st
                         <Image
                             src={content?.image_5 ? `${IMAGE_URL}/${content.image_5}` : AboutUs5}
                             alt=""
-                            unoptimized
                             width={100}
                             height={100}
-                            className="object-cover w-full h-auto filter object-center transition duration-200"
+                            className="object-cover w-full h-auto object-center transition duration-200"
                         />
                     </div>
                     <div className="w-[63%]">
                         <Image
-                            src={content?.image_6 ? `${IMAGE_URL}/${content.image_6}` : locale == "mm_mm" ? visionMM : AboutUs4}
-                            unoptimized
+                            src={content?.image_6 ? `${IMAGE_URL}/${content.image_6}` : locale == INTL_PREFIX_BY_COUNTRY.myanmar ? visionMM : AboutUs4}
                             width={100}
                             height={100}
                             alt=""
-                            className="object-cover w-full h-auto filter object-center transition duration-200"
+                            className="object-cover w-full h-auto object-center transition duration-200"
                         />
                     </div>
                 </div>

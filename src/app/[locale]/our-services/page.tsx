@@ -30,7 +30,7 @@ export default async function Contact({ params }: { params: { locale: string } }
     return (
         <div className="bg-white h-auto relative pb-[7rem] md:pb-[9rem] mt-[98px] sm:mt-[110px] md:mt-[115px] lg:mt-[100px] xl:mt-[110px] 2xl:mt-[120px]">
             <BannerHeader locale={locale} imageSrc={OurServicesBanner} text={content?.title_1 || t('service')} />
-            <div className="contact-section flex flex-col gap-10 lg:gap-16 max-w-[110rem] px-[2rem] md:px-[4rem] lg:px-[5rem] mx-auto py-[3.5rem]">
+            <div className="flex flex-col gap-10 lg:gap-16 max-w-[110rem] px-[2rem] md:px-[4rem] lg:px-[5rem] mx-auto py-[3.5rem]">
                 <div className="text-center text-gray-600">
                     <ContentHeader>
                         {content ? content.title_2 : t('title')}

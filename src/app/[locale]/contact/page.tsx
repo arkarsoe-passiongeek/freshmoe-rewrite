@@ -21,7 +21,7 @@ export default async function Contact({ params }: { params: Promise<{ locale: st
     return (
         <div className="bg-white h-auto relative pb-[7rem] md:pb-[9rem]  mt-[98px]  sm:mt-[110px] md:mt-[115px] lg:mt-[100px] xl:mt-[110px] 2xl:mt-[120px]">
             <BannerHeader text={content?.title_1 || t('contact')} locale={locale} />
-            <div className="contact-section flex lg:flex-row flex-col-reverse px-[2rem] md:px-[4rem] lg:px-[5rem] max-w-[110rem] mx-auto py-[3.5rem]">
+            <div className="flex lg:flex-row flex-col-reverse px-[2rem] md:px-[4rem] lg:px-[5rem] max-w-[110rem] mx-auto py-[3.5rem]">
                 <div className="lg:w-1/2 w-full mt-8 lg:mt-0">
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d61084.63980994982!2d96.15043175548654!3d16.886280282796363!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c193b44e8b67b3%3A0xb50d88d2ceee17e7!2sNorth%20Dagon%20Township%2C%20Yangon!5e0!3m2!1sen!2smm!4v1712593261850!5m2!1sen!2smm"
