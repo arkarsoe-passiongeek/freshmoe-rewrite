@@ -127,7 +127,6 @@ const Home = async ({ params }: { params: Promise<{ locale: string }> }) => {
         <div>
             <Slider data={dataSlider} sliderData={sliderData} />
             <About aboutData={aboutData} />
-
         </div>
     );
 }

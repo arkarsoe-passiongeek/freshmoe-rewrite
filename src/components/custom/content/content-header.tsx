@@ -6,7 +6,7 @@ const ContentHeader = ({ children, variant, className }: { children: any, varian
     }
 
     return (
-        <h1 className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-c-primary text-c-primary-2 mb-3 text-shadow font-bold w-full ${className}`}>
+        <h1 className={`text-xl sm:text-2xl md:text-3xl 2xl:text-4xl text-c-primary mb-3 font-bold w-full ${className}`}>
             {children}
         </h1>
     )

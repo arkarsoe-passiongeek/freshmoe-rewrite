@@ -34,61 +34,56 @@ interface ContactProps {
 
 const Contact: React.FC<ContactProps> = ({ contactData, locale }) => {
     return (
-        <div className={`relative z-10 bg-cover bg-no-repeat ${styles.bgContact}`}>
+        <div className={`relative z-10 bg-cover bg-no-repeat ${styles.bgContact} text-c-contrast`}>
             <Image
                 src={ContactBg}
                 alt=""
                 className="absolute top-[-10%] w-full h-[110%]"
             />
             <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between px-[2rem] md:px-[4rem] lg:px-[5rem] py-12 max-w-[110rem] mx-auto h-auto">
-                <div className="flex flex-col gap-5">
+                <div className="flex flex-col">
                     <a href="#" className="">
                         <Image
                             src={freshMoeLogo}
                             alt=""
-                            className="w-[100px] lg:w-[10rem] h-auto ml-3 md:ml-0"
+                            className="w-[100px] lg:w-[10rem] 2xl:w-[200px] h-auto 2xl:h-[100px] ml-3 md:ml-0 2xl:mb-[32px]"
                         />
                     </a>
 
-                    <div className="flex space-x-4">
-                        <div className="flex items-center text-base lg:text-md xl:text-lg 2xl:text-xl text-slate-500">
-                            <span className="mr-2 bg-white p-[5px] rounded-full">
-                                <IoMdMail className="text-[1rem] text-[#ED1C24]" />
-                            </span>
-                            {/* {contactData.email} */}
-                            {/* <Typography variant='subtitle2'> */}
-                            {contactData.email}
-                            {/* </Typography> */}
+                    <div className='2xl:space-y-[24px] mb-[50px]'>
+                        <div className="flex space-x-4">
+                            <div className="flex items-center text-base lg:text-md xl:text-lg 2xl:text-lg">
+                                <span className="mr-2 bg-white p-[5px] 2xl:w-[32px] 2xl:h-[32px] rounded-full shadow">
+                                    <IoMdMail className="text-[1rem] 2xl:text-lg text-c-secondary font-normal" />
+                                </span>
+                                {contactData.email}
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="flex space-x-4">
-                        <div className="flex items-center text-base lg:text-md xl:text-lg 2xl:text-xl text-slate-500">
-                            <span className="mr-2 bg-white p-[5px] rounded-full">
-                                <IoIosPhonePortrait className="text-[1rem] text-[#ED1C24]" />
-                            </span>
-                            {/* <Typography variant='subtitle2'> */}
-                            {contactData.phone}
-                            {/* </Typography> */}
+                        <div className="flex space-x-4">
+                            <div className="flex items-center text-base lg:text-md xl:text-lg 2xl:text-lg">
+                                <span className="mr-2 bg-white p-[5px] 2xl:w-[32px] 2xl:h-[32px] rounded-full shadow">
+                                    <IoIosPhonePortrait className="text-[1rem] 2xl:text-lg text-c-secondary font-normal" />
+                                </span>
+                                {contactData.phone}
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="flex space-x-4 w-auto sm:w-full md:w-[16.8rem] lg:w-[17rem] xl:w-[22rem]">
-                        <div className="flex text-base lg:text-md xl:text-lg 2xl:text-xl text-slate-500 ">
-                            <span className="mr-2 bg-white p-[5px] h-[26px] rounded-full">
-                                <IoLocationSharp className="text-[1rem] text-[#ED1C24]" />
-                            </span>
-                            {/* <Typography variant='subtitle2'> */}
-                            {contactData.address}
-                            {/* </Typography> */}
+                        <div className="flex space-x-4 w-auto sm:w-full md:w-[16.8rem] lg:w-[17rem] xl:w-[22rem]">
+                            <div className="flex text-base lg:text-md xl:text-lg 2xl:text-lg">
+                                <span className="mr-2 bg-white p-[5px] 2xl:w-[32px] 2xl:h-[32px] rounded-full shadow">
+                                    <IoLocationSharp className="text-[1rem] 2xl:text-lg text-c-secondary font-normal" />
+                                </span>
+                                {contactData.address}
+                            </div>
                         </div>
                     </div>
 
                     <div className="">
-                        <h2 className="text-[#418432] font-semibold text-xl lg:text-2xl xl:text-2xl 2xl:text-3xl">
+                        <h2 className="text-c-primary font-semibold text-xl lg:text-2xl xl:text-2xl 2xl:text-2xl 2xl:mb-[16px]">
                             {contactData.followUs}
                         </h2>
-                        <div className="flex gap-2 mt-4 text-[#ED1C24]">
+                        <div className="flex gap-2 2xl:gap-[27px] mt-4 text-c-secondary">
                             <a href="">
                                 <FaFacebook size={23} />
                             </a>
@@ -101,35 +96,37 @@ const Contact: React.FC<ContactProps> = ({ contactData, locale }) => {
                         </div>
                     </div>
                 </div>
+
                 <div className="flex flex-col gap-7 pt-11 md:pt-0">
                     <a href="#" className="">
-                        <h2 className="text-[#418432] font-bold text-xl lg:text-2xl 2xl:text-3xl">
+                        <h2 className="text-c-primary font-bold text-xl lg:text-2xl 2xl:text-2xl">
                             {contactData.quickLinks}
                         </h2>
                     </a>
 
-                    <div className="flex flex-col gap-5 text-slate-500 text-base lg:text-md xl:text-lg 2xl:text-xl">
-                        <a href={`/${locale}/aboutus`} className='hover:text-[#ED1C24]'>{contactData.link1}</a>
-                        <a href={`/${locale}/ourservices`} className='hover:text-[#ED1C24]'>{contactData.link2}</a>
-                        <a href={`/${locale}/profile`} className='hover:text-[#ED1C24]'>{contactData.link3}</a>
-                        <a href={`/${locale}/profile`} className='hover:text-[#ED1C24]'>{contactData.link4}</a>
-                        <a href={`/${locale}/profile`} className='hover:text-[#ED1C24]'>{contactData.link5}</a>
-                        <a href={`/${locale}/profile`} className='hover:text-[#ED1C24]'>{contactData.link6}</a>
+                    <div className="flex flex-col gap-5 2xl:gap-[40px] text-base lg:text-md xl:text-lg 2xl:text-lg">
+                        <a href={`/${locale}/aboutus`} className='hover:text-c-secondary'>{contactData.link1}</a>
+                        <a href={`/${locale}/ourservices`} className='hover:text-c-secondary'>{contactData.link2}</a>
+                        <a href={`/${locale}/profile`} className='hover:text-c-secondary'>{contactData.link3}</a>
+                        <a href={`/${locale}/profile`} className='hover:text-c-secondary'>{contactData.link4}</a>
+                        <a href={`/${locale}/profile`} className='hover:text-c-secondary'>{contactData.link5}</a>
+                        <a href={`/${locale}/profile`} className='hover:text-c-secondary'>{contactData.link6}</a>
                     </div>
                 </div>
+
                 <div className="flex flex-col gap-7 items-right pt-11  lg:pt-0">
                     <a href="#" className="">
-                        <h2 className="text-[#418432] font-bold text-xl lg:text-2xl 2xl:text-3xl">
+                        <h2 className="text-c-primary font-bold text-xl lg:text-2xl 2xl:text-2xl">
                             {contactData.contactForm}
                         </h2>
                     </a>
-                    <div className="flex flex-col gap-5 text-slate-500 text-base lg:text-md xl:text-lg 2xl:text-xl">
+                    <div className="flex flex-col gap-5 2xl:gap-[24px] text-c-contrast text-base lg:text-md xl:text-lg 2xl:text-base">
                         <input
                             type="text"
                             name=""
                             id=""
                             placeholder={contactData.name}
-                            className="p-3 text-md rounded-xl border border-1 border-slate-300 focus:outline-none"
+                            className="p-3 2xl:p-[15px] text-md rounded-xl border border-1 border-c-border-stroke focus:outline-none"
                         />
 
                         <input
@@ -137,7 +134,7 @@ const Contact: React.FC<ContactProps> = ({ contactData, locale }) => {
                             name=""
                             id=""
                             placeholder={contactData.emailInput}
-                            className="p-3 text-md rounded-xl border border-1 border-slate-300 focus:outline-none"
+                            className="p-3 2xl:p-[15px] text-md rounded-xl border border-1 border-c-border-stroke focus:outline-none"
                         />
 
                         <textarea
@@ -145,14 +142,14 @@ const Contact: React.FC<ContactProps> = ({ contactData, locale }) => {
                             id=""
                             cols={3}
                             rows={3}
-                            className="p-3 text-md rounded-xl border border-1 border-slate-300 focus:outline-none"
+                            className="p-3 2xl:p-[15px] text-md rounded-xl border border-1 border-c-border-stroke focus:outline-none"
                             placeholder={contactData.message}
                         ></textarea>
-                        <div className="flex justify-end">
+                        <div className="flex justify-start">
                             <CBaseButton
-                                className="flex items-center justify-center button-rounded-xl md:leading-[20px] lg:leading-[25px] py-[9px] md:py-[10px] lg:py-[8px] 2xl:py-[9px] border-2 border-[#ED1C24] text-white bg-[#ED1C24] rounded-xl font-normal w-[30%] sm:w-[25%] md:w-[30%] xl:w-1/4 group"
+                                className="flex items-center justify-center button-rounded-xl md:leading-[20px] lg:leading-[25px] py-[9px] md:py-[10px] lg:py-[8px] border-2 border-c-secondary text-white bg-c-secondary rounded-xl font-normal w-[30%] sm:w-[25%] md:w-[30%] xl:w-1/4 group 2xl:text-base 2xl:py-[13px] 2xl:px-[68px] 2xl:rounded-[10px]"
                             >
-                                <span className='text-[2.8vw] sm:text-[2vw] md:text-[1.4vw] lg:text-[0.9vw] xl:text-[1vw] 2xl:text-[0.85vw] text-poppins'>
+                                <span className='text-sm 2xl:text-base'>
                                     {contactData.btn}
                                 </span>
                                 <TiArrowRight size={24} className="text-white" />

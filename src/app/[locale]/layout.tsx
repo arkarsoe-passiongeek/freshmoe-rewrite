@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { setRequestLocale } from 'next-intl/server';
 import "./globals.css"
-import { Poppins } from 'next/font/google'
+import { Outfit } from 'next/font/google'
 import Navbar from '@/components/layout/navbar';
 import Footer from '@/components/layout/footer';
 import Contact from '@/components/layout/contact';
@@ -13,8 +13,8 @@ type LangMap = {
     [key: string]: string; // or more specifically, you can define known locales like 'en', 'my', etc.
 };
 
-const poppins = Poppins({
-    weight: ['400', '500', '700'],
+const outfit = Outfit({
+    weight: ['400', '500', '600', '700'],
     subsets: ['latin'],
 })
 
@@ -81,7 +81,7 @@ export default async function LocaleLayout({
 
     return (
         <html lang={lang[locale]}>
-            <body className={poppins.className}>
+            <body className={outfit.className}>
                 <NextIntlClientProvider messages={messages}>
                     <div className="bg-white-2 h-full w-full">
                         <div>

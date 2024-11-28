@@ -35,6 +35,19 @@ interface ButtonProps {
     type: string;
 }
 
+const ChooseUsContent = ({ title, des, imageSrc, alt, layout }: { title: any, des: any, alt: any, imageSrc: any, layout?: any }) => {
+    return (
+        <>
+            <div className={`flex flex-col ${layout === 'reverse' ? 'items-start' : 'items-end'}`}>
+                <p className='text-white text-[16px] 2xl:text-xl font-medium mb-1'>{title}</p>
+                <div className='w-16  h-[2px] rounded-sm  bg-white mb-1'></div>
+                <p className='text-white text-[10px] 2xl:text-base font-normal tracking-tight'>{des}</p>
+            </div>
+            <Image unoptimized src={imageSrc} alt={alt} className='underline' width={70} height={72} />
+        </>
+    )
+}
+
 interface SliderProps {
     data: Slide[];
     sliderData: {
@@ -108,14 +121,14 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
                                     />
                                 </div>
                                 <div className="w-full h-full absolute left-0 top-0 bg-green-100 opacity-10"></div>
-                                <div className="absolute right-0 top-[5px] sm:top-[10%] xl:top-[20%] w-1/2 sm:w-[40%]">
-                                    <div className="pr-5">
-                                        <div className="mb-3">
-                                            <ContentHeader className="text-sm">
+                                <div className="absolute right-0 top-[5px] sm:top-[10%] xl:top-[20%] w-1/2 sm:w-[40%] 2xl:top-1/2 2xl:-translate-y-1/2">
+                                    <div className="2xl:w-[661px]">
+                                        <div className="2xl:space-y-[16px] 2xl:mb-[48px]">
+                                            <ContentHeader className="2xl:text-5xl">
                                                 {title || 'Delivering In Four Hours'}
                                             </ContentHeader>
                                             {tagline && (
-                                                <ContentDescription className="text-xss lg:text-sm">{tagline}</ContentDescription>
+                                                <ContentDescription className="text-xss lg:text-sm 2xl:text-2xl text-c-contrast">{tagline}</ContentDescription>
                                             )}
                                         </div>
                                         <ContentButton>More Info</ContentButton>
@@ -126,80 +139,50 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
                     </Swiper>
                 </div>
             </section>
-            <div suppressHydrationWarning={true} className='mt-[-200px] xl:mt-[-240px] 2xl:mt-[-270px] w-full lg:h-[900px] xl:h-[1100px] 2xl:h-[1240px] relative hidden lg:block text-poppins text-shadow z-10'>
+            <div suppressHydrationWarning={true} className='mt-[-200px] xl:mt-[-240px] 2xl:mt-[-270px] w-full lg:h-[900px] xl:h-[1100px] 2xl:h-[1100px] relative hidden lg:block text-poppins text-shadow z-10'>
                 <Image
                     src={UnderSlider3}
                     alt="Green Background"
                     priority
-                    className="absolute top-0 z-0 w-full h-full object-cover"
+                    className="absolute top-0 z-0 w-full h-full object-center transform scale-x-[-1]"
                 />
                 <div className='max-w-[1790px] px-[2rem] md:px-[4rem] lg:px-[5rem] w-full h-300 absolute top-[24%] left-1/2 transform -translate-x-1/2'>
-                    <div className="tile flex flex-col justify-center items-center lg:mb-[1.5rem] 2xl:mb-[0.5rem]">
-                        <h1 className='text-white text-[50px] xl:text-[50px] mb-5' style={{ fontFamily: 'Sriracha' }}>{sliderData.chooseTitle}</h1>
-                        <Image src={UnderlineBar} alt="underline" className='underline mb-6' width={210} height={30} priority />
+                    <div className="tile flex flex-col justify-center items-center lg:mb-[1.5rem] 2xl:mb-[61px]">
+                        <h1 className='text-white text-[50px] xl:text-[50px] 2xl:text-4xl 2xl:font-bold mb-5 2xl:mb-[10px]'>{sliderData.chooseTitle}</h1>
+                        <Image src={UnderlineBar} alt="underline" className='underline' width={210} height={30} priority />
                     </div>
-                    <div className="grid grid-cols-12 items-center justify-center lg:mb-[1rem] xl:mb-[4rem] 2xl:mb-[4.5rem]">
+                    <div className="grid grid-cols-12 items-center justify-center lg:mb-[1rem] xl:mb-[4rem] 2xl:mb-[70px]">
                         <div className="col-span-1"></div>
-                        <div className="col-span-4 w-full flex items-center justify-center ml-[-25px] xl:ml-[-40px]">
-                            <div className='flex flex-col justify-end items-end ml-3 lg:mr-6'>
-                                <p className='text-white text-[16px] 2xl:text-[23px] font-semibold mb-1'>{sliderData.chooseOneTitle}</p>
-                                <div className='w-16  h-[2px] rounded-sm  bg-white mb-1'></div>
-                                <p className='text-white text-[10px] 2xl:text-[15px]  tracking-tight'>{sliderData.chooseOneDes}</p>
-                            </div>
-                            <Image unoptimized src={sliderData.chooseImage1 || IconCheck} alt="underline" className='underline' width={90} height={92} />
+                        <div className="col-span-4 w-full flex items-center justify-center ml-[-25px] xl:ml-[-40px] 2xl:gap-[32px]">
+                            <ChooseUsContent title={sliderData.chooseOneTitle} des={sliderData.chooseOneDes} alt="recycle logo" imageSrc={sliderData.chooseImage1 || IconCheck} />
                         </div>
                         <div className="col-span-2"></div>
-                        <div className="col-span-4 w-full flex items-center justify-center ml-[25px] xl:ml-[40px]">
-                            <Image unoptimized src={sliderData.chooseImage2 || IconHeart} alt="underline" className='underline' width={90} height={92} />
-                            <div className='flex flex-col justify-start items-start ml-3 lg:ml-6'>
-                                <p className='text-white text-[16px] 2xl:text-[23px] font-semibold mb-1'>{sliderData.chooseTwoTitle}</p>
-                                <div className='w-16  h-[2px] rounded-sm  bg-white mb-1'></div>
-                                <p className='text-white text-[10px] 2xl:text-[15px]   tracking-tight'>{sliderData.chooseTwoDes}</p>
-                            </div>
+                        <div className="col-span-4 w-full flex flex-row-reverse items-center justify-center ml-[25px] xl:ml-[40px] 2xl:gap-[32px]">
+                            <ChooseUsContent layout="reverse" title={sliderData.chooseTwoTitle} des={sliderData.chooseTwoDes} alt="recycle logo" imageSrc={sliderData.chooseImage2 || IconHeart} />
                         </div>
-                        <div className="col-span-1"></div>
                     </div>
+                    <div className="col-span-1"></div>
                     <div className="grid grid-cols-12  items-center justify-center mb-[1rem] xl:mb-[4.1rem]  2xl:mb-[5rem]">
-                        <div className="col-span-4 w-full flex items-center justify-center ml-0 lg:ml-[-35px] xl:ml-[-40px] ">
-                            <div className='flex flex-col justify-end items-end ml-3 lg:mr-6'>
-                                <p className='text-white text-[16px] 2xl:text-[23px] font-semibold mb-1 text-end'>{sliderData.chooseThreeTitle}</p>
-                                <div className='w-16  h-[2px] rounded-sm bg-white mb-1'></div>
-                                <p className='text-white text-[10px]  2xl:text-[15px]  tracking-tight'>{sliderData.chooseThreeDes}</p>
-                            </div>
-                            <Image unoptimized src={sliderData.chooseImage3 || IconCar} alt="underline" className='underline' width={90} height={92} />
+                        <div className="col-span-4 w-full flex items-center justify-center ml-0 lg:ml-[-35px] xl:ml-[-40px] 2xl:gap-[32px]">
+                            <ChooseUsContent title={sliderData.chooseThreeTitle} des={sliderData.chooseThreeDes} alt="recycle logo" imageSrc={sliderData.chooseImage3 || IconCar} />
                         </div>
                         <div className="col-span-4"></div>
-                        <div className="col-span-4 w-full flex items-center justify-center  ml-0 lg:ml-[35px] xl:ml-[40px]">
-                            <Image unoptimized src={sliderData.chooseImage4 || IconFruit} alt="underline" className='underline' width={90} height={92} />
-                            <div className='flex flex-col justify-start items-start ml-3 lg:ml-6'>
-                                <p className='text-white text-[16px] 2xl:text-[23px] font-semibold mb-1'>{sliderData.chooseFourTitle}</p>
-                                <div className='w-16  h-[2px] rounded-sm bg-white mb-1'></div>
-                                <p className='text-white text-[10px] 2xl:text-[15px]   tracking-tight'>{sliderData.chooseFourDes}</p>
-                            </div>
+                        <div className="col-span-4 w-full flex flex-row-reverse items-center justify-center  ml-0 lg:ml-[35px] xl:ml-[40px] 2xl:gap-[32px]">
+                            <ChooseUsContent layout="reverse" title={sliderData.chooseFourTitle} des={sliderData.chooseFourDes} alt="recycle logo" imageSrc={sliderData.chooseImage4 || IconFruit} />
                         </div>
                     </div>
                     <div className="grid grid-cols-12 items-center justify-center">
-                        <div className="col-span-4 w-full flex items-center justify-center ml-0 lg:ml-[-35px] xl:ml-[-40px] ">
-                            <div className='flex flex-col justify-end items-end ml-3 lg:mr-6 text-end'>
-                                <p className='text-white text-[16px]  2xl:text-[23px] font-semibold mb-1'>{sliderData.chooseFiveTitle}</p>
-                                <div className='w-16  h-[2px] rounded-sm bg-white mb-1'></div>
-                                <p className='text-white text-[10px]  2xl:text-[15px]  tracking-tight'>{sliderData.chooseFiveDes}</p>
-                            </div>
-                            <Image unoptimized src={sliderData.chooseImage5 || IconPhone} alt="underline" className='underline' width={90} height={92} />
+                        <div className="col-span-4 w-full flex items-center justify-center ml-0 lg:ml-[-35px] xl:ml-[-40px] 2xl:gap-[32px]">
+                            <ChooseUsContent title={sliderData.chooseFiveTitle} des={sliderData.chooseFiveDes} alt="recycle logo" imageSrc={sliderData.chooseImage5 || IconPhone} />
                         </div>
                         <div className="col-span-4"></div>
-                        <div className="col-span-4 w-full flex items-center justify-center  ml-0 lg:ml-[35px] xl:ml-[40px]">
-                            <Image unoptimized src={sliderData.chooseImage6 || IconCart} alt="underline" className='underline' width={90} height={92} />
-                            <div className='flex flex-col justify-start items-start ml-3 lg:ml-6'>
-                                <p className='text-white text-[16px] 2xl:text-[23px] font-semibold mb-1'>{sliderData.chooseSixTitle}</p>
-                                <div className='w-16 h-[2px] rounded-sm bg-white mb-1'></div>
-                                <p className='text-white text-[10px]  2xl:text-[15px]  tracking-tight'>{sliderData.chooseSixDes}</p>
-                            </div>
+                        <div className="col-span-4 w-full flex flex-row-reverse items-center justify-center  ml-0 lg:ml-[35px] xl:ml-[40px] 2xl:gap-[32px]">
+                            <ChooseUsContent layout="reverse" title={sliderData.chooseSixTitle} des={sliderData.chooseSixDes} alt="recycle logo" imageSrc={sliderData.chooseImage6 || IconCart} />
                         </div>
                     </div>
                 </div>
-                <Image src={FruitBasket} alt="Fruit Basket" className='absolute left-1/2 transform -translate-x-1/2 px-auto -bottom-3 xl:bottom-[-50px] w-[370px] h-[300px] md:w-[470] md:h-[400] lg:w-[370px] lg:h-[300px] xl:w-[520px] xl:h-[480px] 2xl:w-[600px] 2xl:h-[540px]' priority />
-            </div >
+                <Image src={FruitBasket} alt="Fruit Basket" className='absolute left-1/2 transform -translate-x-1/2 px-auto -bottom-5 w-[370px] h-[300px] md:w-[470] md:h-[400] lg:w-[370px] lg:h-[300px] xl:w-[520px] xl:h-[480px] 2xl:w-[604px] 2xl:h-[454px]' priority />
+            </div>
 
             {/* mobile */}
             <div className="z-20 w-screen mt-[-50px] min-h-[900px] sm:min-h-[1000px] relative block lg:hidden" >
@@ -276,7 +259,5 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
 
     );
 };
-
-
 
 export default Slider;

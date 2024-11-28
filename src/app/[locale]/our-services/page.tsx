@@ -25,8 +25,6 @@ export default async function Contact({ params }: { params: Promise<{ locale: st
 
     const { data: content }: any = await fetchOurServicesContent(formData)
 
-    console.log(content)
-
     return (
         <div className="bg-white h-auto relative pb-[7rem] md:pb-[9rem] mt-[98px] sm:mt-[110px] md:mt-[115px] lg:mt-[100px] xl:mt-[110px] 2xl:mt-[120px]">
             <BannerHeader locale={locale} imageSrc={OurServicesBanner} text={content?.title_1 || t('service')} />

@@ -1,5 +1,5 @@
 'use client'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import Image from 'next/image'
 import freshMoeLogo from '../../../public/images/freshmoeLogo.png'
 import {
@@ -16,7 +16,7 @@ import ChooseLang from '../modals/choose-lang'
 import { CCountrySelect } from '../custom/c-country-select'
 import { CLanguageSelect } from '../custom/c-language-select'
 import { getLanguageName, LanguageCodes } from '@/lib/utils'
-import { Link, usePathname } from '@/i18n/routing'
+import { Link } from '@/i18n/routing'
 
 interface NavbarProps {
     locale: string;
@@ -306,6 +306,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                 upperMenuWrapper?.classList.add(...classesToRemove);
                 upperMenuWrapper?.classList.remove(...classesToAddWidth);
                 upperMenuWrapper?.classList.add(...classesToRemoveWidth);
+                if (navbar) navbar.style.backgroundColor = '#fff';
 
                 sidebarElement?.classList.add('-left-80')
                 sidebarElement?.classList.remove('left-0')
@@ -325,6 +326,8 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                 upperMenuWrapper?.classList.add('invisible')
                 upperMenuWrapper?.classList.add('opacity-0')
                 document.body.style.overflowY = 'visible'
+
+                if (navbar && (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80)) navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
                 setUpperMenu(true)
                 document.documentElement.style.overflowY = 'visible'
             }
@@ -341,7 +344,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
     const handleConfirmChangeLanguage = () => {
         let newPrefix = `${selectedLanguage}_${selectedCountry.value}`
         let newPath = pathname.replace(locale, newPrefix)
-        return console.log(newPath)
+        console.log(newPath)
         router.replace(newPath)
     }
 
@@ -349,14 +352,14 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
         <>
             <div className='fixed w-full top-0 z-40'>
                 <div className="bg-c-primary w-full p-[20px] brand-line-green"></div>
-                <div className="bg-[#fff] w-full p-[1px] brand-line-white"></div>
+                <div className="bg-c-white w-full p-[1px] brand-line-white"></div>
                 <div className="bg-c-secondary w-full p-[3.95px] brand-line-red"></div>
-                <nav className="shadow-lg w-full flex lg:justify-between items-center " id='navbar'>
+                <nav className="shadow-lg w-full flex lg:justify-between items-center transition" id="navbar">
                     {open ? <ChooseLang onClickParent={() => setOpen(false)} /> : ''}
                     <div className="container mx-auto flex lg:justify-between items-center py-[0.8rem]">
                         <ul className="flex-1 poppins font-bold hidden md:flex nav  items-center" id="nav-item">
                             <li
-                                className={`hover:text-[#ED1C24] font-bold ${lang == 'en' ? 'px-3' : 'px-2'} py-3 text-[0.75vw]  ${pathname === `/${lang}` ? 'text-[#ED1C24]' : ''
+                                className={`hover:text-c-primary font-bold ${lang == 'en' ? 'px-3' : 'px-2'} py-3 text-[0.75vw]  ${pathname === `/${lang}` ? 'text-[#ED1C24]' : ''
                                     } `}
                             >
                                 {sidebar ? (
@@ -365,7 +368,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                                         id="close-sidebar"
                                         onClick={() => handleToggle()}
                                     >
-                                        <FaBars className="text-black sm:text-[2.6vw] md:text-[2.1vw] lg:text-[1.7vw] xl:text-[1.5vw]" />
+                                        <FaBars className="text-black 2xl:w-[25px] 2xl:h-[20px]" />
                                     </span>
                                 ) : (
                                     <span
@@ -373,7 +376,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                                         id="open-sidebar"
                                         onClick={() => handleToggle()}
                                     >
-                                        <RxCross1 className="text-black sm:text-[2.6vw] md:text-[2.1vw] lg:text-[1.7vw] xl:text-[1.5vw]" />
+                                        <RxCross1 className="text-black 2xl:w-[25px] 2xl:h-[20px]" />
                                     </span>
                                 )}
                             </li>
@@ -382,8 +385,8 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                                     if (index < 3) {
                                         return (
                                             <li
-                                                key={each.url} className={`hover:text-[#ED1C24] font-medium ${lang == 'en' ? 'px-3' : 'px-2'} py-3 text-c-transform-primary hidden lg:flex 
-                  ${isNavActive(each.url) ? 'text-[#ED1C24]' : ''}
+                                                key={each.url} className={`hover:text-c-primary font-semibold 2xl:text-base px-2 py-3 hidden lg:flex 
+                  ${isNavActive(each.url) ? 'text-c-primary' : ''}
                   `}
                                             >
                                                 <Link href={`${each.url}`} prefetch>{each.name}</Link>
@@ -423,7 +426,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                                     src={freshMoeLogo}
                                     alt=""
                                     className=
-                                    {`w-[70px] sm:w-[85px] md:w-[90px] lg:w-[8vw] xl:w-[6.5vw] h-auto md:ml-0`}
+                                    {`w-[70px] sm:w-[85px] md:w-[90px] lg:w-[8vw] 2xl:w-[140px] 2xl:h-[65px] h-auto md:ml-0`}
                                 />
                             </a>
                         </div>
@@ -439,7 +442,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                                     <div>
                                         {currentCountry == 'global' ? (
                                             <CiGlobe
-                                                className={`w-[15px] h-[15px] md:w-[30px] md:h-[30px] lg:w-[40px] lg:h-[40px] ${currentCountry == 'global' ?
+                                                className={`w-[15px] h-[15px] md:w-[30px] md:h-[30px] lg:w-[40px] lg:h-[40px] 2xl:w-[24px] 2xl:h-[24px] ${currentCountry == 'global' ?
                                                     'text-[#5B5B5B]' :
                                                     ''
                                                     }`}
@@ -448,7 +451,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                                             <Flag code={selectedCountry?.flag} className="w-[25px] md:h-[30px] lg:w-[40px] lg:h-[40px] globe text-[#5B5B5B]" />
                                         )}
                                     </div>
-                                    <span className={`text-c-transform-primary hidden lg:block`}>
+                                    <span className={`2xl:text-base font-normal hidden lg:block`}>
                                         {selectedCountry?.label}
                                     </span>
                                     <span className={`${(currentCountry == 'mm') ?
@@ -457,16 +460,16 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                                             'lg:pl-[10px] xl:pl-[15px]' :
                                             'p-0'} 
                              hidden lg:block`}>|</span>
-                                    <PiTranslate className="w-[22px] h-auto rounded-3xl globe text-[#5B5B5B] hidden lg:block" />
+                                    <PiTranslate className="2xl:w-[24px] 2xl:h-[24px] h-auto rounded-3xl globe text-[#5B5B5B] hidden lg:block" />
                                     <span className={`
-                            text-c-transform-primary`}>
+                            2xl:text-base`}>
                                         {getLanguageName(`${selectedLanguage}`)}
                                     </span>
                                     <div>
                                         {!upperMenu ? (
-                                            <MdOutlineKeyboardArrowUp className="md:w-[30px] md:h-[30px] lg:w-[40px] lg:h-[40px]" />
+                                            <MdOutlineKeyboardArrowUp className="md:w-[30px] md:h-[30px] lg:w-[40px] lg:h-[40px] 2xl:w-[20px] 2xl:h-[20px]" />
                                         ) : (
-                                            <MdOutlineKeyboardArrowDown className="md:w-[30px] md:h-[30px] lg:w-[40px] lg:h-[40px]" />
+                                            <MdOutlineKeyboardArrowDown className="md:w-[30px] md:h-[30px] lg:w-[40px] lg:h-[40px] 2xl:w-[20px] 2xl:h-[20px]" />
                                         )}
                                     </div>
                                 </span>
@@ -508,14 +511,14 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
 
             {/* start language menu */}
             <div
-                className="z-30 fixed  h-full left-0 top-[138px] lg:top-[115px] xl:top-[120px] 2xl:top-[130px] invisible  transition-all duration-500 bg-[#000] bg-opacity-20"
+                className="z-30 fixed top-0 h-full left-0 invisible transition-all duration-500 bg-[#000] bg-opacity-20"
                 id="upper-menu-wrapper"
             >
                 <div
-                    className="z-30 fixed h-[88dvh] lg:h-[88dvh] w-full lg:w-[600px] bg-[#fff] top-[100px] md:top-[106px] xl:top-[111px] 2xl:top-[130px] right-0 flex flex-col transition-all duration-500"
+                    className="z-30 fixed h-[100vh] w-full lg:w-[600px] bg-[#fff] right-0 flex flex-col transition-all duration-500"
                     id="upper-menu"
                 >
-                    <div className="container mx-auto flex flex-col gap-6 lg:gap-0 lg:flex-row w-full items-center py-[0.8rem] max-w-[1790px] px-[2rem] mt-10">
+                    <div className="container pt-[150px] mx-auto flex flex-col gap-6 lg:gap-0 lg:flex-row w-full items-center py-[0.8rem] max-w-[1790px] px-[2rem] mt-10">
                         <div className="pl-[1rem] w-full lg:w-[50%]">
                             <label htmlFor="country" className="block text-c-transform-primary font-semibold text-[#000] mb-2">
                                 Select Your Country
