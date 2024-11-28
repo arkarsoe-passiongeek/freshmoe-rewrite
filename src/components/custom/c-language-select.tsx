@@ -9,13 +9,14 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
-import { getLanguageName } from "@/lib/utils";
+import { getLanguageName, LanguageCodes } from "@/lib/utils";
 
 interface CLanguageSelectProps {
     items: any[],
     placeholder: string;
     onValueChange: (...event: any[]) => void;
     defaultValue: string;
+    value: LanguageCodes;
 }
 
 export function CLanguageSelect({ items, placeholder, ...rest }: CLanguageSelectProps) {

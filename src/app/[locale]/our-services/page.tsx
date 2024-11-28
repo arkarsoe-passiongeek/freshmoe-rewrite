@@ -15,7 +15,7 @@ import ContentHeader from '@/components/custom/content/content-header';
 import ContentDescription from '@/components/custom/content/content-description';
 
 
-export default async function Contact({ params }: { params: { locale: string } }) {
+export default async function Contact({ params }: { params: Promise<{ locale: string }> }) {
     const t = await getTranslations('OurServicePage')
     const IMAGE_URL = process.env.NEXT_PUBLIC_IMAGE_URL;
     const { locale } = await params;

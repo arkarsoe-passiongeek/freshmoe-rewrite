@@ -1,6 +1,5 @@
 'use client'
 import { useRouter } from 'next/navigation'
-import { useLocale } from 'next-intl'
 import Image from 'next/image'
 import freshMoeLogo from '../../../public/images/freshmoeLogo.png'
 import {
@@ -342,7 +341,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
     const handleConfirmChangeLanguage = () => {
         let newPrefix = `${selectedLanguage}_${selectedCountry.value}`
         let newPath = pathname.replace(locale, newPrefix)
-        // return console.log(newPath)
+        return console.log(newPath)
         router.replace(newPath)
     }
 
@@ -528,7 +527,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                             <label htmlFor="country" className="block text-c-transform-primary font-semibold text-[#000] mb-2">
                                 Choose Language
                             </label>
-                            <CLanguageSelect items={selectedCountry.languages} placeholder='Select Your Language' onValueChange={setSelectedLanguage} defaultValue='en' />
+                            <CLanguageSelect items={selectedCountry.languages} placeholder='Select Your Language' onValueChange={setSelectedLanguage} value={selectedLanguage} defaultValue='en' />
                         </div>
                     </div>
 

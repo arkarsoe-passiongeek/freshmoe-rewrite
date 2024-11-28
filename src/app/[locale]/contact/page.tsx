@@ -1,5 +1,3 @@
-import { useTranslations } from 'next-intl';
-import { useState, useEffect } from 'react';
 import ReactHtmlParser from 'html-react-parser';
 import { getTranslations } from 'next-intl/server';
 import { fetchContactContent } from '@/services/page/fetch-contact-content';
@@ -9,14 +7,12 @@ import ContentDescription from '@/components/custom/content/content-description'
 
 export default async function Contact({ params }: { params: Promise<{ locale: string }> }) {
     const t = await getTranslations('ContactPage')
-    const IMAGE_URL = process.env.NEXT_PUBLIC_IMAGE_URL;
     const { locale } = await params;
 
     const formData = new FormData()
     formData.append('country', locale);
 
     const { data: content }: any = await fetchContactContent(formData)
-    console.log(content)
 
     return (
         <div className="bg-white h-auto relative pb-[7rem] md:pb-[9rem]  mt-[98px]  sm:mt-[110px] md:mt-[115px] lg:mt-[100px] xl:mt-[110px] 2xl:mt-[120px]">
