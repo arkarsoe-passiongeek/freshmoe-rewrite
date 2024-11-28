@@ -10,8 +10,10 @@ export default getRequestConfig(async ({ requestLocale }) => {
         locale = routing.defaultLocale;
     }
 
+    let messageName = locale.split('_')[0]
+
     return {
         locale,
-        messages: (await import(`../../messages/${locale}.json`)).default
+        messages: (await import(`../../messages/${messageName}.json`)).default
     };
 });

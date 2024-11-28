@@ -1,5 +1,4 @@
 'use client'
-import { usePathname, useRouter } from 'next/navigation'
 import Image from 'next/image'
 import freshMoeLogo from '../../../public/images/freshmoeLogo.png'
 import {
@@ -16,7 +15,7 @@ import ChooseLang from '../modals/choose-lang'
 import { CCountrySelect } from '../custom/c-country-select'
 import { CLanguageSelect } from '../custom/c-language-select'
 import { getLanguageName, LanguageCodes } from '@/lib/utils'
-import { Link } from '@/i18n/routing'
+import { Link, usePathname, useRouter } from '@/i18n/routing'
 
 interface NavbarProps {
     locale: string;
@@ -212,6 +211,15 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
     }, [pathname])
     // end making the navbar transparent on scroll
 
+    useEffect(() => {
+        console.log(locale)
+        countryOptions.map(continent => {
+            continent.countries.map(country => {
+                if (country.value === locale.split('_')[1]) setSelectedCountry(country)
+            })
+        })[0]
+    }, [])
+
     const handleToggle = () => {
         const sidebarElement = document.querySelector<HTMLDivElement>('#sidebar')
         const upperMenuElement = document.querySelector<HTMLDivElement>('#upper-menu')
@@ -342,10 +350,11 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
     // end language select modal open
 
     const handleConfirmChangeLanguage = () => {
-        let newPrefix = `${selectedLanguage}_${selectedCountry.value}`
-        let newPath = pathname.replace(locale, newPrefix)
-        console.log(newPath)
-        router.replace(newPath)
+        let newPrefix: any = `${selectedLanguage}_${selectedCountry.value}`
+        let newPath = pathname.replace(locale, '')
+        console.log(pathname)
+        // console.log(newPath)
+        router.replace(pathname, { locale: newPrefix })
     }
 
     return (
@@ -359,7 +368,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                     <div className="container mx-auto flex lg:justify-between items-center py-[0.8rem]">
                         <ul className="flex-1 poppins font-bold hidden md:flex nav  items-center" id="nav-item">
                             <li
-                                className={`hover:text-c-primary font-bold ${lang == 'en' ? 'px-3' : 'px-2'} py-3 text-[0.75vw]  ${pathname === `/${lang}` ? 'text-[#ED1C24]' : ''
+                                className={`hover:text-c-primary font-bold cursor-pointer ${lang == 'en' ? 'px-3' : 'px-2'} py-3 text-[0.75vw]  ${pathname === `/${lang}` ? 'text-c-secondary' : ''
                                     } `}
                             >
                                 {sidebar ? (
@@ -523,7 +532,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                             <label htmlFor="country" className="block text-c-transform-primary font-semibold text-[#000] mb-2">
                                 Select Your Country
                             </label>
-                            <CCountrySelect defaultValue='global' onValueChange={handleChangeCountry} continents={countryOptions} placeholder="Select Your Country" />
+                            <CCountrySelect defaultValue='global' onValueChange={handleChangeCountry} continents={countryOptions} value={selectedCountry?.value ?? 'global'} placeholder="Select Your Country" />
                         </div>
 
                         <div className="pl-[1rem] w-full lg:w-[50%]">

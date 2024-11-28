@@ -25,6 +25,7 @@ interface CCountrySelectProps {
     }[],
     placeholder: string
     onValueChange: (...event: any[]) => void;
+    value: any
     defaultValue: string;
 }
 

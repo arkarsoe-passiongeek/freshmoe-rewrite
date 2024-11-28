@@ -43,7 +43,7 @@ const ChooseUsContent = ({ title, des, imageSrc, alt, layout }: { title: any, de
                 <div className='w-16  h-[2px] rounded-sm  bg-white mb-1'></div>
                 <p className='text-white text-[10px] 2xl:text-base font-normal tracking-tight'>{des}</p>
             </div>
-            <Image unoptimized src={imageSrc} alt={alt} className='underline' width={70} height={72} />
+            <Image unoptimized src={imageSrc} alt={alt} className='underline 2xl:w-[70px] 2xl:h-[72px]' />
         </>
     )
 }
@@ -149,7 +149,7 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
                 <div className='max-w-[1790px] px-[2rem] md:px-[4rem] lg:px-[5rem] w-full h-300 absolute top-[24%] left-1/2 transform -translate-x-1/2'>
                     <div className="tile flex flex-col justify-center items-center lg:mb-[1.5rem] 2xl:mb-[61px]">
                         <h1 className='text-white text-[50px] xl:text-[50px] 2xl:text-4xl 2xl:font-bold mb-5 2xl:mb-[10px]'>{sliderData.chooseTitle}</h1>
-                        <Image src={UnderlineBar} alt="underline" className='underline' width={210} height={30} priority />
+                        <Image src={UnderlineBar} alt="underline" className='underline w-[210px] h-[30px]' priority />
                     </div>
                     <div className="grid grid-cols-12 items-center justify-center lg:mb-[1rem] xl:mb-[4rem] 2xl:mb-[70px]">
                         <div className="col-span-1"></div>

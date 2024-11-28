@@ -94,7 +94,7 @@ const About: React.FC<AboutProps> = ({ aboutData }) => {
                             src={aboutData.aboutTwoBackground || AAbout2}
                             unoptimized
                             alt='two'
-                            className="object-cover 2xl:w-[800px] 2xl:h-[680px] filter object-center transition duration-200"
+                            className="object-cover w-full h-full 2xl:w-[800px] 2xl:h-[680px] filter object-center transition duration-200"
                         />
                     </div>
                     <div className='lg:flex-1'>
