@@ -43,7 +43,7 @@ const ChooseUsContent = ({ title, des, imageSrc, alt, layout }: { title: any, de
                 <div className='w-16  h-[2px] rounded-sm  bg-white mb-1'></div>
                 <p className='text-white text-[10px] 2xl:text-base font-normal tracking-tight'>{des}</p>
             </div>
-            <Image unoptimized src={imageSrc} alt={alt} className='underline 2xl:w-[70px] 2xl:h-[72px]' />
+            <Image width={60} height={70} src={imageSrc} alt={alt} className='underline w-[60px] h-[70px] 2xl:w-[70px] 2xl:h-[72px]' />
         </>
     )
 }
@@ -123,7 +123,7 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
                                 <div className="w-full h-full absolute left-0 top-0 bg-green-100 opacity-10"></div>
                                 <div className="absolute right-0 top-[5px] sm:top-[10%] xl:top-[20%] w-1/2 sm:w-[40%] 2xl:top-1/2 2xl:-translate-y-1/2">
                                     <div className="2xl:w-[661px]">
-                                        <div className="2xl:space-y-[16px] 2xl:mb-[48px]">
+                                        <div className="2xl:space-y-[16px] lg:mb-[32px] 2xl:mb-[48px]">
                                             <ContentHeader className="2xl:text-5xl">
                                                 {title || 'Delivering In Four Hours'}
                                             </ContentHeader>
@@ -139,7 +139,7 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
                     </Swiper>
                 </div>
             </section>
-            <div suppressHydrationWarning={true} className='mt-[-200px] xl:mt-[-240px] 2xl:mt-[-270px] w-full lg:h-[900px] xl:h-[1100px] 2xl:h-[1100px] relative hidden lg:block text-poppins text-shadow z-10'>
+            <div suppressHydrationWarning={true} className='mt-[-200px] lg:mt-[-150px] xl:mt-[-240px] 2xl:mt-[-270px] w-full lg:h-[670px] xl:h-[1100px] 2xl:h-[1100px] relative hidden lg:block text-poppins text-shadow z-10'>
                 <Image
                     src={UnderSlider3}
                     alt="Green Background"

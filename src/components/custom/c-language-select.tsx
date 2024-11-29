@@ -21,7 +21,7 @@ interface CLanguageSelectProps {
 export function CLanguageSelect({ items, placeholder, ...rest }: CLanguageSelectProps) {
     return (
         <Select {...rest}>
-            <SelectTrigger className="text-c-transform-primary p-[1rem] h-[58px]">
+            <SelectTrigger className="text-sm lg:text-base p-[1rem] h-[58px]">
                 <SelectValue placeholder={placeholder} />
             </SelectTrigger>
             <SelectContent>
@@ -31,7 +31,7 @@ export function CLanguageSelect({ items, placeholder, ...rest }: CLanguageSelect
                         {
                             items.map(item => {
                                 return (
-                                    <SelectItem className="text-c-transform-primary" key={item} value={item}>{getLanguageName(item)}</SelectItem>
+                                    <SelectItem className="text-sm lg:text-base" key={item} value={item}>{getLanguageName(item)}</SelectItem>
                                 )
                             })
                         }

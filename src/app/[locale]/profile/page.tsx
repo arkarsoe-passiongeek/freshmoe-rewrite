@@ -27,6 +27,31 @@ import ProfileBanner from "@/public/images/profile/br-profile-header-1.png"
 import ContentHeader from '@/components/custom/content/content-header'
 import ContentDescription from '@/components/custom/content/content-description'
 
+const MarketCard = ({ imageSrc, title, description }: { imageSrc: any, title: any, description: any }) => {
+    return (
+        <div className="w-full h-auto flex flex-col md:flex-row items-center bg-white border border-gray-200 rounded-[20px] p-6 2xl:py-12 lg:px-[80px] 2xl:px-[100px] lg:rounded-[30px] gap-[20px] lg:gap-[80px] 2xl:gap-[110px] shadow">
+            <div className='shrink-0'>
+                <Image
+                    src={imageSrc}
+                    unoptimized
+                    width={350}
+                    height={350}
+                    alt="Thailand"
+                    className="w-[150px] md:w-[250px] lg:w-[350px] lg:h-[350px] h-auto filter"
+                />
+            </div>
+            <div className="w-full lg:w-auto flex flex-col justify-center leading-normal">
+                <h3 className='text-c-primary font-semibold mb-2 text-lg lg:text-xl'>
+                    {title}
+                </h3>
+                <ContentDescription>
+                    {description}
+                </ContentDescription>
+            </div>
+        </div>
+    )
+}
+
 export default async function ProfilePage({ params }: { params: Promise<{ locale: string }> }) {
     const t = await getTranslations('ProfilePage')
     const IMAGE_URL = process.env.NEXT_PUBLIC_IMAGE_URL;
@@ -41,8 +66,8 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
         <div className="mt-[98px] sm:mt-[110px] md:mt-[115px] lg:mt-[100px] xl:mt-[110px] 2xl:mt-[120px]">
             <BannerHeader locale={locale} imageSrc={ProfileBanner} text={content?.title_1 || t('profile')} />
             {/* Client And Future Plan */}
-            <div className="flex flex-col-reverse lg:flex-row items-center max-w-[1790px] px-[2rem] md:px-[4rem] lg:px-[5rem]  mx-auto my-10">
-                <div className="w-full lg:w-1/2">
+            <div className="container flex flex-col-reverse lg:flex-row items-center mx-auto my-10 lg:gap-[40px] xl:gap-[80px] 2xl:gap-[104px] lg:my-[50px] 2xl:my-[150px]">
+                <div className="w-full lg:w-1/2 ">
                     <Image
                         src={content?.image_2 ? `${IMAGE_URL}/${content.image_2}` : Profile1}
                         unoptimized
@@ -52,7 +77,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
                         className="object-cover w-full h-auto filter object-center rounded-lg"
                     />
                 </div>
-                <div className="w-full lg:w-1/2 p-0 md:py-[3rem] lg:pl-[3rem] mb-8">
+                <div className="w-full lg:w-1/2 xl:w-[633px] p-0 mb-8">
                     <ContentHeader>{content?.title_2 || t('client-title')}</ContentHeader>
                     <ContentDescription>
                         {content && typeof content?.content_2 === 'string' ? ReactHtmlParser(content?.content_2) : (<>{t('client-des-1')}<br />{t('client-des-2')}</>)}
@@ -61,9 +86,9 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
             </div>
 
             {/* Our Target Market */}
-            <div className="object-cover w-full min-h-auto py-[10px] md:py-[50px] filter bg-right-top transition duration-200" style={{ backgroundImage: `url('/images/profile/profile_bg.png')` }}>
-                <div className="flex flex-col justify-center items-center  max-w-[1790px] px-[2rem] md:px-[4rem] lg:px-[5rem]  mx-auto  mb-10">
-                    <div className="text-center">
+            <div className="object-cover w-full min-h-auto py-[10px] md:py-[50px] xl:py-[105px] filter bg-right-top transition duration-200" style={{ backgroundImage: `url('/images/profile/profile_bg.png')` }}>
+                <div className="container flex flex-col justify-center items-center mx-auto  mb-10">
+                    <div className="text-center lg:w-2/3 xl:w-[1060px] mb-[2rem] xl:mb-[5rem] 2xl:mb-[100px]">
                         <ContentHeader>
                             {content?.title_3 || t('market-title')}
                         </ContentHeader>
@@ -71,70 +96,20 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
                             {content && typeof content?.content_3 === 'string' ? ReactHtmlParser(content?.content_3) : t('market-des')}
                         </ContentDescription>
                     </div>
-                    <div className="w-full h-auto 2xl:h-[400px] flex flex-col md:flex-row items-center bg-white border border-gray-200 rounded-[20px] lg:rounded-[30px] shadow mt-6 lg:mt-12">
-                        <div className='w-full md:w-8/12 flex justify-center p-2 md:p-4 xl:p-6 ml-0 lg:ml-4 mt-5 md:mt-0'>
-                            <Image
-                                src={content?.image_4 ? `${IMAGE_URL}/${content.image_4}` : Thailand}
-                                unoptimized
-                                width={100}
-                                height={100}
-                                alt="Thailand"
-                                className="w-[150px] md:w-[250px] lg:w-[300px] object-cover h-auto filter object-center transition duration-200"
-                            />
-                        </div>
-
-                        <div className="w-full lg:w-auto flex flex-col justify-center p-3 md:p-4 lg:p-8 leading-normal">
-                            <ContentHeader>
-                                {content?.title_4 || t('country-one-title')}
-                            </ContentHeader>
-                            <ContentDescription>
-                                {content && typeof content?.content_4 === 'string' ? ReactHtmlParser(content?.content_4) : t('country-one-des')}
-                            </ContentDescription>
-                        </div>
+                    <div className='space-y-6 lg:space-y-12'>
+                        <MarketCard
+                            imageSrc={content?.image_4 ? `${IMAGE_URL}/${content.image_4}` : Thailand}
+                            title={content?.title_4 || t('country-one-title')}
+                            description={content && typeof content?.content_4 === 'string' ? ReactHtmlParser(content?.content_4) : t('country-one-des')} />
+                        <MarketCard
+                            imageSrc={content?.image_5 ? `${IMAGE_URL}/${content.image_5}` : Malaysia}
+                            title={content?.title_5 || t('country-two-title')}
+                            description={content && typeof content?.content_5 === 'string' ? ReactHtmlParser(content?.content_5) : t('country-two-des')} />
+                        <MarketCard
+                            imageSrc={content?.image_6 ? `${IMAGE_URL}/${content.image_6}` : Singapore}
+                            title={content?.title_6 || t('country-three-title')}
+                            description={content && typeof content?.content_6 === 'string' ? ReactHtmlParser(content?.content_6) : t('country-three-des')} />
                     </div>
-                    <div className="w-full h-auto 2xl:h-[400px] flex flex-col md:flex-row items-center bg-white border border-gray-200 rounded-[20px] lg:rounded-[30px] shadow mt-6 lg:mt-12">
-                        <div className='w-full md:w-8/12 flex justify-center p-2 md:p-4 xl:p-6 ml-0 lg:ml-4 mt-5 md:mt-0'>
-                            <Image
-                                src={content?.image_5 ? `${IMAGE_URL}/${content.image_5}` : Malaysia}
-                                unoptimized
-                                width={100}
-                                height={100}
-                                alt="malaysia"
-                                className="w-[150px] md:w-[250px] lg:w-[300px] object-cover h-auto filter object-center transition duration-200"
-                            />
-                        </div>
-
-                        <div className="w-full lg:w-auto flex flex-col justify-center p-3 md:p-4 lg:p-8 leading-normal">
-                            <ContentHeader>
-                                {content?.title_5 || t('country-two-title')}
-                            </ContentHeader>
-                            <ContentDescription>
-                                {content && typeof content?.content_5 === 'string' ? ReactHtmlParser(content?.content_5) : t('country-two-des')}
-                            </ContentDescription>
-                        </div>
-                    </div>
-                    <div className="w-full h-auto 2xl:h-[400px] flex flex-col md:flex-row items-center bg-white border border-gray-200 rounded-[20px] lg:rounded-[30px] shadow mt-6 lg:mt-12">
-                        <div className='w-full md:w-8/12 flex justify-center p-2 md:p-4 xl:p-6 ml-0 lg:ml-4 mt-5 md:mt-0'>
-                            <Image
-                                src={content?.image_6 ? `${IMAGE_URL}/${content.image_6}` : Singapore}
-                                unoptimized
-                                width={100}
-                                height={100}
-                                alt="singapore"
-                                className="w-[150px] md:w-[250px] lg:w-[300px] object-cover h-auto filter object-center transition duration-200"
-                            />
-                        </div>
-
-                        <div className="w-full lg:w-auto flex flex-col justify-center p-3 md:p-4 lg:p-8 leading-normal">
-                            <ContentHeader>
-                                {content?.title_6 || t('country-three-title')}
-                            </ContentHeader>
-                            <ContentDescription>
-                                {content && typeof content?.content_6 === 'string' ? ReactHtmlParser(content?.content_6) : t('country-three-des')}
-                            </ContentDescription>
-                        </div>
-                    </div>
-
                 </div>
             </div>
 
@@ -148,21 +123,18 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
                     alt=""
                     className="object-cover w-full h-auto filter object-center transition duration-200 hidden lg:block"
                 />
-                <div className='max-w-[1790px] mx-auto'>
-                    <div className="bg-[#8ECD82] lg:bg-transparent lg:absolute lg:top-0 lg:left-0 lg:right-0 lg:bottom-0 flex lg:items-center px-[2rem] md:px-[4rem] lg:px-[5rem]  mx-auto max-w-[110rem] py-20 lg:py-0">
-                        <div className="max-w-full lg:max-w-[29rem] xl:max-w-[35rem] 2xl:max-w-[42rem]">
-                            <div className="text-slate-600">
-                                <ContentHeader>
-                                    {content?.title_7 || t('partner-title')}
-                                </ContentHeader>
-                                <ContentDescription>
-                                    {content && typeof content?.content_7 === 'string' ? ReactHtmlParser(content?.content_7) : (<>{t('partner-des-1')}<br />{t('partner-des-2')}</>)}
-                                </ContentDescription>
-                            </div>
+                <div className="container bg-c-primary lg:bg-transparent lg:absolute lg:top-0 lg:left-0 lg:right-0 lg:bottom-0 flex lg:items-center mx-auto py-20 lg:py-0">
+                    <div className="max-w-full lg:max-w-[29rem] xl:max-w-[35rem] 2xl:max-w-[42rem]">
+                        <div className="text-slate-600">
+                            <ContentHeader className="text-c-white">
+                                {content?.title_7 || t('partner-title')}
+                            </ContentHeader>
+                            <ContentDescription className="text-c-white font-normal">
+                                {content && typeof content?.content_7 === 'string' ? ReactHtmlParser(content?.content_7) : (<>{t('partner-des-1')}<br />{t('partner-des-2')}</>)}
+                            </ContentDescription>
                         </div>
                     </div>
                 </div>
-
                 <Image
                     src={content?.image_m_1 ? `${IMAGE_URL}/${content.image_m_1}` : Mobile1}
                     // src={Mobile1}
@@ -177,7 +149,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
             {/* Our Deals */}
             <div className='bg-white flex flex-col justify-center items-center py-[50px] md:p-[50px] xl:p-[100px] relative'>
                 <div className='max-w-[1790px] px-[2rem] mx-auto'>
-                    <h3 className="text-sriracha text-[30px] xs:text-[32px] md:text-[40px] lg:text-[28px] xl:text-[48px]  text-[#418432] font-semibold text-shadow text-center mb-16 xl:mb-20">
+                    <h3 className="text-c-primary uppercase text-[30px] xs:text-[32px] md:text-[40px] lg:text-[28px] xl:text-[48px] font-semibold text-center mb-16 xl:mb-[14]">
                         {content?.title_8 || 'Our Deals'}
                     </h3>
                     <div className='w-full grid sm:grid-cols-5 grid-cols-12 gap-6 mb-0 sm:mb-[80px]'>
@@ -258,7 +230,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
             </div>
 
             {/* Our cold chain */}
-            <div className="bg-cover bg-center relative">
+            <div className="bg-cover bg-center relative 2xl:h-[830px]">
                 <Image
                     src={content?.image_13 ? `${IMAGE_URL}/${content.image_13}` : Profile4}
                     // src={Profile4}
@@ -269,10 +241,9 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
                     className="object-cover w-full h-auto filter object-center transition duration-200 hidden lg:block"
                 />
 
-                <div className="lg:absolute lg:top-0 lg:left-0 lg:right-0 lg:bottom-0 flex lg:justify-end lg:items-center px-[2rem] md:px-[4rem] lg:px-[5rem] mx-auto max-w-[110rem] py-20">
+                <div className="container lg:absolute lg:top-0 lg:left-0 lg:right-0 lg:bottom-0 flex lg:justify-end lg:items-center mx-auto py-20">
                     <Image
                         src={Mobile5}
-
                         unoptimized
                         width={100}
                         height={100}
@@ -281,10 +252,10 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
                     />
                     <div className="max-w-full lg:max-w-[45rem] xl:max-w-[50rem]">
                         <div className="text-slate-600 lg:pl-[270px] xl:pl-[290px] 2xl:pl-[199px]">
-                            <ContentHeader>
+                            <ContentHeader className="font-semibold">
                                 {content?.title_9 || t('cold-title')}
                             </ContentHeader>
-                            <ContentDescription>
+                            <ContentDescription className="font-normal">
                                 {content && typeof content?.content_9 === 'string' ? ReactHtmlParser(content?.content_9) : (<>{t('cold-des-1')}<br />{t('cold-des-2')}</>)}
                             </ContentDescription>
                         </div>
@@ -304,7 +275,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
             </div>
 
             {/* Transportation */}
-            <div className="bg-cover bg-center lg:relative">
+            <div className="bg-cover bg-center lg:relative 2xl:h-[830px]">
                 <Image
                     src={content?.image_14 ? `${IMAGE_URL}/${content.image_14}` : Profile3}
                     unoptimized
@@ -313,10 +284,10 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
                     alt=""
                     className="object-cover w-full h-auto filter object-center transition duration-200 hidden lg:block"
                 />
-                <div className='max-w-[1790px] mx-auto'>
-                    <div className="lg:absolute lg:top-0 lg:left-0 lg:right-0 lg:bottom-0 flex lg:items-center px-[2rem] md:px-[4rem] lg:px-[5rem] mx-auto max-w-[110rem] py-20 lg:py-0">
+                <div className='mx-auto'>
+                    <div className="container mx-auto lg:absolute lg:top-0 lg:left-0 lg:right-0 lg:bottom-0 flex lg:items-center py-20 lg:py-0">
                         <div className="max-w-full lg:max-w-[29rem] xl:max-w-[35rem] 2xl:max-w-[42rem]">
-                            <div className="text-slate-600">
+                            <div>
                                 <ContentHeader>
                                     {content?.title_10 || t('trans-title')}
                                 </ContentHeader>
@@ -338,7 +309,9 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
                     className="object-cover w-[100vw] h-auto filter object-center transition duration-200 block lg:hidden"
                 />
             </div>
-            <div className="bg-cover bg-center lg:relative">
+
+            {/* warehouse */}
+            <div className="bg-cover bg-center lg:relative 2xl:h-[830px]">
                 <Image
                     src={content?.image_15 ? `${IMAGE_URL}/${content.image_15}` : Profile5}
                     unoptimized
@@ -348,10 +321,10 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
                     className="object-cover w-full h-auto filter object-center transition duration-200 hidden lg:block"
                 />
 
-                <div className="lg:absolute lg:top-0 lg:left-0 lg:right-0 lg:bottom-0 flex lg:justify-end lg:items-center px-[2rem] md:px-[4rem] lg:px-[5rem] mx-auto max-w-[110rem] py-20  lg:mt-[-2rem] xl:mt-[-4rem]">
+                <div className="container mx-auto lg:absolute lg:top-0 lg:left-0 lg:right-0 lg:bottom-0 flex lg:justify-end lg:items-center">
                     <div className="max-w-full lg:max-w-[45rem] xl:max-w-[50rem]">
                         <div className="text-slate-600 lg:pl-[270px] xl:pl-[290px] 2xl:pl-[199px]">
-                            <ContentHeader>
+                            <ContentHeader className="font-semibold">
                                 {content?.title_11 || t('warehouse-title')}
                             </ContentHeader>
                             <ContentDescription>

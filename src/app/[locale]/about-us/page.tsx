@@ -30,8 +30,8 @@ export default async function AboutUs({ params }: { params: Promise<{ locale: st
         <div className="bg-white h-auto relative pb-[7rem] md:pb-[9rem] mt-[104px] sm:mt-[110px] md:mt-[115px] lg:mt-[100px] xl:mt-[110px] 2xl:mt-[120px]">
             <BannerHeader locale={locale} imageSrc={AboutUsBanner} text={content?.title_1 || t('about')} />
             <div className="flex flex-col gap-16 lg:gap-24 py-[3.5rem]">
-                <div className="flex flex-col lg:flex-row gap-16 items-center px-[2rem] md:px-[4rem] lg:px-[5rem] max-w-[110rem] mx-auto">
-                    <div className="w-full lg:w-1/2 p-0 text-gray-600">
+                <div className="flex flex-col lg:flex-row gap-16 2xl:gap-[140px] items-center px-[2rem] md:px-[4rem] lg:px-[5rem] max-w-[110rem] mx-auto">
+                    <div className="w-full lg:w-1/2 2xl:max-w-[1000px] p-0 text-c-contrast">
                         <ContentHeader>
                             {content ? (content.title_2) : t('title')}
                         </ContentHeader>
@@ -43,50 +43,46 @@ export default async function AboutUs({ params }: { params: Promise<{ locale: st
                         <Image
                             src={content?.image_2 ? `${IMAGE_URL}/${content.image_2}` : AboutUs1}
                             alt="about1"
-                            width={100}
-                            height={100}
-                            className="object-cover w-full h-auto object-center rounded-lg"
+                            width={800}
+                            height={500}
+                            className="object-cover object-center rounded-lg"
                         />
                     </div>
                 </div>
 
-                <div className="flex flex-row justify-between gap-5">
-                    <div className="w-[63%]">
+                <div className="flex flex-row justify-between gap-5 h-[500px] 2xl:h-[768px]">
+                    <div className="relative w-[63%] h-auto">
                         <Image
                             src={content?.image_3 ? `${IMAGE_URL}/${content.image_3}` : locale == INTL_PREFIX_BY_COUNTRY.myanmar ? missionMM : AboutUs2}
                             alt=""
-                            width={100}
-                            height={100}
-                            className="object-cover w-full h-auto object-center transition duration-200"
+                            fill
+                            className="object-cover object-center rounded-lg"
                         />
                     </div>
-                    <div className="w-[37%]">
+                    <div className="relative w-[37%] h-auto">
                         <Image
                             src={content?.image_4 ? `${IMAGE_URL}/${content.image_4}` : AboutUs3}
-                            width={100}
-                            height={100}
                             alt=""
-                            className="object-cover w-full h-auto filter object-center transition duration-200"
+                            fill
+                            className="object-cover object-center rounded-lg"
                         />
                     </div>
                 </div>
-                <div className="flex flex-row justify-between gap-5 mt-[-48px] md:mt-[-44px] lg:mt-[-70px]">
-                    <div className="w-[37%]">
+                <div className="flex flex-row justify-between gap-5 mt-[-48px] md:mt-[-44px] lg:mt-[-70px] h-[500px] xl:h-[768px]">
+                    <div className="relative w-[37%] h-auto">
                         <Image
                             src={content?.image_5 ? `${IMAGE_URL}/${content.image_5}` : AboutUs5}
                             alt=""
-                            width={100}
-                            height={100}
-                            className="object-cover w-full h-auto object-center transition duration-200"
+                            fill
+                            className="object-cover object-center rounded-lg"
                         />
                     </div>
-                    <div className="w-[63%]">
+                    <div className="relative w-[63%] h-auto">
                         <Image
                             src={content?.image_6 ? `${IMAGE_URL}/${content.image_6}` : locale == INTL_PREFIX_BY_COUNTRY.myanmar ? visionMM : AboutUs4}
-                            width={100}
-                            height={100}
                             alt=""
-                            className="object-cover w-full h-auto object-center transition duration-200"
+                            fill
+                            className="object-cover object-center rounded-lg"
                         />
                     </div>
                 </div>

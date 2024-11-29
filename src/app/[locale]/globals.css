@@ -73,7 +73,7 @@ body {
   }
 
   .text-c-transform-primary {
-    @apply !text-xs sm:!text-sm xl:!text-lg 2xl:!text-xl
+    @apply !text-xs sm:!text-sm lg:!text-base 2xl:!text-xl
   }
 }
 
