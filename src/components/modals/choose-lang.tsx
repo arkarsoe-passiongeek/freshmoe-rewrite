@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { RxCross2 } from "react-icons/rx";
-import { useSearchParams, useRouter } from 'next/navigation'
-import { useLocale } from 'next-intl'
+import { useRouter } from 'next/navigation'
 import { usePathname } from 'next/navigation'
-import path from 'path';
 
 interface ChildProps {
     onClickParent: () => void;

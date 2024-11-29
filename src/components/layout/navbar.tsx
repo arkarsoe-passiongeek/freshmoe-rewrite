@@ -62,8 +62,8 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
     const [upperMenu, setUpperMenu] = useState(true)
     const [selectedCountry, setSelectedCountry] = useState(countryOptions[0].countries[0]);
     const [selectedLanguage, setSelectedLanguage] = useState<LanguageCodes>(locale.split('_')[0] as LanguageCodes);
-    const [currentCountry, setCurrentCountry] = useState<any>(locale.split('_')[1])
-    const [currentLanguage, setCurrentLanguage] = useState<any>({})
+    const [currentCountry] = useState<any>(locale.split('_')[1])
+    const [currentLanguage] = useState<any>({})
 
     const navList = [
         {
@@ -101,7 +101,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
         countryOptions.map(each => {
             countries = [...countries, ...each.countries]
         })
-        let country = countries.filter(country => country.value === value)[0]
+        const country = countries.filter(country => country.value === value)[0]
         setSelectedCountry(country)
         setSelectedLanguage(country.languages[0])
     }
@@ -172,7 +172,6 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
         function scrollFunction() {
             const navbar = document.getElementById("navbar");
             const navbarItems = document.getElementsByClassName("nav");
-            const arrowColor = document.getElementById("arrow");
             const profile_icon = document.getElementById("profile_icon");
             const btn_text = document.getElementById("btn_text");
 
@@ -225,8 +224,6 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
         const upperMenuElement = document.querySelector<HTMLDivElement>('#upper-menu')
         const upperMenuWrapper =
             document.querySelector<HTMLDivElement>('#upper-menu-wrapper')
-        const globes = document.querySelectorAll<HTMLElement>('.globe');
-        const localeButton = document.getElementById('locale-button')
         const navbar = document.getElementById("navbar");
         const navbarElement = document.querySelector<HTMLDivElement>('#navbar')
         const sidebarWrapper =
@@ -289,7 +286,6 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
         // alert("Sidebar "+sidebar+" Upper "+upperMenu)
         const sidebarElement = document.querySelector<HTMLDivElement>('#sidebar')
         const upperMenuElement = document.querySelector<HTMLDivElement>('#upper-menu')
-        const localeButton = document.getElementById('locale-button')
         const navbar = document.getElementById("navbar");
         const navbarElement = document.querySelector<HTMLDivElement>('#navbar')
         const upperMenuWrapper =
@@ -351,7 +347,6 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
 
     const handleConfirmChangeLanguage = () => {
         let newPrefix: any = `${selectedLanguage}_${selectedCountry.value}`
-        let newPath = pathname.replace(locale, '')
         console.log(pathname)
         // console.log(newPath)
         router.replace(pathname, { locale: newPrefix })
@@ -430,14 +425,14 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                                 'pl-[2vw]'
                                 }`}
                         >
-                            <a href="/" className="">
+                            <Link href="/" className="">
                                 <Image
                                     src={freshMoeLogo}
                                     alt=""
                                     className=
                                     {`w-[70px] sm:w-[85px] md:w-[90px] lg:w-[8vw] 2xl:w-[140px] 2xl:h-[65px] h-auto md:ml-0`}
                                 />
-                            </a>
+                            </Link>
                         </div>
                         <div className='flex-1 flex justify-end ml-auto lg:ml-0' onClick={() => { handleOpen }}>
                             {/* Desktop , tablet and mobile*/}

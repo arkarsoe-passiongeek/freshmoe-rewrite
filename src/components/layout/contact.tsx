@@ -7,7 +7,6 @@ import freshMoeLogo from "@/public/images/freshmoeLogo.png"
 import CBaseButton from '@/components/custom/c-base-button'
 import styles from "./contact.module.css"
 import ContactBg from "@/public/images/home/contact-bg.png"
-import ContactBgMobile from "@/public/images/home/contact-bg-mobile.png"
 
 interface ContactProps {
     contactData: {

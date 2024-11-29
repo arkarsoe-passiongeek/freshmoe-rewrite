@@ -5,6 +5,6 @@ export const fetchHomeContent = async (formData: FormData) => {
         const res = await http.post('/home-page', formData)
         return res.data
     } catch (error) {
-        return { data: {} }
+        return { data: {}, error }
     }
 }
