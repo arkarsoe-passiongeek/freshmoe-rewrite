@@ -452,7 +452,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                                                     }`}
                                             />
                                         ) : (
-                                            <Flag code={selectedCountry?.flag} className="w-[25px] md:h-[30px] lg:w-[40px] lg:h-[40px] globe text-[#5B5B5B]" />
+                                            <Flag code={selectedCountry?.flag} className="w-[25px] md:h-[30px] lg:w-[40px] lg:h-[40px] globe text-c-contrast" />
                                         )}
                                     </div>
                                     <span className={`lg:text-base font-normal hidden lg:block`}>
@@ -464,7 +464,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                                             'lg:pl-[10px] xl:pl-[15px]' :
                                             'p-0'} 
                              hidden lg:block`}>|</span>
-                                    <PiTranslate className="lg:w-[24px] lg:h-[24px] h-auto rounded-3xl globe text-[#5B5B5B] hidden lg:block" />
+                                    <PiTranslate className="lg:w-[24px] lg:h-[24px] h-auto rounded-3xl globe text-c-contrast hidden lg:block" />
                                     <span className={`
                             lg:text-base`}>
                                         {getLanguageName(`${selectedLanguage}`)}
@@ -488,7 +488,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                 id="sidebar-wrapper"
             >
                 <div
-                    className="fixed h-full w-full lg:w-[600px] bg-[#fff] top-[105px] md:top-[111px] xl:top-[119px] lg:top-[130px] -left-80 flex flex-col transition-all duration-500"
+                    className="fixed h-full w-full lg:w-[600px] bg-c-white top-[105px] md:top-[111px] xl:top-[119px] lg:top-[130px] -left-80 flex flex-col transition-all duration-500"
                     id="sidebar"
                 >
                     <div className="text-c-black space-y-[22px] pl-6 pt-12">

@@ -12,7 +12,7 @@ import IconCheck from '@/public/images/home/icon_check.png'
 import IconPhone from '@/public/images/home/icon_phone.png'
 import IconFruit from '@/public/images/home/icon_fruit.png'
 import UnderSlider3 from '@/public/images/home/under-slider-3.png'
-import GreenMobile3 from '@/public/images/home/GreenMobile-3.png'
+import GreenMobile3 from "@/public/images/layout/mobile-green-bg.png"
 import UnderlineBar from "@/public/images/home/underline.png"
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -39,14 +39,30 @@ const ChooseUsContent = ({ title, des, imageSrc, alt, layout }: { title: any, de
     return (
         <>
             <div className={`flex flex-col ${layout === 'reverse' ? 'items-start' : 'items-end'}`}>
-                <p className='text-white text-[16px] 2xl:text-xl font-medium mb-1'>{title}</p>
+                <p className='text-c-white text-[16px] 2xl:text-xl font-medium mb-1'>{title}</p>
                 <div className='w-16  h-[2px] rounded-sm  bg-white mb-1'></div>
-                <p className='text-white text-[10px] 2xl:text-base font-normal tracking-tight'>{des}</p>
+                <p className='text-c-white text-[10px] 2xl:text-base font-normal tracking-tight'>{des}</p>
             </div>
             <Image width={60} height={70} src={imageSrc} alt={alt} className='underline w-[60px] h-[70px] 2xl:w-[70px] 2xl:h-[72px]' />
         </>
     )
 }
+
+const ChooseUsContentMobile = ({ title, des, imageSrc, alt }: { title: any, des: any, alt?: any, imageSrc: any, layout?: any }) => {
+    return (
+        <div className="flex flex-col justify-center items-center text-center mx-auto w-[270px]">
+            <Image src={imageSrc} alt={alt} className='w-[60px] h-[62px] md:w-[90px] md:h-[92px] mb-[15px]' priority />
+            <div className="px-4 flex flex-col items-center">
+                <p className='text-c-white text-base font-semibold mb-1'>{title}</p>
+                <div className='w-10 h-[2.5px] rounded-md bg-white mb-[10px]'></div>
+                <p className='text-c-white text-sm font-normal'>{des}</p>
+            </div>
+        </div>
+    )
+}
+
+
+
 
 interface SliderProps {
     data: Slide[];
@@ -121,14 +137,14 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
                                     />
                                 </div>
                                 <div className="w-full h-full absolute left-0 top-0 bg-green-100 opacity-10"></div>
-                                <div className="absolute right-0 top-[5px] sm:top-[10%] xl:top-[20%] w-1/2 sm:w-[40%] 2xl:top-1/2 2xl:-translate-y-1/2">
-                                    <div className="2xl:w-[661px]">
+                                <div className="container absolute right-0 w-[60%] lg:w-[40%] 2xl:w-[661px] top-[5px] lg:top-[20%] 2xl:top-1/2 2xl:-translate-y-1/2">
+                                    <div className="">
                                         <div className="2xl:space-y-[16px] lg:mb-[32px] 2xl:mb-[48px]">
-                                            <ContentHeader className="2xl:text-5xl">
+                                            <ContentHeader className="text-base sm:text-base xl:text-5xl">
                                                 {title || 'Delivering In Four Hours'}
                                             </ContentHeader>
                                             {tagline && (
-                                                <ContentDescription className="text-xss lg:text-sm 2xl:text-2xl text-c-contrast">{tagline}</ContentDescription>
+                                                <ContentDescription className="text-xss sm:text-sm 2xl:text-2xl text-c-contrast">{tagline}</ContentDescription>
                                             )}
                                         </div>
                                         <ContentButton>More Info</ContentButton>
@@ -148,7 +164,7 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
                 />
                 <div className='max-w-[1790px] px-[2rem] md:px-[4rem] lg:px-[5rem] w-full h-300 absolute top-[24%] left-1/2 transform -translate-x-1/2'>
                     <div className="tile flex flex-col justify-center items-center lg:mb-[1.5rem] 2xl:mb-[61px]">
-                        <h1 className='text-white text-[50px] xl:text-[50px] 2xl:text-4xl 2xl:font-bold mb-5 2xl:mb-[10px]'>{sliderData.chooseTitle}</h1>
+                        <h1 className='text-c-white text-[50px] xl:text-[50px] 2xl:text-4xl 2xl:font-bold mb-5 2xl:mb-[10px]'>{sliderData.chooseTitle}</h1>
                         <Image src={UnderlineBar} alt="underline" className='underline w-[210px] h-[30px]' priority />
                     </div>
                     <div className="grid grid-cols-12 items-center justify-center lg:mb-[1rem] xl:mb-[4rem] 2xl:mb-[70px]">
@@ -185,73 +201,33 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
             </div>
 
             {/* mobile */}
-            <div className="z-20 w-screen mt-[-50px] min-h-[900px] sm:min-h-[1000px] relative block lg:hidden" >
+            <div className="z-20 w-screen mt-[-75px] min-h-[1800px] relative block lg:hidden" >
                 <Image
                     src={GreenMobile3}
                     alt="Green Background"
                     priority
                     className="z-0 h-full w-full absolute top-0"
                 />
-                <div className="py-16 absolute top-0">
-                    <div className="tile flex flex-col justify-center items-center">
-                        <h1 className='text-white text-[22px] sm:text-[25px] md:text-[30px] mb-[2.5rem] md:mb-[3.5rem] md:mt-0' style={{ fontFamily: 'Sriracha' }}>{sliderData.chooseTitle}</h1>
+                <div className="py-28 absolute top-0 w-full">
+                    <div className="flex flex-col justify-center items-center">
+                        <div className="flex flex-col justify-center items-center mb-[20px]">
+                            <h1 className='text-c-white text-base font-bold mb-[10px]'>{sliderData.chooseTitle}</h1>
+                            <Image src={UnderlineBar} alt="underline" className='underline w-[120px] h-[17px]' priority />
+                        </div>
                         <div className="grid grid-rows-6 gap-4 sm:gap-10">
-                            <div className="flex justify-center items-center mx-6 sm:mx-[100px]">
-                                <Image src={IconHeart} alt="icon" className='w-[60px] h-[62px] md:w-[90px] md:h-[92px]' priority />
-                                <div className="px-4">
-                                    <p className='text-white text-[13px] sm:text-[18px] font-semibold mb-1'>{sliderData.chooseOneTitle}</p>
-                                    <div className='w-10 h-[2.5px] rounded-md bg-white mb-1'></div>
-                                    <p className='text-white text-[10px] sm:text-[15px]  leading-4'>{sliderData.chooseOneDes}</p>
-                                </div>
-                            </div>
-                            <div className="flex justify-center items-center mx-6 sm:mx-[100px]">
-                                <Image src={IconCar} alt="icon" className='w-[60px] h-[62px] md:w-[90px] md:h-[92px]' priority />
-                                <div className="px-4">
-                                    <p className='text-white text-[13px] sm:text-[18px] font-semibold mb-1'>{sliderData.chooseTwoTitle}</p>
-                                    <div className='w-10 h-[2.5px] rounded-md bg-white mb-1'></div>
-                                    <p className='text-white text-[10px] sm:text-[15px]  leading-4'>{sliderData.chooseTwoDes}</p>
-                                </div>
-                            </div>
-                            <div className="flex justify-center items-center mx-6 sm:mx-[100px]">
-                                <Image src={IconFruit} alt="icon" className='w-[60px] h-[62px] md:w-[90px] md:h-[92px]' priority />
-                                <div className="px-4">
-                                    <p className='text-white text-[13px] sm:text-[18px] font-semibold mb-1'>{sliderData.chooseThreeTitle}</p>
-                                    <div className='w-10 h-[2.5px] rounded-md bg-white mb-1'></div>
-                                    <p className='text-white text-[10px] sm:text-[15px]  leading-4'>{sliderData.chooseThreeDes}</p>
-                                </div>
-                            </div>
-                            <div className="flex justify-center items-center mx-6 sm:mx-[100px]">
-                                <Image src={IconPhone} alt="icon" className='w-[60px] h-[62px] md:w-[90px] md:h-[92px]' priority />
-                                <div className="px-4">
-                                    <p className='text-white text-[13px] sm:text-[18px] font-semibold mb-1'>{sliderData.chooseFourTitle}</p>
-                                    <div className='w-10 h-[2.5px] rounded-md bg-white mb-1'></div>
-                                    <p className='text-white text-[10px] sm:text-[15px]  leading-4'>{sliderData.chooseFourDes}</p>
-                                </div>
-                            </div>
-                            <div className="flex justify-center items-center mx-6 sm:mx-[100px]">
-                                <Image src={IconCheck} alt="icon" className='w-[60px] h-[62px] md:w-[90px] md:h-[92px]' priority />
-                                <div className="px-4">
-                                    <p className='text-white text-[13px] sm:text-[18px] font-semibold mb-1'>{sliderData.chooseFiveTitle}</p>
-                                    <div className='w-10 h-[2.5px] rounded-md bg-white mb-1'></div>
-                                    <p className='text-white text-[10px] sm:text-[15px]  leading-4'>{sliderData.chooseFiveDes}</p>
-                                </div>
-                            </div>
-                            <div className=" justify-center items-center mx-6 sm:mx-[100px] hidden lg:flex">
-                                <Image src={IconCart} alt="icon" className='w-[60px] h-[62px] md:w-[90px] md:h-[92px]' priority />
-                                <div className="px-4">
-                                    <p className='text-white text-[13px] sm:text-[18px] font-semibold mb-1'>{sliderData.chooseSixTitle}</p>
-                                    <div className='w-10 h-[2.5px] rounded-md bg-white mb-1'></div>
-                                    <p className='text-white text-[10px] sm:text-[15px]  leading-4'>{sliderData.chooseSixDes}</p>
-                                </div>
-                            </div>
-
+                            <ChooseUsContentMobile alt="icon" imageSrc={IconHeart} title={sliderData.chooseOneTitle} des={sliderData.chooseOneDes} />
+                            <ChooseUsContentMobile alt="icon" imageSrc={IconCar} title={sliderData.chooseTwoTitle} des={sliderData.chooseTwoDes} />
+                            <ChooseUsContentMobile alt="icon" imageSrc={IconFruit} title={sliderData.chooseThreeTitle} des={sliderData.chooseThreeDes} />
+                            <ChooseUsContentMobile alt="icon" imageSrc={IconPhone} title={sliderData.chooseFourTitle} des={sliderData.chooseFourDes} />
+                            <ChooseUsContentMobile alt="icon" imageSrc={IconCheck} title={sliderData.chooseFiveTitle} des={sliderData.chooseFiveDes} />
+                            <ChooseUsContentMobile alt="icon" imageSrc={IconCart} title={sliderData.chooseSixTitle} des={sliderData.chooseSixDes} />
                         </div>
                     </div>
                 </div>
                 <Image
                     src={FruitBasket}
                     alt="Fruit Basket"
-                    className="absolute bottom-[-40px] left-1/2 transform -translate-x-1/2 w-[260px] h-[240px] md:w-[300px] md:h-[250px]"
+                    className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[230px] h-[180px]"
                     priority
                 />
             </div>

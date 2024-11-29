@@ -52,15 +52,15 @@ const About: React.FC<AboutProps> = ({ aboutData }) => {
                     height={100}
                     unoptimized
                     alt="bg"
-                    className="object-cover w-full h-full filter object-center transition duration-200 hidden lg:block"
+                    className="object-cover w-full h-full filter object-center hidden lg:block"
                 />
-                <div className="container mx-auto mt-[72px] lg:mt-0 lg:absolute lg:top-1/2 lg:-translate-y-1/2 2xl:px-[190px]">
+                <div className="container mx-auto mt-[72px] mb-[60px] lg:mb-0 lg:mt-0 lg:absolute lg:top-1/2 lg:-translate-y-1/2 2xl:px-[190px]">
                     <div className="max-w-full lg:max-w-[29rem] xl:max-w-[35rem] 2xl:max-w-[42rem]">
-                        <div className="text-gray-600">
-                            <ContentHeader>
+                        <div className="text-c-contrast">
+                            <ContentHeader className="text-lg sm:text-lg font-semibold">
                                 {aboutData.aboutOneTitle}
                             </ContentHeader>
-                            <ContentDescription>
+                            <ContentDescription className="text-sm sm:text-sm">
                                 {aboutData.aboutOneDescription1}
                             </ContentDescription>
                         </div>
@@ -73,7 +73,7 @@ const About: React.FC<AboutProps> = ({ aboutData }) => {
                         height={100}
                         unoptimized
                         alt=""
-                        className=" w-full h-[30rem] md:h-auto filter object-center transition duration-200 hidden sm:block lg:hidden"
+                        className=" w-full h-[340px] md:h-auto filter object-cover object-right transition duration-200 hidden sm:block lg:hidden"
                     />
                     <Image
                         src={aboutData.aboutMobile1 || AboutMobile}
@@ -87,7 +87,7 @@ const About: React.FC<AboutProps> = ({ aboutData }) => {
             </div>
 
             {/* our quality fresh food */}
-            <div className='container py-[74px] mx-auto lg:h-[600px] 2xl:h-[830px] lg:flex lg:items-center'>
+            <div className='container py-[60px] mx-auto lg:h-[600px] 2xl:h-[830px] lg:flex lg:items-center'>
                 <div className='mx-auto flex justify-between flex-col-reverse lg:flex-row items-center gap-[32px] 2xl:gap-[147px]'>
                     <div className='lg:flex-1'>
                         <Image
@@ -99,10 +99,10 @@ const About: React.FC<AboutProps> = ({ aboutData }) => {
                         />
                     </div>
                     <div className='lg:flex-1'>
-                        <ContentHeader>
+                        <ContentHeader className="text-lg sm:text-lg font-semibold">
                             {aboutData.aboutTwoTitle}
                         </ContentHeader>
-                        <ContentDescription>
+                        <ContentDescription className="text-sm sm:text-sm">
                             {aboutData.aboutTwoDescription1}
                         </ContentDescription>
                     </div>
@@ -118,13 +118,13 @@ const About: React.FC<AboutProps> = ({ aboutData }) => {
                     alt="bg"
                     className="object-cover filter object-center transition duration-200 hidden lg:block"
                 />
-                <div className="lg:absolute lg:top-0 lg:left-0 lg:right-0 lg:bottom-0 flex lg:items-center mx-auto">
-                    <div className="container mx-auto lg:mx-0 lg:w-1/2 2xl:px-[190px]">
+                <div className="bg-c-footer-bg sm:bg-transparent lg:absolute lg:top-0 lg:left-0 lg:right-0 lg:bottom-0 flex lg:items-center mx-auto">
+                    <div className="container mx-auto py-[60px] lg:mx-0 lg:w-1/2 2xl:px-[190px]">
                         <div className="text-gray-600">
-                            <ContentHeader>
+                            <ContentHeader className="text-lg sm:text-lg font-semibold">
                                 {aboutData.aboutThreeTitle}
                             </ContentHeader>
-                            <ContentDescription>
+                            <ContentDescription className="text-sm sm:text-sm">
                                 {aboutData.aboutThreeDescription1}
                             </ContentDescription>
                         </div>
@@ -137,7 +137,7 @@ const About: React.FC<AboutProps> = ({ aboutData }) => {
                         height={100}
                         unoptimized
                         alt=""
-                        className="w-full h-[30rem] md:h-auto filter object-center transition duration-200 hidden sm:block lg:hidden"
+                        className="w-full h-[270px] md:h-auto filter object-right object-cover transition duration-200 hidden sm:block lg:hidden"
                     />
                     <Image
                         src={aboutData.aboutMobile2 || AboutMobile2}
