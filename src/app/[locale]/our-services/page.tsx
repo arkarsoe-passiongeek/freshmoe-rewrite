@@ -16,17 +16,17 @@ import ContentDescription from '@/components/custom/content/content-description'
 
 const Card = ({ imageSrc, title, description }: { imageSrc: any, title: any, description: any }) => {
     return (
-        <div className="p-5 xl:p-[20px] bg-c-footer-bg rounded-[20px] w-full hover:scale-105 hover:shadow-xl">
+        <div className="p-4 xl:p-[20px] bg-c-footer-bg rounded-[20px] w-full hover:scale-105 hover:shadow-xl">
             <Image
                 src={imageSrc}
                 unoptimized
                 width={100}
                 height={100}
                 alt=""
-                className="mb-[24px] object-cover w-full h-auto filter object-center transition duration-200 rounded-lg"
+                className="mb-4 lg:mb-[24px] object-cover w-full h-auto filter object-center transition duration-200 rounded-[10px]"
             />
-            <div className='space-y-4'>
-                <h3 className="text-lg font-semibold xl:text-3xl text-c-primary">
+            <div className='space-y-2 lg:space-y-4'>
+                <h3 className="text-lg capitalize font-semibold xl:text-3xl text-c-primary">
                     {title}
                 </h3>
                 <p className='text-c-contrast text-sm lg:text-lg'>
@@ -51,8 +51,8 @@ export default async function OurService({ params }: { params: Promise<{ locale:
     return (
         <div className="bg-white h-auto relative mt-[98px] sm:mt-[110px] md:mt-[115px] lg:mt-[100px] xl:mt-[110px]">
             <BannerHeader locale={locale} imageSrc={OurServicesBanner} text={content?.title_1 || t('service')} />
-            <div className="container mx-auto flex flex-col gap-10 lg:gap-16 xl:gap-[120px] py-[3.5rem] xl:pb-[150px]">
-                <div className="text-center text-gray-600 xl:max-w-[1000px] mx-auto">
+            <div className="container mx-auto flex flex-col gap-10 lg:gap-16 xl:gap-[120px] py-10 xl:pb-[150px]">
+                <div className="text-center text-c-contrast xl:max-w-[1000px] mx-auto">
                     <ContentHeader>
                         {content ? content.title_2 : t('title')}
                     </ContentHeader>
@@ -60,10 +60,10 @@ export default async function OurService({ params }: { params: Promise<{ locale:
                         {content && typeof content?.content_2 === 'string' ? ReactHtmlParser(content.content_2) : t('description')}
                     </ContentDescription>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 text-[0.7rem] py-[1rem] text-gray-600">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 text-[0.7rem] text-gray-600">
                     <Card imageSrc={content?.image_3 ? `${IMAGE_URL}/${content.image_3}` : Service1} title={content ? content.title_3 : t('card-one-title')} description={content && typeof content?.content_3 === 'string' ? ReactHtmlParser(content.content_3) : t('card-one-description')} />
-                    <Card imageSrc={content?.image_4 ? `${IMAGE_URL}/${content.image_4}` : Service2} title={content ? content.title_4 : t('card-two-title')} description={content && typeof content?.content_3 === 'string' ? ReactHtmlParser(content.content_3) : t('card-two-description')} />
-                    <Card imageSrc={content?.image_5 ? `${IMAGE_URL}/${content.image_5}` : Service3} title={content ? content.title_4 : t('card-three-title')} description={content && typeof content?.content_3 === 'string' ? ReactHtmlParser(content.content_3) : t('card-three-description')} />
+                    <Card imageSrc={content?.image_4 ? `${IMAGE_URL}/${content.image_4}` : Service2} title={content ? content.title_4 : t('card-two-title')} description={content && typeof content?.content_4 === 'string' ? ReactHtmlParser(content.content_4) : t('card-two-description')} />
+                    <Card imageSrc={content?.image_5 ? `${IMAGE_URL}/${content.image_5}` : Service3} title={content ? content.title_5 : t('card-three-title')} description={content && typeof content?.content_5 === 'string' ? ReactHtmlParser(content.content_5) : t('card-three-description')} />
                 </div>
             </div>
 
