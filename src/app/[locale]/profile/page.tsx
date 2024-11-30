@@ -41,7 +41,7 @@ const MarketCard = ({ imageSrc, title, description }: { imageSrc: any, title: an
                 />
             </div>
             <div className="w-full lg:w-auto flex flex-col justify-center leading-normal">
-                <h3 className='text-c-primary font-semibold mb-2 text-lg lg:text-xl'>
+                <h3 className='text-c-primary font-semibold mb-2 text-center lg:text-start text-lg lg:text-xl'>
                     {title}
                 </h3>
                 <ContentDescription>
@@ -66,8 +66,8 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
         <div className="mt-[98px] sm:mt-[110px] md:mt-[115px] lg:mt-[100px] xl:mt-[110px] 2xl:mt-[120px]">
             <BannerHeader locale={locale} imageSrc={ProfileBanner} text={content?.title_1 || t('profile')} />
             {/* Client And Future Plan */}
-            <div className="container mx-auto flex flex-col-reverse lg:flex-row items-center my-10 lg:gap-[40px] xl:gap-[80px] 2xl:gap-[104px] lg:my-[50px] 2xl:my-[150px]">
-                <div className="w-full lg:w-1/2 ">
+            <div className="container mx-auto flex flex-col-reverse lg:flex-row items-center my-10 gap-[40px] xl:gap-[80px] 2xl:gap-[104px] lg:my-[50px] 2xl:my-[150px]">
+                <div className="w-full lg:w-1/2">
                     <Image
                         src={content?.image_2 ? `${IMAGE_URL}/${content.image_2}` : Profile1}
                         unoptimized
@@ -77,7 +77,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
                         className="object-cover w-full h-auto filter object-center rounded-lg"
                     />
                 </div>
-                <div className="w-full lg:w-1/2 xl:w-[633px] p-0 mb-8">
+                <div className="w-full text-center lg:text-start lg:w-1/2 xl:w-[633px] p-0">
                     <ContentHeader>{content?.title_2 || t('client-title')}</ContentHeader>
                     <ContentDescription>
                         {content && typeof content?.content_2 === 'string' ? ReactHtmlParser(content?.content_2) : (<>{t('client-des-1')}<br />{t('client-des-2')}</>)}
@@ -86,9 +86,9 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
             </div>
 
             {/* Our Target Market */}
-            <div className="object-cover w-full min-h-auto py-[10px] md:py-[50px] xl:py-[105px] filter bg-right-top transition duration-200" style={{ backgroundImage: `url('/images/profile/profile_bg.png')` }}>
-                <div className="container mx-auto flex flex-col justify-center items-center mb-10">
-                    <div className="text-center lg:w-2/3 xl:w-[1060px] mb-[2rem] xl:mb-[5rem] 2xl:mb-[100px]">
+            <div className="object-cover w-full min-h-auto py-10 md:py-[50px] xl:py-[105px] filter bg-right-top transition duration-200" style={{ backgroundImage: `url('/images/profile/profile_bg.png')` }}>
+                <div className="container mx-auto flex flex-col justify-center items-center">
+                    <div className="text-center lg:w-2/3 xl:w-[1060px] mb-16 xl:mb-[5rem] 2xl:mb-[100px]">
                         <ContentHeader>
                             {content?.title_3 || t('market-title')}
                         </ContentHeader>
@@ -96,7 +96,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
                             {content && typeof content?.content_3 === 'string' ? ReactHtmlParser(content?.content_3) : t('market-des')}
                         </ContentDescription>
                     </div>
-                    <div className='space-y-6 lg:space-y-12'>
+                    <div className='space-y-[10px] lg:space-y-12'>
                         <MarketCard
                             imageSrc={content?.image_4 ? `${IMAGE_URL}/${content.image_4}` : Thailand}
                             title={content?.title_4 || t('country-one-title')}
@@ -123,18 +123,21 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
                     alt=""
                     className="object-cover w-full h-auto filter object-center transition duration-200 hidden lg:block"
                 />
-                <div className="container mx-auto bg-c-primary lg:bg-transparent lg:absolute lg:top-0 lg:left-0 lg:right-0 lg:bottom-0 flex lg:items-center py-20 lg:py-0">
-                    <div className="max-w-full lg:max-w-[29rem] xl:max-w-[35rem] 2xl:max-w-[42rem]">
-                        <div className="text-slate-600">
-                            <ContentHeader className="text-c-white">
-                                {content?.title_7 || t('partner-title')}
-                            </ContentHeader>
-                            <ContentDescription className="text-c-white font-normal">
-                                {content && typeof content?.content_7 === 'string' ? ReactHtmlParser(content?.content_7) : (<>{t('partner-des-1')}<br />{t('partner-des-2')}</>)}
-                            </ContentDescription>
+                <div className='bg-[#91D184] lg:bg-transparent'>
+                    <div className="container mx-auto  lg:absolute lg:top-0 lg:left-0 lg:right-0 lg:bottom-0 flex lg:items-center py-10 lg:py-0">
+                        <div className="max-w-full lg:max-w-[29rem] xl:max-w-[35rem] 2xl:max-w-[42rem]">
+                            <div className="text-c-contrast text-center lg:text-start">
+                                <ContentHeader className="text-c-white">
+                                    {content?.title_7 || t('partner-title')}
+                                </ContentHeader>
+                                <ContentDescription className="text-c-white font-normal">
+                                    {content && typeof content?.content_7 === 'string' ? ReactHtmlParser(content?.content_7) : (<>{t('partner-des-1')}<br />{t('partner-des-2')}</>)}
+                                </ContentDescription>
+                            </div>
                         </div>
                     </div>
                 </div>
+
                 <Image
                     src={content?.image_m_1 ? `${IMAGE_URL}/${content.image_m_1}` : Mobile1}
                     // src={Mobile1}
@@ -148,59 +151,59 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
 
             {/* Our Deals */}
             <div className='bg-white flex flex-col justify-center items-center md:py-[50px] xl:py-[100px] relative'>
-                <div className='container mx-auto'>
-                    <h3 className="text-c-primary uppercase text-[30px] xs:text-[32px] md:text-[40px] lg:text-[28px] xl:text-[48px] font-semibold text-center mb-16 xl:mb-[14]">
+                <div className='container mx-auto py-10'>
+                    <ContentHeader className="uppercase font-semibold text-center mb-5 lg:mb-14">
                         {content?.title_8 || 'Our Deals'}
-                    </h3>
-                    <div className='w-full grid sm:grid-cols-5 grid-cols-12 gap-6 mb-0 sm:mb-[80px]'>
-                        <div className="col-span-6 sm:col-span-1">
+                    </ContentHeader>
+                    <div className='w-full flex flex-wrap lg:flex-nowrap items-center justify-center gap-y-[20px] gap-x-[30px] mb-0 lg:mb-[80px]'>
+                        <div>
                             <Image
                                 src={content?.image_8 ? `${IMAGE_URL}/${content.image_8}` : Logo1}
                                 unoptimized
                                 width={100}
                                 height={100}
                                 alt="logo1"
-                                className="object-cover w-[180px] sm:w-full h-auto filter object-center transition duration-200"
+                                className="object-cover w-[80px] lg:w-[260px] h-auto filter object-center transition duration-200"
                             />
                         </div>
-                        <div className="col-span-6 sm:col-span-1">
+                        <div>
                             <Image
                                 src={content?.image_9 ? `${IMAGE_URL}/${content.image_9}` : Logo2}
                                 unoptimized
                                 width={100}
                                 height={100}
                                 alt="logo2"
-                                className="object-cover  w-[180px] sm:w-full h-auto filter object-center transition duration-200"
+                                className="object-cover  w-[80px] lg:w-[260px] h-auto filter object-center transition duration-200"
                             />
                         </div>
-                        <div className="col-span-6 sm:col-span-1">
+                        <div>
                             <Image
                                 src={content?.image_10 ? `${IMAGE_URL}/${content.image_10}` : Logo3}
                                 unoptimized
                                 width={100}
                                 height={100}
                                 alt="logo3"
-                                className="object-cover w-[180px] sm:w-full h-auto filter object-center transition duration-200"
+                                className="object-cover w-[80px] lg:w-[260px] h-auto filter object-center transition duration-200"
                             />
                         </div>
-                        <div className="col-span-6 sm:col-span-1">
+                        <div>
                             <Image
                                 src={content?.image_11 ? `${IMAGE_URL}/${content.image_11}` : Logo4}
                                 unoptimized
                                 width={100}
                                 height={100}
                                 alt="logo4"
-                                className="object-cover w-[180px] sm:w-full h-auto filter object-center transition duration-200"
+                                className="object-cover w-[80px] lg:w-[260px] h-auto filter object-center transition duration-200"
                             />
                         </div>
-                        <div className="col-span-12 sm:col-span-1 mx-auto">
+                        <div>
                             <Image
                                 src={content?.image_12 ? `${IMAGE_URL}/${content.image_12}` : Logo5}
                                 unoptimized
                                 width={100}
                                 height={100}
                                 alt="logo5"
-                                className="object-cover w-[180px] sm:w-full h-auto filter object-center transition duration-200 px-2 sm:px-0"
+                                className="object-cover w-[80px] lg:w-[260px] h-auto filter object-center transition duration-200 px-2 sm:px-0"
                             />
                         </div>
                     </div>
@@ -214,7 +217,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
                     width={100}
                     height={100}
                     alt="fruit1"
-                    className="absolute bottom-[-13%] xl:bottom-[-14%] left-0 object-cover w-[250px] lg:w-[350px] xl:w-[450px] h-auto filter object-center transition duration-200 z-10 hidden sm:flex"
+                    className="absolute bottom-[-13%] xl:bottom-[-14%] left-0 object-cover w-[250px] lg:w-[350px] xl:w-[450px] h-auto filter object-center transition duration-200 z-10 hidden lg:flex"
                     style={{ zIndex: 20 }}
                 />
                 <Image
@@ -224,7 +227,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
                     width={100}
                     height={100}
                     alt="fruit2"
-                    className="absolute bottom-[-16%] xl:bottom-[-18%] right-0 object-cover w-[220px] lg:w-[320px] xl:w-[400px] h-auto filter object-center transition duration-200 z-10 hidden sm:flex"
+                    className="absolute bottom-[-16%] xl:bottom-[-18%] right-0 object-cover w-[220px] lg:w-[320px] xl:w-[400px] h-auto filter object-center transition duration-200 z-10 hidden lg:flex"
                     style={{ zIndex: 20 }}
                 />
             </div>
@@ -241,26 +244,21 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
                     className="object-cover w-full h-auto filter object-center transition duration-200 hidden lg:block"
                 />
 
-                <div className="container lg:absolute lg:top-0 lg:left-0 lg:right-0 lg:bottom-0 flex lg:justify-end lg:items-center mx-auto py-20">
-                    <Image
-                        src={Mobile5}
-                        unoptimized
-                        width={100}
-                        height={100}
-                        alt=""
-                        className="absolute top-0 left-0 object-cover w-full h-full sm:h-auto filter object-center transition duration-200 flex lg:hidden -z-10"
-                    />
-                    <div className="max-w-full lg:max-w-[45rem] xl:max-w-[50rem]">
-                        <div className="text-slate-600 lg:pl-[270px] xl:pl-[290px] 2xl:pl-[199px]">
-                            <ContentHeader className="font-semibold">
-                                {content?.title_9 || t('cold-title')}
-                            </ContentHeader>
-                            <ContentDescription className="font-normal">
-                                {content && typeof content?.content_9 === 'string' ? ReactHtmlParser(content?.content_9) : (<>{t('cold-des-1')}<br />{t('cold-des-2')}</>)}
-                            </ContentDescription>
+                <div className='bg-[#D9FFD1] lg:bg-transparent'>
+                    <div className="container mx-auto  lg:absolute lg:top-0 lg:left-0 lg:right-0 lg:bottom-0 flex lg:items-center py-10 lg:py-0">
+                        <div className="max-w-full lg:max-w-[29rem] xl:max-w-[35rem] 2xl:max-w-[42rem]">
+                            <div className="text-c-contrast text-center lg:text-start">
+                                <ContentHeader className="text-c-primary">
+                                    {content?.title_9 || t('cold-title')}
+                                </ContentHeader>
+                                <ContentDescription className="text-c-primary font-normal">
+                                    {content && typeof content?.content_9 === 'string' ? ReactHtmlParser(content?.content_9) : (<>{t('cold-des-1')}<br />{t('cold-des-2')}</>)}
+                                </ContentDescription>
+                            </div>
                         </div>
                     </div>
                 </div>
+
                 <div className="">
                     <Image
                         src={content?.image_m_2 ? `${IMAGE_URL}/${content.image_m_2}` : Mobile5}
@@ -285,7 +283,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
                     className="object-cover w-full h-auto filter object-center transition duration-200 hidden lg:block"
                 />
                 <div className='mx-auto'>
-                    <div className="container mx-auto lg:absolute lg:top-0 lg:left-0 lg:right-0 lg:bottom-0 flex lg:items-center py-20 lg:py-0">
+                    <div className="container mx-auto text-center lg:text-start lg:absolute lg:top-0 lg:left-0 lg:right-0 lg:bottom-0 flex lg:items-center py-10 lg:py-0">
                         <div className="max-w-full lg:max-w-[29rem] xl:max-w-[35rem] 2xl:max-w-[42rem]">
                             <div>
                                 <ContentHeader>
@@ -311,7 +309,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
             </div>
 
             {/* warehouse */}
-            <div className="bg-cover bg-center lg:relative 2xl:h-[830px]">
+            <div className="bg-cover bg-center lg:relative 2xl:h-[830px] mb-[110px] lg:mb-0">
                 <Image
                     src={content?.image_15 ? `${IMAGE_URL}/${content.image_15}` : Profile5}
                     unoptimized
@@ -321,7 +319,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
                     className="object-cover w-full h-auto filter object-center transition duration-200 hidden lg:block"
                 />
 
-                <div className="container mx-auto lg:absolute lg:top-0 lg:left-0 lg:right-0 lg:bottom-0 flex lg:justify-end lg:items-center">
+                <div className="container mx-auto text-center lg:text-start lg:absolute lg:top-0 lg:left-0 lg:right-0 lg:bottom-0 flex lg:justify-end lg:items-center py-10 lg:py-0">
                     <div className="max-w-full lg:max-w-[45rem] xl:max-w-[50rem]">
                         <div className="text-slate-600 lg:pl-[270px] xl:pl-[290px] 2xl:pl-[199px]">
                             <ContentHeader className="font-semibold">

@@ -361,7 +361,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                 <nav className="shadow-lg w-full flex lg:justify-between items-center transition" id="navbar">
                     {open ? <ChooseLang onClickParent={() => setOpen(false)} /> : ''}
                     <div className="container mx-auto flex lg:justify-between items-center py-[0.8rem]">
-                        <ul className="font-bold hidden md:flex nav items-center" id="nav-item">
+                        <ul className="xl:flex-1 font-bold hidden md:flex nav items-center" id="nav-item">
                             <li
                                 className={`hover:text-c-primary font-bold cursor-pointer ${lang == 'en' ? 'px-3' : 'px-2'} py-3 text-[0.75vw]  ${pathname === `/${lang}` ? 'text-c-secondary' : ''
                                     } `}
