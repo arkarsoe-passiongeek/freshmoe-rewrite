@@ -61,9 +61,6 @@ const ChooseUsContentMobile = ({ title, des, imageSrc, alt }: { title: any, des:
     )
 }
 
-
-
-
 interface SliderProps {
     data: Slide[];
     sliderData: {
@@ -125,7 +122,7 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
                     >
                         {data?.map(({ id, image, tagline, title, buttons }) => (
                             <SwiperSlide key={id} virtualIndex={id} className="">
-                                <div className="w-full  relative">
+                                <div className="w-full relative">
                                     <Image
                                         unoptimized
                                         src={Slider1 || image}
@@ -137,8 +134,8 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
                                     />
                                 </div>
                                 <div className="w-full h-full absolute left-0 top-0 bg-green-100 opacity-10"></div>
-                                <div className="container absolute right-0 w-[60%] lg:w-[40%] 2xl:w-[661px] top-[5px] lg:top-[20%] 2xl:top-1/2 2xl:-translate-y-1/2">
-                                    <div className="">
+                                <div className="container left-0 right-0 mx-auto absolute flex justify-end top-[5px] lg:top-[20%] 2xl:top-1/2 2xl:-translate-y-1/2">
+                                    <div className="w-[60%] lg:w-[40%] 2xl:w-[661px]">
                                         <div className="2xl:space-y-[16px] lg:mb-[32px] 2xl:mb-[48px]">
                                             <ContentHeader className="text-base sm:text-base xl:text-5xl">
                                                 {title || 'Delivering In Four Hours'}
@@ -164,7 +161,7 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
                 />
                 <div className='max-w-[1790px] px-[2rem] md:px-[4rem] lg:px-[5rem] w-full h-300 absolute top-[24%] left-1/2 transform -translate-x-1/2'>
                     <div className="tile flex flex-col justify-center items-center lg:mb-[1.5rem] 2xl:mb-[61px]">
-                        <h1 className='text-c-white text-[50px] xl:text-[50px] 2xl:text-4xl 2xl:font-bold mb-5 2xl:mb-[10px]'>{sliderData.chooseTitle}</h1>
+                        <h1 className='text-c-white text-[50px] xl:text-[50px] lg:text-4xl lg:font-bold mb-5 lg:mb-[10px]'>{sliderData.chooseTitle}</h1>
                         <Image src={UnderlineBar} alt="underline" className='underline w-[210px] h-[30px]' priority />
                     </div>
                     <div className="grid grid-cols-12 items-center justify-center lg:mb-[1rem] xl:mb-[4rem] 2xl:mb-[70px]">

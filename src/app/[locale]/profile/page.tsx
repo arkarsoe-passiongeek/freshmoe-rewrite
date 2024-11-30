@@ -66,7 +66,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
         <div className="mt-[98px] sm:mt-[110px] md:mt-[115px] lg:mt-[100px] xl:mt-[110px] 2xl:mt-[120px]">
             <BannerHeader locale={locale} imageSrc={ProfileBanner} text={content?.title_1 || t('profile')} />
             {/* Client And Future Plan */}
-            <div className="container flex flex-col-reverse lg:flex-row items-center mx-auto my-10 lg:gap-[40px] xl:gap-[80px] 2xl:gap-[104px] lg:my-[50px] 2xl:my-[150px]">
+            <div className="container mx-auto flex flex-col-reverse lg:flex-row items-center my-10 lg:gap-[40px] xl:gap-[80px] 2xl:gap-[104px] lg:my-[50px] 2xl:my-[150px]">
                 <div className="w-full lg:w-1/2 ">
                     <Image
                         src={content?.image_2 ? `${IMAGE_URL}/${content.image_2}` : Profile1}
@@ -87,7 +87,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
 
             {/* Our Target Market */}
             <div className="object-cover w-full min-h-auto py-[10px] md:py-[50px] xl:py-[105px] filter bg-right-top transition duration-200" style={{ backgroundImage: `url('/images/profile/profile_bg.png')` }}>
-                <div className="container flex flex-col justify-center items-center mx-auto  mb-10">
+                <div className="container mx-auto flex flex-col justify-center items-center mb-10">
                     <div className="text-center lg:w-2/3 xl:w-[1060px] mb-[2rem] xl:mb-[5rem] 2xl:mb-[100px]">
                         <ContentHeader>
                             {content?.title_3 || t('market-title')}
@@ -123,7 +123,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
                     alt=""
                     className="object-cover w-full h-auto filter object-center transition duration-200 hidden lg:block"
                 />
-                <div className="container bg-c-primary lg:bg-transparent lg:absolute lg:top-0 lg:left-0 lg:right-0 lg:bottom-0 flex lg:items-center mx-auto py-20 lg:py-0">
+                <div className="container mx-auto bg-c-primary lg:bg-transparent lg:absolute lg:top-0 lg:left-0 lg:right-0 lg:bottom-0 flex lg:items-center py-20 lg:py-0">
                     <div className="max-w-full lg:max-w-[29rem] xl:max-w-[35rem] 2xl:max-w-[42rem]">
                         <div className="text-slate-600">
                             <ContentHeader className="text-c-white">
@@ -147,8 +147,8 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
             </div>
 
             {/* Our Deals */}
-            <div className='bg-white flex flex-col justify-center items-center py-[50px] md:p-[50px] xl:p-[100px] relative'>
-                <div className='max-w-[1790px] px-[2rem] mx-auto'>
+            <div className='bg-white flex flex-col justify-center items-center md:py-[50px] xl:py-[100px] relative'>
+                <div className='container mx-auto'>
                     <h3 className="text-c-primary uppercase text-[30px] xs:text-[32px] md:text-[40px] lg:text-[28px] xl:text-[48px] font-semibold text-center mb-16 xl:mb-[14]">
                         {content?.title_8 || 'Our Deals'}
                     </h3>

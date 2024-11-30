@@ -40,21 +40,22 @@ interface AboutProps {
 
     };
 }
+
+// style={{ backgroundImage: `url(${aboutData.aboutFourBackground || About1.src})` }}
 const About: React.FC<AboutProps> = ({ aboutData }) => {
     const pathname = usePathname()
     const lang = pathname.split('/')[1]
     return (
         <div className="">
-            <div className="lg:h-[600px] 2xl:h-[830px] lg:mt-[-74px] xl:mt-[-100px] relative">
+            <div className="mx-auto lg:h-[600px] 2xl:h-[830px] lg:mt-[-74px] xl:mt-[-100px] relative" >
                 <Image
                     src={aboutData.aboutOneBackground || About1}
-                    width={100}
-                    height={100}
+                    fill
                     unoptimized
                     alt="bg"
-                    className="object-cover w-full h-full filter object-center hidden lg:block"
+                    className="absolute object-cover w-full left-0 right-0 h-full filter object-center hidden lg:block"
                 />
-                <div className="container mx-auto mt-[72px] mb-[60px] lg:mb-0 lg:mt-0 lg:absolute lg:top-1/2 lg:-translate-y-1/2 2xl:px-[190px]">
+                <div className="container mx-auto left-0 right-0 mt-[72px] mb-[60px] lg:mb-0 lg:mt-0 lg:absolute lg:top-1/2 lg:-translate-y-1/2 2xl:px-[190px]">
                     <div className="max-w-full lg:max-w-[29rem] xl:max-w-[35rem] 2xl:max-w-[42rem]">
                         <div className="text-c-contrast">
                             <ContentHeader className="text-lg sm:text-lg font-semibold">
@@ -118,8 +119,8 @@ const About: React.FC<AboutProps> = ({ aboutData }) => {
                     alt="bg"
                     className="object-cover filter object-center transition duration-200 hidden lg:block"
                 />
-                <div className="bg-c-footer-bg sm:bg-transparent lg:absolute lg:top-0 lg:left-0 lg:right-0 lg:bottom-0 flex lg:items-center mx-auto">
-                    <div className="container mx-auto py-[60px] lg:mx-0 lg:w-1/2 2xl:px-[190px]">
+                <div className="container mx-auto left-0 right-0 bg-c-footer-bg sm:bg-transparent lg:absolute lg:top-0 lg:left-0 lg:right-0 lg:bottom-0 flex lg:items-center">
+                    <div className="pb-[60px] lg:mx-0 lg:w-1/2 2xl:px-[190px]">
                         <div className="text-gray-600">
                             <ContentHeader className="text-lg sm:text-lg font-semibold">
                                 {aboutData.aboutThreeTitle}

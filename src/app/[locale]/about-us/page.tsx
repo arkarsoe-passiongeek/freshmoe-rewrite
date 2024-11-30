@@ -30,7 +30,7 @@ export default async function AboutUs({ params }: { params: Promise<{ locale: st
         <div className="bg-white h-auto relative pb-[7rem] md:pb-[9rem] mt-[104px] sm:mt-[110px] md:mt-[115px] lg:mt-[100px] xl:mt-[110px] 2xl:mt-[120px]">
             <BannerHeader locale={locale} imageSrc={AboutUsBanner} text={content?.title_1 || t('about')} />
             <div className="flex flex-col gap-16 lg:gap-24 py-[3.5rem]">
-                <div className="flex flex-col lg:flex-row gap-16 2xl:gap-[140px] items-center px-[2rem] md:px-[4rem] lg:px-[5rem] max-w-[110rem] mx-auto">
+                <div className="container mx-auto flex flex-col lg:flex-row gap-16 2xl:gap-[140px] items-center">
                     <div className="w-full lg:w-1/2 2xl:max-w-[1000px] p-0 text-c-contrast">
                         <ContentHeader>
                             {content ? (content.title_2) : t('title')}
@@ -55,7 +55,8 @@ export default async function AboutUs({ params }: { params: Promise<{ locale: st
                         <Image
                             src={content?.image_3 ? `${IMAGE_URL}/${content.image_3}` : locale == INTL_PREFIX_BY_COUNTRY.myanmar ? missionMM : AboutUs2}
                             alt=""
-                            fill
+                            width={800}
+                            height={500}
                             className="object-cover object-center rounded-lg"
                         />
                     </div>
@@ -63,7 +64,8 @@ export default async function AboutUs({ params }: { params: Promise<{ locale: st
                         <Image
                             src={content?.image_4 ? `${IMAGE_URL}/${content.image_4}` : AboutUs3}
                             alt=""
-                            fill
+                            width={800}
+                            height={500}
                             className="object-cover object-center rounded-lg"
                         />
                     </div>
@@ -73,7 +75,9 @@ export default async function AboutUs({ params }: { params: Promise<{ locale: st
                         <Image
                             src={content?.image_5 ? `${IMAGE_URL}/${content.image_5}` : AboutUs5}
                             alt=""
-                            fill
+                            priority
+                            width={800}
+                            height={500}
                             className="object-cover object-center rounded-lg"
                         />
                     </div>
@@ -81,7 +85,8 @@ export default async function AboutUs({ params }: { params: Promise<{ locale: st
                         <Image
                             src={content?.image_6 ? `${IMAGE_URL}/${content.image_6}` : locale == INTL_PREFIX_BY_COUNTRY.myanmar ? visionMM : AboutUs4}
                             alt=""
-                            fill
+                            width={800}
+                            height={500}
                             className="object-cover object-center rounded-lg"
                         />
                     </div>

@@ -348,7 +348,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
     const handleConfirmChangeLanguage = () => {
         let newPrefix: any = `${selectedLanguage}_${selectedCountry.value}`
         console.log(pathname)
-        // console.log(newPath)
+        console.log(newPrefix)
         router.replace(pathname, { locale: newPrefix })
     }
 
@@ -361,7 +361,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                 <nav className="shadow-lg w-full flex lg:justify-between items-center transition" id="navbar">
                     {open ? <ChooseLang onClickParent={() => setOpen(false)} /> : ''}
                     <div className="container mx-auto flex lg:justify-between items-center py-[0.8rem]">
-                        <ul className="flex-1 poppins font-bold hidden md:flex nav  items-center" id="nav-item">
+                        <ul className="flex-1 font-bold hidden md:flex nav items-center" id="nav-item">
                             <li
                                 className={`hover:text-c-primary font-bold cursor-pointer ${lang == 'en' ? 'px-3' : 'px-2'} py-3 text-[0.75vw]  ${pathname === `/${lang}` ? 'text-c-secondary' : ''
                                     } `}
@@ -447,7 +447,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                                         {selectedCountry.value == 'global' ? (
                                             <CiGlobe
                                                 className={`w-[15px] h-[15px] md:w-[30px] md:h-[30px] lg:w-[24px] lg:h-[24px] ${currentCountry == 'global' ?
-                                                    'text-c-contrast' :
+                                                    'text-c-black' :
                                                     ''
                                                     }`}
                                             />
@@ -497,7 +497,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                                 return (
                                     <div key={each.name} className="ml-4 mt-1">
                                         <Link href={`${each.url}`} prefetch
-                                            className={`text-sm lg:text-base flex flex-start font-medium hover:text-c-secondary text-poppins 
+                                            className={`text-[14px] lg:text-base flex flex-start font-medium hover:text-c-secondary text-poppins 
                   ${isNavActive(each.url) ? 'text-c-secondary' : ''}
                   `}
                                             onClick={closeAllMenu}
@@ -522,15 +522,15 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                     className="z-30 fixed h-[100vh] w-full lg:w-[600px] bg-[#fff] right-0 flex flex-col transition-all duration-500"
                     id="upper-menu"
                 >
-                    <div className="container pt-[150px] mx-auto flex flex-col gap-6 lg:gap-0 lg:flex-row w-full items-center py-[0.8rem] max-w-[1790px] px-[2rem] mt-10">
-                        <div className="pl-[1rem] w-full lg:w-[50%]">
+                    <div className="container pt-[100px] lg:pt-[150px] mx-auto flex flex-col gap-6 lg:flex-row w-full items-center py-[0.8rem] max-w-[1790px] px-[2rem] mt-10">
+                        <div className="w-full lg:w-[50%]">
                             <label htmlFor="country" className="block lg:text-lg font-medium text-c-black mb-2">
                                 Select Your Country
                             </label>
                             <CCountrySelect defaultValue='global' onValueChange={handleChangeCountry} continents={countryOptions} value={selectedCountry?.value ?? 'global'} placeholder="Select Your Country" />
                         </div>
 
-                        <div className="pl-[1rem] w-full lg:w-[50%]">
+                        <div className="w-full lg:w-[50%]">
                             <label htmlFor="country" className="block lg:text-lg font-medium text-c-black mb-2">
                                 Choose Language
                             </label>

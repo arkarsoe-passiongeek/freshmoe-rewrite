@@ -45,7 +45,7 @@ const Contact: React.FC<ContactProps> = ({ contactData, locale }) => {
                 alt=""
                 className="absolute top-[-10%] w-full h-[110%] lg:hidden"
             />
-            <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between px-[2rem] md:px-[4rem] lg:px-[5rem] py-10 max-w-[110rem] mx-auto h-auto">
+            <div className="container mx-auto relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between pb-10 lg:py-10 h-auto">
                 <div className="flex flex-col">
                     <a href="#" className="">
                         <Image
@@ -118,7 +118,7 @@ const Contact: React.FC<ContactProps> = ({ contactData, locale }) => {
                     </div>
                 </div>
 
-                <div className="flex flex-col gap-5 items-right pt-11  lg:pt-0">
+                <div className="flex flex-col gap-5 items-right pt-11 lg:pt-0">
                     <a href="#" className="">
                         <h2 className="text-c-primary font-semibold text-lg 2xl:text-2xl">
                             {contactData.contactForm}

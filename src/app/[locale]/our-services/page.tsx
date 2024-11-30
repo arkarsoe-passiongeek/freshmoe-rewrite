@@ -51,7 +51,7 @@ export default async function OurService({ params }: { params: Promise<{ locale:
     return (
         <div className="bg-white h-auto relative mt-[98px] sm:mt-[110px] md:mt-[115px] lg:mt-[100px] xl:mt-[110px]">
             <BannerHeader locale={locale} imageSrc={OurServicesBanner} text={content?.title_1 || t('service')} />
-            <div className="flex flex-col gap-10 lg:gap-16 xl:gap-[120px] max-w-[110rem] px-[2rem] md:px-[4rem] lg:px-[5rem] mx-auto py-[3.5rem] xl:pb-[150px]">
+            <div className="container mx-auto flex flex-col gap-10 lg:gap-16 xl:gap-[120px] py-[3.5rem] xl:pb-[150px]">
                 <div className="text-center text-gray-600 xl:max-w-[1000px] mx-auto">
                     <ContentHeader>
                         {content ? content.title_2 : t('title')}
@@ -72,7 +72,7 @@ export default async function OurService({ params }: { params: Promise<{ locale:
                 className="bg-cover bg-center"
                 style={{ backgroundImage: "url('/images/our-services/about3-6.png')" }}
             >
-                <div className="flex lg:flex-row flex-col items-center gap-[5rem] lg:gap-0 px-[2rem] md:px-[4rem] lg:px-[5rem] mx-auto pt-0 lg:pt-10  h-auto max-w-[110rem] relative">
+                <div className="container mx-auto flex lg:flex-row flex-col items-center gap-[5rem] lg:gap-0 pt-0 lg:pt-10 h-auto relative">
                     <div className="lg:w-2/4 xl:w-[630px] w-full mt-[8rem] md:mt-[10rem] lg:mt-0">
                         <div className="p-2">
                             <div className="text-slate-600 text-left space-y-8 xl:space-y-[60px]">
@@ -120,7 +120,7 @@ export default async function OurService({ params }: { params: Promise<{ locale:
             </div>
 
             {/* Retail Shop */}
-            <div className="flex 2xl:py-[100px] flex-col-reverse lg:flex-row items-center max-w-[1790px] px-[2rem] md:px-[4rem] lg:px-[5rem] mx-auto my-10 xl:h-[830px] xl:gap-[103px]">
+            <div className="container mx-auto flex 2xl:py-[100px] flex-col-reverse lg:flex-row items-center my-10 xl:h-[830px] xl:gap-[103px]">
                 <div className="w-full lg:w-1/2">
                     <Image
                         src={content?.image_7 ? `${IMAGE_URL}/${content.image_7}` : RetailShop}
