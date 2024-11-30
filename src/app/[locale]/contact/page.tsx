@@ -10,7 +10,7 @@ export default async function Contact({ params }: { params: Promise<{ locale: st
     const { locale } = await params;
 
     const formData = new FormData()
-    formData.append('country', locale);
+    formData.append('country', locale.split('_')[0]);
 
     const { data: content }: any = await fetchContactContent(formData)
 

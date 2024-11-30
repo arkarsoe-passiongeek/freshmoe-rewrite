@@ -58,7 +58,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
     const { locale } = await params;
 
     const formData = new FormData()
-    formData.append('country', locale);
+    formData.append('country', locale.split('_')[0]);
 
     const { data: content }: any = await fetchProfileContent(formData)
 

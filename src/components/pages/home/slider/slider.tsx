@@ -122,29 +122,29 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
                     >
                         {data?.map(({ id, image, tagline, title, buttons }) => (
                             <SwiperSlide key={id} virtualIndex={id} className="">
-                                <div className="w-full relative">
+                                <div className="min-h-[280px] relative">
                                     <Image
                                         unoptimized
                                         src={Slider1 || image}
                                         alt={title}
-                                        className="w-full min-h-[250px]"
+                                        className="w-full min-h-[280px]"
                                         width={100}
                                         height={100}
                                         priority
                                     />
-                                </div>
-                                <div className="w-full h-full absolute left-0 top-0 bg-green-100 opacity-10"></div>
-                                <div className="container left-0 right-0 mx-auto absolute flex justify-end top-[5px] lg:top-[20%] 2xl:top-1/2 2xl:-translate-y-1/2">
-                                    <div className="w-[60%] lg:w-[40%] 2xl:w-[661px]">
-                                        <div className="2xl:space-y-[16px] lg:mb-[32px] 2xl:mb-[48px]">
-                                            <ContentHeader className="text-base sm:text-base xl:text-5xl">
-                                                {title || 'Delivering In Four Hours'}
-                                            </ContentHeader>
-                                            {tagline && (
-                                                <ContentDescription className="text-xss sm:text-sm 2xl:text-2xl text-c-contrast">{tagline}</ContentDescription>
-                                            )}
+                                    <div className="w-full h-full absolute left-0 top-0 bg-green-100 opacity-10"></div>
+                                    <div className="container left-0 right-0 mx-auto absolute flex justify-end top-[10%] lg:top-[20%] 2xl:top-1/2 2xl:-translate-y-1/2">
+                                        <div className="w-full text-center lg:text-start lg:w-[40%] 2xl:w-[661px] h-full">
+                                            <div className="mb-[10px] lg:mb-[32px] 2xl:space-y-[16px] 2xl:mb-[48px]">
+                                                <ContentHeader className="text-base sm:text-base xl:text-5xl">
+                                                    {title || 'Delivering In Four Hours'}
+                                                </ContentHeader>
+                                                {tagline && (
+                                                    <ContentDescription className="text-xss sm:text-sm 2xl:text-2xl text-c-contrast">{tagline}</ContentDescription>
+                                                )}
+                                            </div>
+                                            <ContentButton>More Info</ContentButton>
                                         </div>
-                                        <ContentButton>More Info</ContentButton>
                                     </div>
                                 </div>
                             </SwiperSlide>
@@ -198,14 +198,14 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
             </div>
 
             {/* mobile */}
-            <div className="z-20 w-screen mt-[-75px] min-h-[1800px] relative block lg:hidden" >
+            <div className="z-20 w-screen mt-[-75px] min-h-[1900px] relative block lg:hidden" >
                 <Image
                     src={GreenMobile3}
                     alt="Green Background"
                     priority
                     className="z-0 h-full w-full absolute top-0"
                 />
-                <div className="py-28 absolute top-0 w-full">
+                <div className="pt-28 absolute top-0 w-full">
                     <div className="flex flex-col justify-center items-center">
                         <div className="flex flex-col justify-center items-center mb-[20px]">
                             <h1 className='text-c-white text-base font-bold mb-[10px]'>{sliderData.chooseTitle}</h1>

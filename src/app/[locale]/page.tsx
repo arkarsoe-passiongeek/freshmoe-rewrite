@@ -25,7 +25,7 @@ const Home = async ({ params }: { params: Promise<{ locale: string }> }) => {
     const { locale } = await params
 
     const formData = new FormData()
-    formData.append('country', locale);
+    formData.append('country', locale.split('_')[0]);
 
     const { data: content }: any = await fetchHomeContent(formData)
 
@@ -118,7 +118,6 @@ const Home = async ({ params }: { params: Promise<{ locale: string }> }) => {
         aboutMobile2: content?.image_m_2 ? `${IMAGE_URL}/${content.image_m_2}` : "",
         aboutMobile3: content?.image_m_3 ? `${IMAGE_URL}/${content.image_m_3}` : "",
     };
-
 
     // Enable static rendering
     setRequestLocale(locale);

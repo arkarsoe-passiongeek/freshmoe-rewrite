@@ -361,7 +361,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                 <nav className="shadow-lg w-full flex lg:justify-between items-center transition" id="navbar">
                     {open ? <ChooseLang onClickParent={() => setOpen(false)} /> : ''}
                     <div className="container mx-auto flex lg:justify-between items-center py-[0.8rem]">
-                        <ul className="flex-1 font-bold hidden md:flex nav items-center" id="nav-item">
+                        <ul className="font-bold hidden md:flex nav items-center" id="nav-item">
                             <li
                                 className={`hover:text-c-primary font-bold cursor-pointer ${lang == 'en' ? 'px-3' : 'px-2'} py-3 text-[0.75vw]  ${pathname === `/${lang}` ? 'text-c-secondary' : ''
                                     } `}
@@ -443,30 +443,32 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                                 onClick={handleUpperMenuToggle}
                             >
                                 <span className="flex items-center space-x-2">
-                                    <div>
-                                        {selectedCountry.value == 'global' ? (
-                                            <CiGlobe
-                                                className={`w-[15px] h-[15px] md:w-[30px] md:h-[30px] lg:w-[24px] lg:h-[24px] ${currentCountry == 'global' ?
-                                                    'text-c-black' :
-                                                    ''
-                                                    }`}
-                                            />
-                                        ) : (
-                                            <Flag code={selectedCountry?.flag} className="w-[25px] md:h-[30px] lg:w-[40px] lg:h-[40px] globe text-c-contrast" />
-                                        )}
+                                    <div className='flex items-center space-x-2'>
+                                        <div>
+                                            {selectedCountry.value == 'global' ? (
+                                                <CiGlobe
+                                                    className={`w-[15px] h-[15px] md:w-[30px] md:h-[30px] lg:w-[24px] lg:h-[24px] ${currentCountry == 'global' ?
+                                                        'text-c-black' :
+                                                        ''
+                                                        }`}
+                                                />
+                                            ) : (
+                                                <Flag code={selectedCountry?.flag} className="w-[25px] md:h-[30px] lg:w-[40px] lg:h-[40px]" />
+                                            )}
+                                        </div>
+                                        <span className={`lg:text-base font-normal max-w-[60px] md:max-w-none text-ellipsis overflow-hidden text-nowrap`}>
+                                            {selectedCountry?.label}
+                                        </span>
                                     </div>
-                                    <span className={`lg:text-base font-normal hidden lg:block`}>
-                                        {selectedCountry?.label}
-                                    </span>
                                     <span className={`${(currentCountry == 'mm') ?
                                         'xl:pl-[8px] lg:pl-[25px]' :
                                         (currentCountry == 'th') ?
                                             'lg:pl-[10px] xl:pl-[15px]' :
                                             'p-0'} 
-                             hidden lg:block`}>|</span>
-                                    <PiTranslate className="lg:w-[24px] lg:h-[24px] h-auto rounded-3xl globe text-c-contrast hidden lg:block" />
+                            `}>|</span>
+                                    <PiTranslate className="lg:w-[24px] lg:h-[24px] h-auto rounded-3xl globe text-c-black" />
                                     <span className={`
-                            lg:text-base`}>
+                            lg:text-base max-w-[60px] md:max-w-none text-ellipsis overflow-hidden text-nowrap`}>
                                         {getLanguageName(`${selectedLanguage}`)}
                                     </span>
                                     <div>
@@ -538,9 +540,9 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                         </div>
                     </div>
 
-                    <div className="absolute bottom-0 w-full pl-[16px] md:pl-0 py-4 flex justify-center items-center">
+                    <div className="absolute bottom-0 w-full py-4 flex justify-center items-center">
                         <button
-                            className=" bg-[#5BBA47] text-white text-sm py-[0.8rem] px-8 md:px-16 lg:px-36 rounded-[10px] w-[85%] md:w-auto flex justify-center items-center hover:bg-c-primary focus:bg-c-primary mb-6"
+                            className=" bg-c-primary text-white text-sm py-[0.8rem] rounded-[10px] w-[85%] lg:w-[500px] flex justify-center items-center hover:bg-c-primary focus:bg-c-primary mb-6"
                             onClick={handleConfirmChangeLanguage}
                         >
                             Confirm
