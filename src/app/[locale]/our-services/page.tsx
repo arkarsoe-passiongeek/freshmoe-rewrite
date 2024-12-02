@@ -72,11 +72,11 @@ export default async function OurService({ params }: { params: Promise<{ locale:
                 className="bg-cover bg-center"
                 style={{ backgroundImage: "url('/images/our-services/about3-6.png')" }}
             >
-                <div className="container mx-auto flex lg:flex-row flex-col items-center gap-[5rem] lg:gap-0 pt-0 lg:pt-10 h-auto relative">
-                    <div className="lg:w-2/4 xl:w-[630px] w-full mt-[8rem] md:mt-[10rem] lg:mt-0">
+                <div className="container mx-auto flex lg:flex-row flex-col items-center gap-14 py-10 lg:gap-[100px] 2xl:gap-[150px] h-auto relative">
+                    <div className="lg:w-2/4 xl:w-[630px] w-full">
                         <div className="p-2">
-                            <div className="text-slate-600 text-left space-y-8 xl:space-y-[60px]">
-                                <div>
+                            <div className="text-c-contrast text-center lg:text-start">
+                                <div className='space-y-5'>
                                     <ContentHeader>
                                         {content?.title_6 || t('about-four-title')}
                                     </ContentHeader>
@@ -84,7 +84,7 @@ export default async function OurService({ params }: { params: Promise<{ locale:
                                         {content && typeof content?.content_6 === 'string' ? ReactHtmlParser(content.content_6) : (<>{t('about-four-description-1')}<br />{t('about-four-description-2')}</>)}
                                     </ContentDescription>
                                 </div>
-                                <div className="flex justify-center lg:justify-start gap-7 md:gap-3 mt-5 ">
+                                <div className="flex justify-center lg:justify-start gap-6 md:gap-3 mt-5 ">
                                     <div className="">
                                         <Image
                                             src={Android}
@@ -103,10 +103,11 @@ export default async function OurService({ params }: { params: Promise<{ locale:
                             </div>
                         </div>
                     </div>
-                    <div className="w-full lg:w-2/4 xl:w-3/5 lg:block  lg:pt-[5rem] xl:pt-[6rem] lg:pl-[100px] xl:pl-[175px]">
+                    <div className="w-full lg:w-2/4 xl:w-3/5 lg:block">
                         <div className="h-full overflow-hidden flex justify-center lg:justify-end">
                             <Image
-                                src={content?.image_6 ? `${IMAGE_URL}/${content.image_6}` : AAAbout3}
+                                // src={content?.image_6 ? `${IMAGE_URL}/${content.image_6}` : AAAbout3}
+                                src={AAAbout3}
                                 unoptimized
                                 width={100}
                                 height={100}
@@ -120,7 +121,7 @@ export default async function OurService({ params }: { params: Promise<{ locale:
             </div>
 
             {/* Retail Shop */}
-            <div className="container mx-auto flex 2xl:py-[100px] flex-col-reverse lg:flex-row items-center my-10 xl:h-[830px] xl:gap-[103px]">
+            <div className="container mx-auto flex 2xl:py-[100px] flex-col-reverse lg:flex-row items-center mt-10 mb-28 lg:mb-10 xl:h-[830px] gap-10 lg:gap-[100px]">
                 <div className="w-full lg:w-1/2">
                     <Image
                         src={content?.image_7 ? `${IMAGE_URL}/${content.image_7}` : RetailShop}
@@ -131,7 +132,7 @@ export default async function OurService({ params }: { params: Promise<{ locale:
                         className="object-cover w-full h-auto filter object-center rounded-lg"
                     />
                 </div>
-                <div className="w-full lg:w-1/2 p-0 md:py-[3rem] lg:pl-[3rem] text-justify mb-8">
+                <div className="w-full lg:w-1/2 space-y-5 text-center lg:text-justify">
                     <ContentHeader>
                         {content?.title_7 || t('retail-title')}
                     </ContentHeader>
