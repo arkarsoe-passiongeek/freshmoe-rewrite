@@ -155,7 +155,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
                     <ContentHeader className="uppercase font-semibold text-center mb-5 lg:mb-14">
                         {content?.title_8 || 'Our Deals'}
                     </ContentHeader>
-                    <div className='w-full flex flex-wrap lg:flex-nowrap items-center justify-center gap-y-[20px] gap-x-[30px] mb-0 lg:mb-[80px]'>
+                    <div className='w-full flex flex-wrap lg:flex-nowrap items-center justify-center gap-y-[20px] gap-x-[50px] mb-0 lg:mb-[80px]'>
                         <div>
                             <Image
                                 src={content?.image_8 ? `${IMAGE_URL}/${content.image_8}` : Logo1}
@@ -186,25 +186,27 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
                                 className="object-cover w-[80px] lg:w-[260px] h-auto filter object-center transition duration-200"
                             />
                         </div>
-                        <div>
-                            <Image
-                                src={content?.image_11 ? `${IMAGE_URL}/${content.image_11}` : Logo4}
-                                unoptimized
-                                width={100}
-                                height={100}
-                                alt="logo4"
-                                className="object-cover w-[80px] lg:w-[260px] h-auto filter object-center transition duration-200"
-                            />
-                        </div>
-                        <div>
-                            <Image
-                                src={content?.image_12 ? `${IMAGE_URL}/${content.image_12}` : Logo5}
-                                unoptimized
-                                width={100}
-                                height={100}
-                                alt="logo5"
-                                className="object-cover w-[80px] lg:w-[260px] h-auto filter object-center transition duration-200 px-2 sm:px-0"
-                            />
+                        <div className='flex gap-[50px] justify-center'>
+                            <div>
+                                <Image
+                                    src={content?.image_11 ? `${IMAGE_URL}/${content.image_11}` : Logo4}
+                                    unoptimized
+                                    width={100}
+                                    height={100}
+                                    alt="logo4"
+                                    className="object-cover w-[80px] lg:w-[260px] h-auto filter object-center transition duration-200"
+                                />
+                            </div>
+                            <div>
+                                <Image
+                                    src={content?.image_12 ? `${IMAGE_URL}/${content.image_12}` : Logo5}
+                                    unoptimized
+                                    width={100}
+                                    height={100}
+                                    alt="logo5"
+                                    className="object-cover w-[80px] lg:w-[260px] h-auto filter object-center transition duration-200 px-2 sm:px-0"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -246,7 +248,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
 
                 <div className='bg-[#D9FFD1] lg:bg-transparent'>
                     <div className="container mx-auto  lg:absolute lg:top-0 lg:left-0 lg:right-0 lg:bottom-0 flex lg:items-center py-10 lg:py-0">
-                        <div className="max-w-full lg:max-w-[29rem] xl:max-w-[35rem] 2xl:max-w-[42rem]">
+                        <div className="ml-auto max-w-full lg:max-w-[29rem] xl:max-w-[35rem] 2xl:max-w-[42rem]">
                             <div className="text-c-contrast text-center lg:text-start">
                                 <ContentHeader className="text-c-primary">
                                     {content?.title_9 || t('cold-title')}

@@ -521,7 +521,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                 id="upper-menu-wrapper"
             >
                 <div
-                    className="z-30 fixed h-[100vh] w-full lg:w-[600px] bg-[#fff] right-0 flex flex-col transition-all duration-500"
+                    className="z-30 fixed h-[100vh] w-full lg:w-[45%] bg-c-white right-0 flex flex-col transition-all duration-500"
                     id="upper-menu"
                 >
                     <div className="container pt-[100px] lg:pt-[150px] mx-auto flex flex-col gap-6 lg:flex-row w-full items-center py-[0.8rem] max-w-[1790px] px-[2rem] mt-10">
