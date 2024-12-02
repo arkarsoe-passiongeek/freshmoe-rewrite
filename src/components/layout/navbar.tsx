@@ -62,8 +62,8 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
     const [upperMenu, setUpperMenu] = useState(true)
     const [selectedCountry, setSelectedCountry] = useState(countryOptions[0].countries[0]);
     const [selectedLanguage, setSelectedLanguage] = useState<LanguageCodes>(locale.split('_')[0] as LanguageCodes);
-    const [currentCountry] = useState<any>(locale.split('_')[1])
-    const [currentLanguage] = useState<any>({})
+    const [currentCountry, setCurrentCountry] = useState<any>()
+    const [currentLanguage] = useState<LanguageCodes>(locale.split('_')[0] as LanguageCodes)
 
     const navList = [
         {
@@ -91,6 +91,15 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
             url: '/download'
         },
     ]
+
+    const getCountryByCode = (code: any) => {
+        let countries: any[] = []
+        countryOptions.map(each => {
+            countries = [...countries, ...each.countries]
+        })
+        const country = countries.filter(country => country.value === code)[0]
+        setCurrentCountry(country)
+    }
 
     const isNavActive = (url: string) => {
         return pathname === url
@@ -210,11 +219,15 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
     }, [pathname])
     // end making the navbar transparent on scroll
 
+    // set current country and selected country on page load
     useEffect(() => {
         console.log(locale)
         countryOptions.map(continent => {
             continent.countries.map(country => {
-                if (country.value === locale.split('_')[1]) setSelectedCountry(country)
+                if (country.value === locale.split('_')[1]) {
+                    setCurrentCountry(country)
+                    setSelectedCountry(country)
+                }
             })
         })[0]
     }, [])
@@ -445,31 +458,31 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                                 <span className="flex items-center space-x-2">
                                     <div className='flex items-center space-x-2'>
                                         <div>
-                                            {selectedCountry.value == 'global' ? (
+                                            {currentCountry?.value == 'global' ? (
                                                 <CiGlobe
-                                                    className={`w-[15px] h-[15px] md:w-[30px] md:h-[30px] lg:w-[24px] lg:h-[24px] ${currentCountry == 'global' ?
+                                                    className={`w-[15px] h-[15px] md:w-[30px] md:h-[30px] lg:w-[24px] lg:h-[24px] ${currentCountry?.value == 'global' ?
                                                         'text-c-black' :
                                                         ''
                                                         }`}
                                                 />
                                             ) : (
-                                                <Flag code={selectedCountry?.flag} className="w-[25px] md:h-[30px] lg:w-[40px] lg:h-[40px]" />
+                                                <Flag code={currentCountry?.flag} className="w-[25px] md:h-[30px] lg:w-[40px] lg:h-[40px]" />
                                             )}
                                         </div>
                                         <span className={`lg:text-base font-normal max-w-[60px] md:max-w-none text-ellipsis overflow-hidden text-nowrap`}>
-                                            {selectedCountry?.label}
+                                            {currentCountry?.label}
                                         </span>
                                     </div>
-                                    <span className={`${(currentCountry == 'mm') ?
+                                    <span className={`${(currentCountry?.value == 'mm') ?
                                         'xl:pl-[8px] lg:pl-[25px]' :
-                                        (currentCountry == 'th') ?
+                                        (currentCountry?.value == 'th') ?
                                             'lg:pl-[10px] xl:pl-[15px]' :
                                             'p-0'} 
                             `}>|</span>
                                     <PiTranslate className="lg:w-[24px] lg:h-[24px] h-auto rounded-3xl globe text-c-black" />
                                     <span className={`
                             lg:text-base max-w-[60px] md:max-w-none text-ellipsis overflow-hidden text-nowrap`}>
-                                        {getLanguageName(`${selectedLanguage}`)}
+                                        {getLanguageName(`${currentLanguage}`)}
                                     </span>
                                     <div>
                                         {!upperMenu ? (
