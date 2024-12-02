@@ -27,7 +27,7 @@ export default async function Contact({ params }: { params: Promise<{ locale: st
                         // allowfullscreen
                         loading="lazy"
                         // referrerpolicy="no-referrer-when-downgrade"
-                        className="rounded-[10px] h-[220px] lg:h-[500px] object-cover w-full filter object-center transition duration-200"
+                        className="rounded-[10px] h-[220px] md:h-[470px] lg:h-[500px] object-cover w-full filter object-center transition duration-200"
                     ></iframe>
                 </div>
                 <div className="lg:w-1/2 w-full text-poppins leading-[23px] lg:leading-[23px] md:text-[16px] lg:text-[15px] xl:text-[15px] 2xl:text-[18px] flex flex-col gap-4 lg:gap-8 xl:pl-[3rem] lg:p-[2rem] xl:p-[2rem] 2xl:pl-[2rem] 2xl:p-[1.7rem]">

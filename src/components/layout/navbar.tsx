@@ -374,7 +374,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                 <nav className="shadow-lg w-full flex lg:justify-between items-center transition" id="navbar">
                     {open ? <ChooseLang onClickParent={() => setOpen(false)} /> : ''}
                     <div className="container mx-auto flex lg:justify-between items-center py-[0.8rem]">
-                        <ul className="xl:flex-1 font-bold hidden md:flex nav items-center" id="nav-item">
+                        <ul className="xl:flex-1 font-bold hidden md:flex nav items-center gap-4" id="nav-item">
                             <li
                                 className={`hover:text-c-primary font-bold cursor-pointer ${pathname === `/${lang}` ? 'text-c-secondary' : ''
                                     } `}
@@ -402,7 +402,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                                     if (index < 3) {
                                         return (
                                             <li
-                                                key={each.url} className={`hover:text-c-primary font-semibold lg:text-base px-2 py-3 hidden lg:flex 
+                                                key={each.url} className={`hover:text-c-primary font-semibold lg:text-base hidden lg:flex 
                   ${isNavActive(each.url) ? 'text-c-primary' : ''}
                   `}
                                             >

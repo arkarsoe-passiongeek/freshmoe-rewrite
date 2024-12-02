@@ -51,8 +51,8 @@ export default async function OurService({ params }: { params: Promise<{ locale:
     return (
         <div className="bg-white h-auto relative mt-[98px] sm:mt-[110px] md:mt-[115px] lg:mt-[100px] xl:mt-[110px]">
             <BannerHeader locale={locale} imageSrc={OurServicesBanner} text={content?.title_1 || t('service')} />
-            <div className="container mx-auto flex flex-col gap-10 lg:gap-16 xl:gap-[120px] py-10 xl:pb-[150px]">
-                <div className="text-center text-c-contrast xl:max-w-[1000px] mx-auto">
+            <div className="container mx-auto flex flex-col gap-10 lg:gap-16 xl:gap-[120px] py-10 md:pb-20 xl:pb-[150px]">
+                <div className="text-center text-c-contrast md:max-w-lg xl:max-w-[1000px] mx-auto">
                     <ContentHeader>
                         {content ? content.title_2 : t('title')}
                     </ContentHeader>
@@ -60,7 +60,7 @@ export default async function OurService({ params }: { params: Promise<{ locale:
                         {content && typeof content?.content_2 === 'string' ? ReactHtmlParser(content.content_2) : t('description')}
                     </ContentDescription>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 text-[0.7rem] text-gray-600">
+                <div className="grid grid-cols-1 lg:grid-cols-3 mx-auto md:max-w-md lg:max-w-full gap-5 text-[0.7rem] text-gray-600">
                     <Card imageSrc={content?.image_3 ? `${IMAGE_URL}/${content.image_3}` : Service1} title={content ? content.title_3 : t('card-one-title')} description={content && typeof content?.content_3 === 'string' ? ReactHtmlParser(content.content_3) : t('card-one-description')} />
                     <Card imageSrc={content?.image_4 ? `${IMAGE_URL}/${content.image_4}` : Service2} title={content ? content.title_4 : t('card-two-title')} description={content && typeof content?.content_4 === 'string' ? ReactHtmlParser(content.content_4) : t('card-two-description')} />
                     <Card imageSrc={content?.image_5 ? `${IMAGE_URL}/${content.image_5}` : Service3} title={content ? content.title_5 : t('card-three-title')} description={content && typeof content?.content_5 === 'string' ? ReactHtmlParser(content.content_5) : t('card-three-description')} />
@@ -72,10 +72,10 @@ export default async function OurService({ params }: { params: Promise<{ locale:
                 className="bg-cover bg-center"
                 style={{ backgroundImage: "url('/images/our-services/about3-6.png')" }}
             >
-                <div className="container mx-auto flex lg:flex-row flex-col items-center gap-14 py-10 lg:gap-[100px] 2xl:gap-[150px] h-auto relative">
+                <div className="container mx-auto flex md:flex-row flex-col items-center py-10 gap-14 md:gap-10 lg:gap-[100px] 2xl:gap-[150px] h-auto relative">
                     <div className="lg:w-2/4 xl:w-[630px] w-full">
                         <div className="p-2">
-                            <div className="text-c-contrast text-center lg:text-start">
+                            <div className="text-c-contrast text-center md:text-start">
                                 <div className='space-y-5'>
                                     <ContentHeader>
                                         {content?.title_6 || t('about-four-title')}
@@ -113,7 +113,7 @@ export default async function OurService({ params }: { params: Promise<{ locale:
                                 height={100}
                                 alt=""
 
-                                className="object-cover w-full md:w-[70%] lg:w-full xl:w-[90%] 2xl:w-[80%] h-auto filter object-center transition duration-200"
+                                className="object-cover w-full md:w-[350px] lg:w-full xl:w-[90%] 2xl:w-[80%] h-auto filter object-center transition duration-200"
                             />
                         </div>
                     </div>
@@ -121,7 +121,7 @@ export default async function OurService({ params }: { params: Promise<{ locale:
             </div>
 
             {/* Retail Shop */}
-            <div className="container mx-auto flex 2xl:py-[100px] flex-col-reverse lg:flex-row items-center mt-10 mb-28 lg:mb-10 xl:h-[830px] gap-10 lg:gap-[100px]">
+            <div className="container mx-auto flex 2xl:py-[100px] flex-col-reverse md:flex-row items-center mt-10 mb-28 lg:mb-10 xl:h-[830px] gap-10 lg:gap-[100px]">
                 <div className="w-full lg:w-1/2">
                     <Image
                         src={content?.image_7 ? `${IMAGE_URL}/${content.image_7}` : RetailShop}
@@ -132,7 +132,7 @@ export default async function OurService({ params }: { params: Promise<{ locale:
                         className="object-cover w-full h-auto filter object-center rounded-lg"
                     />
                 </div>
-                <div className="w-full lg:w-1/2 space-y-5 text-center lg:text-justify">
+                <div className="w-full lg:w-1/2 space-y-5 text-center md:text-justify">
                     <ContentHeader>
                         {content?.title_7 || t('retail-title')}
                     </ContentHeader>

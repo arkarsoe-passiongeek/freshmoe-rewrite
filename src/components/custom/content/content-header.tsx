@@ -2,7 +2,7 @@ import React from 'react'
 
 const ContentHeader = ({ children, className }: { children: any, variant?: string, className?: any }) => {
     return (
-        <h1 className={`text-lg md:text-3xl 2xl:text-4xl text-c-primary mb-2 font-bold w-full ${className}`}>
+        <h1 className={`text-lg lg:text-3xl 2xl:text-4xl text-c-primary mb-2 font-bold w-full ${className}`}>
             {children}
         </h1>
     )

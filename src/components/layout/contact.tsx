@@ -43,6 +43,7 @@ const Contact: React.FC<ContactProps> = ({ contactData, locale }) => {
             <Image
                 src={MobileContactBg}
                 alt=""
+                priority
                 className="absolute top-[-10%] w-full h-[110%] lg:hidden"
             />
             <div className="container mx-auto relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between pb-10 lg:py-10 h-auto">

@@ -88,10 +88,17 @@ body {
   border: 1px solid #B4DFAA !important;
   width: 18px !important;
   height: 18px !important;
+  border-radius: 10px !important;
+  z-index: 20 !important;
+}
+
+.swiper-pagination-bullet-active {
+  width: 36px !important;
 }
 
 .swiper-pagination {
   top: 69% !important;
+  z-index: 20 !important;
 }
 
 @media only screen and (min-width: 1024px) and (max-width: 1090px) {
