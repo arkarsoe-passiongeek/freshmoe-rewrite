@@ -50,12 +50,12 @@ const ChooseUsContent = ({ title, des, imageSrc, alt, layout }: { title: any, de
 
 const ChooseUsContentMobile = ({ title, des, imageSrc, alt }: { title: any, des: any, alt?: any, imageSrc: any, layout?: any }) => {
     return (
-        <div className="flex flex-col justify-center items-center text-center mx-auto w-[270px]">
-            <Image src={imageSrc} alt={alt} className='w-[60px] h-[62px] md:w-[90px] md:h-[92px] mb-[15px]' priority />
+        <div className="flex flex-col justify-center items-center text-center mx-auto min-w-[270px] max-w-sm md:max-w-md">
+            <Image src={imageSrc} alt={alt} className='w-[60px] h-[62px] md:w-[40px] md:h-[40px] mb-[15px]' priority />
             <div className="px-4 flex flex-col items-center">
-                <p className='text-c-white text-base font-semibold mb-1'>{title}</p>
+                <p className='text-c-white text-base md:text-xl font-medium mb-1'>{title}</p>
                 <div className='w-10 h-[2.5px] rounded-md bg-white mb-[10px]'></div>
-                <p className='text-c-white text-sm font-normal'>{des}</p>
+                <p className='text-c-white text-sm md:text-base font-normal'>{des}</p>
             </div>
         </div>
     )
@@ -122,7 +122,7 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
                     >
                         {data?.map(({ id, image, tagline, title, buttons }) => (
                             <SwiperSlide key={id} virtualIndex={id} className="">
-                                <div className="min-h-[280px] relative">
+                                <div className="min-h-[280px] md:min-h-[350px] relative">
                                     <Image
                                         unoptimized
                                         src={Slider1 || image}
@@ -198,7 +198,7 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
             </div>
 
             {/* mobile */}
-            <div className="z-20 w-screen mt-[-75px] min-h-[1900px] relative block lg:hidden" >
+            <div className="z-20 w-screen mt-[-75px] md:mt-[-100px] min-h-[1900px] relative block lg:hidden" >
                 <Image
                     src={GreenMobile3}
                     alt="Green Background"
@@ -208,7 +208,7 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
                 <div className="pt-28 absolute top-0 w-full">
                     <div className="flex flex-col justify-center items-center">
                         <div className="flex flex-col justify-center items-center mb-[20px]">
-                            <h1 className='text-c-white text-base font-bold mb-[10px]'>{sliderData.chooseTitle}</h1>
+                            <h1 className='text-c-white text-base md:text-xl font-bold mb-[10px]'>{sliderData.chooseTitle}</h1>
                             <Image src={UnderlineBar} alt="underline" className='underline w-[120px] h-[17px]' priority />
                         </div>
                         <div className="grid grid-rows-6 gap-4 sm:gap-10">
@@ -224,7 +224,7 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
                 <Image
                     src={FruitBasket}
                     alt="Fruit Basket"
-                    className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[230px] h-[180px]"
+                    className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-[230px] h-[180px] md:w-[300px] md:h-[230px]"
                     priority
                 />
             </div>

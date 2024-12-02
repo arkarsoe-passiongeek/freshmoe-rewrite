@@ -376,7 +376,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                     <div className="container mx-auto flex lg:justify-between items-center py-[0.8rem]">
                         <ul className="xl:flex-1 font-bold hidden md:flex nav items-center" id="nav-item">
                             <li
-                                className={`hover:text-c-primary font-bold cursor-pointer ${lang == 'en' ? 'px-3' : 'px-2'} py-3 text-[0.75vw]  ${pathname === `/${lang}` ? 'text-c-secondary' : ''
+                                className={`hover:text-c-primary font-bold cursor-pointer ${pathname === `/${lang}` ? 'text-c-secondary' : ''
                                     } `}
                             >
                                 {sidebar ? (
@@ -385,7 +385,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                                         id="close-sidebar"
                                         onClick={() => handleToggle()}
                                     >
-                                        <FaBars className="text-black lg:w-[25px] lg:h-[20px]" />
+                                        <FaBars className="text-black md:w-[20px] md:h-[20px]" />
                                     </span>
                                 ) : (
                                     <span
@@ -393,7 +393,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                                         id="open-sidebar"
                                         onClick={() => handleToggle()}
                                     >
-                                        <RxCross1 className="text-black lg:w-[25px] lg:h-[20px]" />
+                                        <RxCross1 className="text-black md:w-[20px] md:h-[20px]" />
                                     </span>
                                 )}
                             </li>
@@ -432,10 +432,10 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                         )}
 
                         <div
-                            className={`lg:flex-1 flex justify-center ${(currentLanguage?.value === 'mm') ?
-                                'pl-[2vw] md:pl-0'
+                            className={`lg:flex-1 flex justify-center ${(currentLanguage === 'mm') ?
+                                'pl-[10px] md:pl-2'
                                 :
-                                'pl-[2vw]'
+                                'pl-[10px] md:pl-2'
                                 }`}
                         >
                             <Link href="/" className="">
@@ -443,7 +443,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                                     src={freshMoeLogo}
                                     alt=""
                                     className=
-                                    {`w-[70px] sm:w-[85px] md:w-[90px] lg:w-[140px] lg:h-[65px] h-auto md:ml-0`}
+                                    {`w-[70px] sm:w-[85px] md:w-[90px] lg:w-[140px] lg:h-[65px] h-auto lg:ml-0`}
                                 />
                             </Link>
                         </div>
@@ -460,13 +460,13 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                                         <div>
                                             {currentCountry?.value == 'global' ? (
                                                 <CiGlobe
-                                                    className={`w-[15px] h-[15px] md:w-[30px] md:h-[30px] lg:w-[24px] lg:h-[24px] ${currentCountry?.value == 'global' ?
+                                                    className={`w-[15px] h-[15px] md:w-[20px] md:h-[20px] lg:w-[24px] lg:h-[24px] ${currentCountry?.value == 'global' ?
                                                         'text-c-black' :
                                                         ''
                                                         }`}
                                                 />
                                             ) : (
-                                                <Flag code={currentCountry?.flag} className="w-[25px] md:h-[30px] lg:w-[40px] lg:h-[40px]" />
+                                                <Flag code={currentCountry?.flag} className="w-[20px] md:h-[20px] lg:w-[40px] lg:h-[40px]" />
                                             )}
                                         </div>
                                         <span className={`lg:text-base font-normal max-w-[60px] md:max-w-none text-ellipsis overflow-hidden text-nowrap`}>
@@ -479,16 +479,16 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                                             'lg:pl-[10px] xl:pl-[15px]' :
                                             'p-0'} 
                             `}>|</span>
-                                    <PiTranslate className="lg:w-[24px] lg:h-[24px] h-auto rounded-3xl globe text-c-black" />
+                                    <PiTranslate className="md:w-[20px] md:h-[20px] lg:w-[24px] lg:h-[24px] h-auto rounded-3xl text-c-black" />
                                     <span className={`
                             lg:text-base max-w-[60px] md:max-w-none text-ellipsis overflow-hidden text-nowrap`}>
                                         {getLanguageName(`${currentLanguage}`)}
                                     </span>
                                     <div>
                                         {!upperMenu ? (
-                                            <MdOutlineKeyboardArrowUp className="md:w-[30px] md:h-[30px] lg:w-[20px] lg:h-[20px]" />
+                                            <MdOutlineKeyboardArrowUp className="md:w-[20px] md:h-[20px] lg:w-[20px] lg:h-[20px]" />
                                         ) : (
-                                            <MdOutlineKeyboardArrowDown className="md:w-[30px] md:h-[30px] lg:w-[20px] lg:h-[20px]" />
+                                            <MdOutlineKeyboardArrowDown className="md:w-[20px] md:h-[20px] lg:w-[20px] lg:h-[20px]" />
                                         )}
                                     </div>
                                 </span>

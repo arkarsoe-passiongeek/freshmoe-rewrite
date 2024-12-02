@@ -101,7 +101,7 @@ const Contact: React.FC<ContactProps> = ({ contactData, locale }) => {
                     </div>
                 </div>
 
-                <div className="flex flex-col gap-5 pt-11 md:pt-0">
+                <div className="flex flex-col gap-5 pt-11 md:pt-0 md:justify-self-end lg:justify-self-auto">
                     <a href="#" className="">
                         <h2 className="text-c-primary font-semibold text-lg 2xl:text-2xl">
                             {contactData.quickLinks}
@@ -118,7 +118,7 @@ const Contact: React.FC<ContactProps> = ({ contactData, locale }) => {
                     </div>
                 </div>
 
-                <div className="flex flex-col gap-5 items-right pt-11 lg:pt-0">
+                <div className="flex flex-col gap-5 items-right pt-11 lg:pt-0 md:col-span-2 lg:col-span-1">
                     <a href="#" className="">
                         <h2 className="text-c-primary font-semibold text-lg 2xl:text-2xl">
                             {contactData.contactForm}
