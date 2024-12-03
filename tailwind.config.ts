@@ -92,6 +92,7 @@ export default {
 				"c-bg": "#F6F6F6",
 				"c-home-bg": "#ECF6F4",
 				"c-disable": "#DBDBDB",
+				"c-hover": 'var(--hover)',
 				"c-blue": "#29BFFF",
 				"c-yellow": "#FDCA48"
 			},

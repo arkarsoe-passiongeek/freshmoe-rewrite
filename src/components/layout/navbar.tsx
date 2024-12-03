@@ -367,7 +367,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
 
     return (
         <>
-            <div className='fixed w-full top-0 z-40'>
+            <div className='fixed w-full top-0 z-50'>
                 <div className="bg-c-primary w-full p-[20px] brand-line-green"></div>
                 <div className="bg-c-white w-full p-[1px] brand-line-white"></div>
                 <div className="bg-c-secondary w-full p-[3.95px] brand-line-red"></div>
@@ -499,7 +499,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
             </div >
             {/* <!-- start mobile sidebar --> */}
             <div
-                className="z-30 fixed h-full left-0 top-[105px] md:top-[111px] xl:top-[119px] lg:top-[130px]  invisible transition-all duration-500 bg-[#000] bg-opacity-20"
+                className="z-40 fixed h-full left-0 top-[105px] md:top-[111px] xl:top-[119px] lg:top-[130px]  invisible transition-all duration-500 bg-[#000] bg-opacity-20"
                 id="sidebar-wrapper"
             >
                 <div
@@ -530,11 +530,11 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
 
             {/* start language menu */}
             <div
-                className="z-30 fixed top-0 h-full left-0 invisible transition-all duration-500 bg-[#000] bg-opacity-20"
+                className="z-40 fixed top-0 h-full left-0 invisible transition-all duration-500 bg-[#000] bg-opacity-20"
                 id="upper-menu-wrapper"
             >
                 <div
-                    className="z-30 fixed h-[100vh] w-full lg:w-[45%] bg-c-white right-0 flex flex-col transition-all duration-500"
+                    className="z-40 fixed h-[100vh] w-full lg:w-[45%] bg-c-white right-0 flex flex-col transition-all duration-500"
                     id="upper-menu"
                 >
                     <div className="container pt-[100px] lg:pt-[150px] mx-auto flex flex-col gap-6 lg:flex-row w-full items-center py-[0.8rem] max-w-[1790px] px-[2rem] mt-10">
