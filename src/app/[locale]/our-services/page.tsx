@@ -16,7 +16,7 @@ import ContentDescription from '@/components/custom/content/content-description'
 
 const Card = ({ imageSrc, title, description }: { imageSrc: any, title: any, description: any }) => {
     return (
-        <div className="p-4 xl:p-[20px] bg-c-footer-bg rounded-[20px] w-full hover:scale-105 hover:shadow-xl">
+        <div className="p-4 xl:p-[20px] bg-c-footer-bg rounded-[20px] w-full hover:scale-105 hover:shadow-xl transition">
             <Image
                 src={imageSrc}
                 unoptimized
