@@ -152,12 +152,12 @@ const Contact: React.FC<ContactProps> = ({ contactData, locale }) => {
                         ></textarea>
                         <div className="flex justify-start">
                             <CBaseButton
-                                className="flex items-center justify-center button-rounded-xl md:leading-[20px] lg:leading-[25px] py-[9px] md:py-[10px] border-2 border-c-secondary text-white bg-c-secondary rounded-xl font-normal lg:text-base lg:py-[13px] lg:px-[68px] lg:rounded-[10px]"
+                                className="flex items-center justify-center button-rounded-xl md:leading-[20px] lg:leading-[25px] py-[9px] md:py-[10px] border-2 border-c-secondary text-white bg-c-secondary rounded-xl font-normal h-[50px] lg:text-base lg:py-[13px] lg:px-[68px] lg:rounded-[10px] hover:!bg-c-hover"
                             >
                                 <span className='text-sm lg:text-base'>
                                     {contactData.btn}
                                 </span>
-                                <TiArrowRight size={24} className="text-white" />
+                                <TiArrowRight className="text-white inline-block !w-[20px] !h-[20px]" />
                             </CBaseButton>
                         </div>
                     </div>
