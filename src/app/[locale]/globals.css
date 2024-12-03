@@ -83,18 +83,7 @@ body {
   height: 100% !important;
 }
 
-.swiper-home-pagination-bullet {
-  display: inline-block;
-  background-color: #ed1d2486 !important;
-  border: 1px solid #B4DFAA !important;
-  width: 18px !important;
-  height: 18px !important;
-  border-radius: 10px !important;
-  z-index: 20 !important;
-}
-
-.swiper-home-pagination-bullet-active {
-  width: 36px !important;
+.swiper-home-pagination-bullet:hover {
   background-color: #ed1c24 !important;
 }
 
