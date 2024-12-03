@@ -114,7 +114,10 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
                 <div className="swiper-container">
                     <Swiper
                         onInit={handleSwiperInit}
-                        pagination={{ type: "bullets", clickable: true }}
+                        pagination={{
+                            clickable: true, el: '.swiper-home-pagination', bulletClass: "swiper-home-pagination-bullet",
+                            bulletActiveClass: "swiper-home-pagination-bullet-active",
+                        }}
                         autoplay={false}
                         slidesPerView={1}
                         loop={false}
@@ -152,6 +155,8 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
                     </Swiper>
                 </div>
             </section>
+            <div className="swiper-home-pagination absolute !w-auto !top-[310px] md:!top-[350px] lg:!top-[40vw] xl:!top-[35vw] 2xl:!top-[35vw] !left-1/2 !-translate-x-1/2 z-30 space-x-1 [&>*]:!transition-all">
+            </div>
             <div suppressHydrationWarning={true} className='mt-[-200px] lg:mt-[-150px] xl:mt-[-240px] 2xl:mt-[-270px] w-full lg:h-[670px] xl:h-[940px] 2xl:h-[1100px] relative hidden lg:block text-poppins text-shadow z-10'>
                 <Image
                     src={UnderSlider3}

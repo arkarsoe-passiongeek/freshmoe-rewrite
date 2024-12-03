@@ -83,8 +83,9 @@ body {
   height: 100% !important;
 }
 
-.swiper-pagination-bullet {
-  background-color: #ED1D24 !important;
+.swiper-home-pagination-bullet {
+  display: inline-block;
+  background-color: #ed1d2486 !important;
   border: 1px solid #B4DFAA !important;
   width: 18px !important;
   height: 18px !important;
@@ -92,8 +93,9 @@ body {
   z-index: 20 !important;
 }
 
-.swiper-pagination-bullet-active {
+.swiper-home-pagination-bullet-active {
   width: 36px !important;
+  background-color: #ed1c24 !important;
 }
 
 .swiper-pagination {
