@@ -29,7 +29,7 @@ import ContentDescription from '@/components/custom/content/content-description'
 
 const MarketCard = ({ imageSrc, title, description }: { imageSrc: any, title: any, description: any }) => {
     return (
-        <div className="w-full h-auto flex flex-col lg:flex-row items-center bg-white border border-gray-200 rounded-[20px] p-6 2xl:py-12 lg:px-[80px] 2xl:px-[100px] lg:rounded-[30px] gap-[20px] lg:gap-[80px] 2xl:gap-[110px] shadow">
+        <div className="w-full h-auto flex flex-col lg:flex-row items-center bg-white rounded-[20px] p-6 2xl:py-12 lg:px-[80px] 2xl:px-[100px] lg:rounded-[30px] gap-[20px] lg:gap-[80px] 2xl:gap-[110px]" style={{ boxShadow: "1.5px 2.75px 8.32px 0px rgba(0, 0, 0, 0.05)" }}>
             <div className='shrink-0'>
                 <Image
                     src={imageSrc}

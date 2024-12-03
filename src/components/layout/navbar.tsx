@@ -11,7 +11,7 @@ import { useState, useEffect } from 'react'
 import { CiGlobe } from "react-icons/ci";
 import { PiTranslate } from "react-icons/pi";
 import Flag from 'react-world-flags';
-import ChooseLang from '../modals/choose-lang'
+import ChooseLang from '@/components/modals/choose-lang'
 import { CCountrySelect } from '../custom/c-country-select'
 import { CLanguageSelect } from '../custom/c-language-select'
 import { getLanguageName, LanguageCodes } from '@/lib/utils'
@@ -372,7 +372,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                 <div className="bg-c-white w-full p-[1px] brand-line-white"></div>
                 <div className="bg-c-secondary w-full p-[3.95px] brand-line-red"></div>
                 <nav className="shadow-lg w-full flex lg:justify-between items-center transition" id="navbar">
-                    {open ? <ChooseLang onClickParent={() => setOpen(false)} /> : ''}
+                    {/* {open ? <ChooseLang onClickParent={() => setOpen(false)} /> : ''} */}
                     <div className="container mx-auto flex lg:justify-between items-center py-[0.8rem]">
                         <ul className="xl:flex-1 font-bold hidden md:flex nav items-center gap-4" id="nav-item">
                             <li

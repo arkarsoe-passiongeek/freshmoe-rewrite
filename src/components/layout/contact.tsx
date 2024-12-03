@@ -8,6 +8,7 @@ import CBaseButton from '@/components/custom/c-base-button'
 import styles from "./contact.module.css"
 import ContactBg from "@/public/images/home/contact-bg.png"
 import MobileContactBg from "@/public/images/layout/mobile-contact-bg.png"
+import Link from 'next/link'
 
 interface ContactProps {
     contactData: {
@@ -110,12 +111,12 @@ const Contact: React.FC<ContactProps> = ({ contactData, locale }) => {
                     </a>
 
                     <div className="flex flex-col gap-5 2xl:gap-[40px] text-sm 2xl:text-lg">
-                        <a href={`/${locale}/aboutus`} className='hover:text-c-secondary'>{contactData.link1}</a>
-                        <a href={`/${locale}/ourservices`} className='hover:text-c-secondary'>{contactData.link2}</a>
-                        <a href={`/${locale}/profile`} className='hover:text-c-secondary'>{contactData.link3}</a>
-                        <a href={`/${locale}/profile`} className='hover:text-c-secondary'>{contactData.link4}</a>
-                        <a href={`/${locale}/profile`} className='hover:text-c-secondary'>{contactData.link5}</a>
-                        <a href={`/${locale}/profile`} className='hover:text-c-secondary'>{contactData.link6}</a>
+                        <Link href={`/${locale}/about-us`} className='hover:text-c-secondary w-fit'>{contactData.link1}</Link>
+                        <Link href={`/${locale}/our-services`} className='hover:text-c-secondary w-fit'>{contactData.link2}</Link>
+                        <Link href={`/${locale}/profile`} className='hover:text-c-secondary w-fit'>{contactData.link3}</Link>
+                        <Link href={`/${locale}/profile`} className='hover:text-c-secondary w-fit'>{contactData.link4}</Link>
+                        <Link href={`/${locale}/profile`} className='hover:text-c-secondary w-fit'>{contactData.link5}</Link>
+                        <Link href={`/${locale}/profile`} className='hover:text-c-secondary w-fit'>{contactData.link6}</Link>
                     </div>
                 </div>
 
@@ -152,7 +153,7 @@ const Contact: React.FC<ContactProps> = ({ contactData, locale }) => {
                         ></textarea>
                         <div className="flex justify-start">
                             <CBaseButton
-                                className="flex items-center justify-center button-rounded-xl md:leading-[20px] lg:leading-[25px] py-[9px] md:py-[10px] border-2 border-c-secondary text-white bg-c-secondary rounded-xl font-normal h-[50px] lg:text-base lg:py-[13px] lg:px-[68px] lg:rounded-[10px] hover:!bg-c-hover"
+                                className="flex items-center justify-center button-rounded-xl md:leading-[20px] lg:leading-[25px] py-[9px] md:py-[10px] border-2 border-c-secondary text-white bg-c-secondary rounded-xl font-normal w-[160px] lg:w-[220px] h-[50px] lg:text-base lg:py-[13px] lg:px-[68px] lg:rounded-[10px] hover:!bg-c-hover"
                             >
                                 <span className='text-sm lg:text-base'>
                                     {contactData.btn}

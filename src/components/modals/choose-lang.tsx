@@ -16,20 +16,6 @@ const ChooseLang: React.FC<ChildProps> = ({ onClickParent }) => {
     const [ipLanguage, setIpLanguage] = useState('')
     const [custPathName, setCustPathname] = useState('')
 
-    // useEffect(() => {
-    //   const lang = pathname.split('/')[1]
-    //   setLang(lang)
-    //   if (document.body.style.overflowY === '' || document.body.style.overflowY === 'auto' ||  document.body.style.overflowY === 'visible') {
-
-    //     document.documentElement.style.overflowY = 'hidden'; 
-    //     // document.body.style.overflowY = 'hidden'; 
-    //   }
-
-    //   setCustPathname(pathname.split('/')[1])
-
-
-    // },[pathname])
-
     useEffect(() => {
         const lang = pathname.split('/')[1];
         setLang(lang);
@@ -63,110 +49,9 @@ const ChooseLang: React.FC<ChildProps> = ({ onClickParent }) => {
         onClickParent();
     }
 
-    //   const handleChangeLanguage = async (value: string) => {
-
-    //     console.log("Path Name of lang = "+pathname.length)
-    //     alert(value+lang+pathname.length)
-    //     if (pathname.length !== 3) {
-    //       alert("dfdfdfd")
-    //       let newPathName = pathname;
-    //       console.log("New PathName : "+newPathName)
-    //       alert(newPathName+"--"+lang);
-    //       if (lang === 'en') {
-    //         // alert("ddd")
-    //         switch (pathname) {
-    //           case 'mm':
-    //             newPathName = pathname.replace('/en/', '/mm/');
-    //             break;
-    //           case 'th':
-    //             newPathName = pathname.replace('/en/', '/th/');
-    //             break;
-    //             case 'en':
-    //               newPathName = pathname.replace('/mm/', '/en/');
-    //               break;
-    //           default:
-    //             newPathName = pathname.replace('/en/', '/mm/');
-    //             break;
-    //         }
-    //       } else if (lang === 'mm') {
-    //         console.log("New PathName MM : "+newPathName)
-    //         newPathName = pathname.replace('/mm/', '/en/');
-    //       } else if (lang === 'th') {
-    //         console.log("New PathName TH : "+newPathName)
-    //         newPathName = pathname.replace('/th/', '/en/');
-    //       }
-    //       router.push(newPathName);
-    //     } else {
-    // alert("ooo")
-    //       let newPath = '/en';
-    //       if (lang === 'mm') {
-    //         switch (value) {
-    //           case 'mm':
-    //             newPath = '/mm';
-    //             break;
-    //             case 'en':
-    //             newPath = '/en';
-    //             break;
-    //           case 'th':
-    //             newPath = '/th';
-    //             break;
-    //           default:
-    //             newPath = '/sg';
-    //             break;
-    //         }
-    //       }else if(lang == 'en'){
-    //         switch (value) {
-    //           case 'mm':
-    //             newPath = '/mm';
-    //             break;
-    //             case 'en':
-    //             newPath = '/en';
-    //             break;
-    //           case 'th':
-    //             newPath = '/th';
-    //             break;
-    //           default:
-    //             newPath = '/sg';
-    //             break;
-    //         }
-    //       }
-    //       handleClickChild
-    //       router.push(newPath);
-    //       // alert(newPath)
-    //     }
-    //   };
-
-
     const handleChangeLanguage = async (value: string) => {
-        console.log("Path Name of lang = " + pathname.length)
-        // if (pathname.length !== 3) {
-        //   alert("ooo")
-        //   let newPathName = pathname;
-        //   console.log("New PathName : "+newPathName)
-        //   if (lang === 'en') {
-        //     switch (ipLanguage) {
-        //       case 'mm':
-        //         newPathName = pathname.replace('/en/', '/mm/');
-        //         break;
-        //       case 'th':
-        //         newPathName = pathname.replace('/en/', '/th/');
-        //         break;
-        //       default:
-        //         newPathName = pathname.replace('/en/', '/sg/');
-        //         break;
-        //     }
-        //   } else if (lang === 'mm') {
-        //     console.log("New PathName MM : "+newPathName)
-        //     newPathName = pathname.replace('/mm/', '/en/');
-        //   } else if (lang === 'th') {
-        //     console.log("New PathName TH : "+newPathName)
-        //     newPathName = pathname.replace('/th/', '/en/');
-        //   }
-        //   router.push(newPathName);
-        // } else {
 
         let newPath = value;
-        // alert(value)
         if (custPathName === 'en_mm') {
             switch (value) {
                 case 'mm_mm':
@@ -180,9 +65,7 @@ const ChooseLang: React.FC<ChildProps> = ({ onClickParent }) => {
                     break;
             }
         }
-        // alert(newPath)
         router.push(newPath);
-        // }
     };
     return (
         <div className='fixed inset-0  flex justify-center items-center z-50 bg-[#000] bg-opacity-[0.2] overflow-y-hidden'>
@@ -201,7 +84,6 @@ const ChooseLang: React.FC<ChildProps> = ({ onClickParent }) => {
                 </div>
             </div>
         </div>
-
     )
 }
 

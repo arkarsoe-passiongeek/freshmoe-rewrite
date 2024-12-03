@@ -8,7 +8,7 @@ import AboutUs5 from '@/public/images/about-us/aboutus-5.png'
 // import visionMM from '@/public/images/about-us/ourvisionmm.png'
 import { fetchAboutUsContent } from '@/services/page/fetch-about-us-content'
 import BannerHeader from '@/components/layout/banner-header'
-import AboutUsBanner from "../../../../public/images/about-us/br-contact-us-header-1.png"
+import AboutUsBanner from "@/public/images/about-us/br-contact-us-header-1.png"
 import { getTranslations } from 'next-intl/server'
 import ReactHtmlParser from 'html-react-parser'
 import ContentHeader from '@/components/custom/content/content-header'
