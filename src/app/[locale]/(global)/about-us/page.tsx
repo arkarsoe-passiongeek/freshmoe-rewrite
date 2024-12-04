@@ -4,8 +4,6 @@ import AboutUs2 from '@/public/images/about-us/aboutus-2-2.png'
 import AboutUs3 from '@/public/images/about-us/aboutus-3.png'
 import AboutUs4 from '@/public/images/about-us/aboutus-4-4.png'
 import AboutUs5 from '@/public/images/about-us/aboutus-5.png'
-// import missionMM from '@/public/images/about-us/ourmissionmm.png'
-// import visionMM from '@/public/images/about-us/ourvisionmm.png'
 import { fetchAboutUsContent } from '@/services/page/fetch-about-us-content'
 import BannerHeader from '@/components/layout/banner-header'
 import AboutUsBanner from "@/public/images/about-us/br-contact-us-header-1.png"
@@ -13,7 +11,6 @@ import { getTranslations } from 'next-intl/server'
 import ReactHtmlParser from 'html-react-parser'
 import ContentHeader from '@/components/custom/content/content-header'
 import ContentDescription from '@/components/custom/content/content-description'
-import { INTL_PREFIX_BY_COUNTRY } from '@/lib/constant'
 
 const Content = ({ title, des }: any) => {
     return (
@@ -76,7 +73,6 @@ export default async function AboutUs({ params }: { params: Promise<{ locale: st
                         <Image
                             src={content?.image_4 ? `${IMAGE_URL}/${content.image_4}` : AboutUs3}
                             alt=""
-                            priority
                             width={800}
                             height={500}
                             className="object-cover w-full h-full object-center md:rounded-bl-[20px] md:rounded-tl-[20px]"
@@ -88,7 +84,6 @@ export default async function AboutUs({ params }: { params: Promise<{ locale: st
                         <Image
                             src={content?.image_5 ? `${IMAGE_URL}/${content.image_5}` : AboutUs5}
                             alt=""
-                            priority
                             width={800}
                             height={500}
                             className="h-full object-cover object-center md:rounded-br-[20px] md:rounded-tr-[20px]"

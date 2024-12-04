@@ -469,12 +469,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                                             {currentCountry?.label}
                                         </span>
                                     </div>
-                                    <span className={`${(currentCountry?.value == 'mm') ?
-                                        'xl:pl-[8px] lg:pl-[25px]' :
-                                        (currentCountry?.value == 'th') ?
-                                            'lg:pl-[10px] xl:pl-[15px]' :
-                                            'p-0'} 
-                            `}>|</span>
+                                    <div className='border-r h-[21px] border-c-black'></div>
                                     <PiTranslate className="md:w-[20px] md:h-[20px] lg:w-[24px] lg:h-[24px] h-auto rounded-3xl text-c-black" />
                                     <span className={`
                             lg:text-base max-w-[60px] md:max-w-none text-ellipsis overflow-hidden text-nowrap`}>

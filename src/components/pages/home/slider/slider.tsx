@@ -157,7 +157,7 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
             </section>
             <div className="swiper-home-pagination absolute !w-auto !top-[310px] md:!top-[350px] lg:!top-[40vw] xl:!top-[35vw] 2xl:!top-[35vw] !left-1/2 !-translate-x-1/2 z-30 space-x-1 [&>*]:!transition-all [&>span]:hover:!cursor-pointer [&>span]:!w-[5px] [&>span]:!h-[5px] [&>span]:md:!w-[6px] [&>span]:md:!h-[6px] [&>span]:lg:!w-[12px] [&>span]:lg:!h-[12px] [&>span]:!bg-c-secondary [&>span]:!bg-opacity-50 [&>span]:!inline-block [&>span]:!rounded-[10px] [&>.swiper-home-pagination-bullet-active]:!w-[15px] [&>.swiper-home-pagination-bullet-active]:md:!w-[16px] [&>.swiper-home-pagination-bullet-active]:lg:!w-[36px] [&>.swiper-home-pagination-bullet-active]:!bg-opacity-100">
             </div>
-            <div suppressHydrationWarning={true} className='mt-[-200px] lg:mt-[-150px] xl:mt-[-250px] 2xl:mt-[-312px] w-full lg:h-[670px] xl:h-[940px] 2xl:h-[1100px] relative hidden lg:block text-poppins text-shadow z-10'>
+            <div suppressHydrationWarning={true} className='mt-[-200px] lg:mt-[-150px] xl:mt-[-250px] 2xl:mt-[-312px] w-full lg:h-[700px] xl:h-[940px] 2xl:h-[1100px] relative hidden lg:block text-poppins text-shadow z-10'>
                 <Image
                     src={UnderSlider3}
                     alt="Green Background"
