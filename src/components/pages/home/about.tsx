@@ -96,7 +96,7 @@ const About: React.FC<AboutProps> = ({ aboutData }) => {
                             width={500}
                             height={500}
                             alt='two'
-                            className="object-cover 2xl:w-[800px] 2xl:h-[680px] filter object-center transition duration-200"
+                            className="object-cover w-auto h-auto 2xl:w-[800px] 2xl:h-[680px] filter object-center transition duration-200"
                         />
                     </div>
                     <div className='md:flex-1'>
@@ -117,7 +117,7 @@ const About: React.FC<AboutProps> = ({ aboutData }) => {
                     fill
                     unoptimized
                     alt="bg"
-                    className="object-cover filter object-center transition duration-200 hidden lg:block"
+                    className="absolute object-cover filter object-center transition duration-200 hidden lg:block"
                 />
                 <div className="container mx-auto left-0 right-0 bg-c-footer-bg sm:bg-transparent md:absolute md:top-0 md:left-0 md:right-0 md:bottom-0 flex md:items-center">
                     <div className="pb-[60px] lg:mx-0 lg:w-1/2 max-w-full md:max-w-sm lg:max-w-md xl:max-w-2xl">

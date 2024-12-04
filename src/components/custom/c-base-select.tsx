@@ -23,7 +23,7 @@ interface CBaseSelectProps {
 export function CBaseSelect({ items, placeholder, ...rest }: CBaseSelectProps) {
   return (
     <Select {...rest}>
-      <SelectTrigger className="text-base text-c-contrast">
+      <SelectTrigger className="text-base text-c-contrast [&_span]:!h-[28px]">
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
       <SelectContent>

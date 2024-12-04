@@ -128,7 +128,7 @@ const Contact: React.FC<ContactProps> = ({ contactData, locale }) => {
                             name=""
                             id=""
                             placeholder={contactData.name}
-                            className="p-3 lg:p-[15px] text-sm lg:text-base rounded-xl border border-1 border-c-border-stroke focus:outline-none"
+                            className="p-3 lg:p-[15px] text-sm lg:text-base rounded-xl border border-c-border-stroke focus:outline-none"
                         />
 
                         <input
@@ -136,7 +136,7 @@ const Contact: React.FC<ContactProps> = ({ contactData, locale }) => {
                             name=""
                             id=""
                             placeholder={contactData.emailInput}
-                            className="p-3 lg:p-[15px] text-sm lg:text-base rounded-xl border border-1 border-c-border-stroke focus:outline-none"
+                            className="p-3 lg:p-[15px] text-sm lg:text-base rounded-xl border border-c-border-stroke focus:outline-none"
                         />
 
                         <textarea
@@ -144,7 +144,7 @@ const Contact: React.FC<ContactProps> = ({ contactData, locale }) => {
                             id=""
                             cols={3}
                             rows={3}
-                            className="p-3 lg:p-[15px] text-sm lg:text-base rounded-xl border border-1 border-c-border-stroke focus:outline-none"
+                            className="p-3 lg:p-[15px] text-sm lg:text-base rounded-xl border border-c-border-stroke focus:outline-none"
                             placeholder={contactData.message}
                         ></textarea>
                         <div className="flex justify-start">

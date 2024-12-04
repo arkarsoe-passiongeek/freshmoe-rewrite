@@ -11,7 +11,6 @@ import { useState, useEffect } from 'react'
 import { CiGlobe } from "react-icons/ci";
 import { PiTranslate } from "react-icons/pi";
 import Flag from 'react-world-flags';
-import ChooseLang from '@/components/modals/choose-lang'
 import { CCountrySelect } from '../custom/c-country-select'
 import { CLanguageSelect } from '../custom/c-language-select'
 import { getLanguageName, LanguageCodes } from '@/lib/utils'
@@ -41,14 +40,14 @@ const countryOptions = [
     {
         continent: 'asia pacific',
         countries: [
-            { value: 'mm', label: 'Myanmar', flag: 'mm', area: 'asia pacific', languages: ['en', 'mm'] },
-            { value: 'th', label: 'Thailand', flag: 'th', area: 'asia pacific', languages: ['en', 'th'] },
+            { value: 'mm', label: 'Myanmar', flag: 'mm', area: 'asia pacific', languages: ['mm', 'en'] },
+            { value: 'th', label: 'Thailand', flag: 'th', area: 'asia pacific', languages: ['th', 'en'] },
         ]
     },
     {
         continent: 'middle east',
         countries: [
-            { value: 'ae', label: 'United Arab Emirates', flag: 'ae', area: 'middle east', languages: ['en', 'ae'] },
+            { value: 'ae', label: 'United Arab Emirates', flag: 'ae', area: 'middle east', languages: ['ae', 'en'] },
         ]
     }
 ]
@@ -91,15 +90,6 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
             url: '/download'
         },
     ]
-
-    const getCountryByCode = (code: any) => {
-        let countries: any[] = []
-        countryOptions.map(each => {
-            countries = [...countries, ...each.countries]
-        })
-        const country = countries.filter(country => country.value === code)[0]
-        setCurrentCountry(country)
-    }
 
     const isNavActive = (url: string) => {
         return pathname === url
@@ -368,7 +358,6 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                 <div className="bg-c-white w-full p-[1px] brand-line-white"></div>
                 <div className="bg-c-secondary w-full p-[3.95px] brand-line-red"></div>
                 <nav className="shadow-lg w-full flex lg:justify-between items-center transition" id="navbar">
-                    {/* {open ? <ChooseLang onClickParent={() => setOpen(false)} /> : ''} */}
                     <div className="container mx-auto flex lg:justify-between items-center py-[0.8rem]">
                         <ul className="xl:flex-1 font-bold hidden md:flex nav items-center gap-4" id="nav-item">
                             <li
@@ -443,7 +432,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                                 />
                             </Link>
                         </div>
-                        <div className='flex-1 flex justify-end ml-auto lg:ml-0' onClick={() => { handleOpen }}>
+                        <div className='flex-1 flex justify-end ml-auto lg:ml-0 min-h-[26px]' onClick={() => { handleOpen }}>
                             {/* Desktop , tablet and mobile*/}
                             <button
                                 className={`relative px-0 xl:pl-1 rounded-xl text-sm font-normal flex justify-between items-center`}
@@ -462,7 +451,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                                                         }`}
                                                 />
                                             ) : (
-                                                <Flag code={currentCountry?.flag} className="w-[20px] md:h-[20px] lg:w-[40px] lg:h-[40px]" />
+                                                <Flag code={currentCountry?.flag} className="w-[20px] md:h-[20px] lg:w-[24px] lg:h-[24px]" />
                                             )}
                                         </div>
                                         <span className={`lg:text-base font-normal max-w-[60px] md:max-w-none text-ellipsis overflow-hidden text-nowrap`}>
@@ -471,10 +460,10 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                                     </div>
                                     <div className='border-r h-[21px] border-c-black'></div>
                                     <PiTranslate className="md:w-[20px] md:h-[20px] lg:w-[24px] lg:h-[24px] h-auto rounded-3xl text-c-black" />
-                                    <span className={`
-                            lg:text-base max-w-[60px] md:max-w-none text-ellipsis overflow-hidden text-nowrap`}>
+                                    <div className={`
+                            flex items-center lg:text-base max-w-[60px] min-h-[28px] md:max-w-none text-ellipsis overflow-hidden text-nowrap`}>
                                         {getLanguageName(`${currentLanguage}`)}
-                                    </span>
+                                    </div>
                                     <div>
                                         {!upperMenu ? (
                                             <MdOutlineKeyboardArrowUp className="md:w-[20px] md:h-[20px] lg:w-[20px] lg:h-[20px]" />
@@ -546,7 +535,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
 
                     <div className="absolute bottom-0 w-full py-4 flex justify-center items-center">
                         <button
-                            className=" bg-c-primary text-white text-sm py-[0.8rem] rounded-[10px] w-[85%] lg:w-[500px] flex justify-center items-center hover:bg-c-primary focus:bg-c-primary mb-6"
+                            className="bg-c-primary text-white text-sm py-[0.8rem] rounded-[10px] w-full lg:w-[500px] mx-6 flex justify-center items-center hover:bg-c-primary focus:bg-c-primary"
                             onClick={handleConfirmChangeLanguage}
                         >
                             Confirm

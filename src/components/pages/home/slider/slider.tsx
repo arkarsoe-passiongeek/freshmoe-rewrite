@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect } from "react";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import Slider1 from '@/public/images/home/slider1.jpg'
@@ -28,13 +28,6 @@ interface Slide {
     buttons: any;
 }
 
-interface ButtonProps {
-    id: number;
-    text: string;
-    link: string;
-    type: string;
-}
-
 const ChooseUsContent = ({ title, des, imageSrc, alt, layout }: { title: any, des: any, alt: any, imageSrc: any, layout?: any }) => {
     return (
         <>
@@ -43,7 +36,7 @@ const ChooseUsContent = ({ title, des, imageSrc, alt, layout }: { title: any, de
                 <div className='w-16 h-[2px] rounded-sm bg-white mb-1'></div>
                 <p className='text-c-white text-[10px] xl:text-base font-normal tracking-tight'>{des}</p>
             </div>
-            <Image width={60} height={70} src={imageSrc} alt={alt} className='underline w-[60px] h-[70px] 2xl:w-[70px] 2xl:h-[72px]' />
+            <Image width={60} height={60} src={imageSrc} alt={alt} className='underline w-[70px] h-[70px] 2xl:w-[70px] 2xl:h-[72px]' />
         </>
     )
 }
@@ -51,7 +44,7 @@ const ChooseUsContent = ({ title, des, imageSrc, alt, layout }: { title: any, de
 const ChooseUsContentMobile = ({ title, des, imageSrc, alt }: { title: any, des: any, alt?: any, imageSrc: any, layout?: any }) => {
     return (
         <div className="flex flex-col justify-center items-center text-center mx-auto min-w-[270px] max-w-sm md:max-w-md">
-            <Image src={imageSrc} alt={alt} className='w-[60px] h-[62px] md:w-[40px] md:h-[40px] mb-[15px]' priority />
+            <Image src={imageSrc} alt={alt} width={60} height={60} className='w-[60px] h-[62px] md:w-[40px] md:h-[40px] mb-[15px]' priority />
             <div className="px-4 flex flex-col items-center">
                 <p className='text-c-white text-base md:text-xl font-medium mb-1'>{title}</p>
                 <div className='w-10 h-[2.5px] rounded-md bg-white mb-[10px]'></div>
@@ -125,7 +118,7 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
                     >
                         {data?.map(({ id, image, tagline, title, buttons }) => (
                             <SwiperSlide key={id} virtualIndex={id} className="">
-                                <div className="min-h-[280px] md:min-h-[400px] xl:min-h-[600px] 2xl:min-h-[850px] relative">
+                                <div className="min-h-[280px] md:min-h-[400px] xl:min-h-[630px] 2xl:min-h-[850px] relative">
                                     <Image
                                         unoptimized
                                         src={Slider1 || image}
@@ -136,17 +129,17 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
                                         priority
                                     />
                                     <div className="w-full h-full absolute left-0 top-0 bg-green-100 opacity-10"></div>
-                                    <div className="container left-0 right-0 mx-auto absolute flex justify-end top-[10%] lg:top-[4vw] 2xl:top-[25%]">
+                                    <div className="container left-0 right-0 mx-auto absolute flex justify-end top-[10%] lg:top-[4vw] 2xl:top-[10%]">
                                         <div className="w-full text-center lg:text-start lg:w-[40%] 2xl:w-[661px] h-full">
                                             <div className="mb-[10px] lg:mb-[32px] 2xl:space-y-[16px] 2xl:mb-[48px]">
-                                                <ContentHeader className="text-base sm:text-base xl:text-5xl">
+                                                <ContentHeader className="text-base sm:text-base lg:text-lg xl:text-2xl 2xl:text-5xl">
                                                     {title || 'Delivering In Four Hours'}
                                                 </ContentHeader>
                                                 {tagline && (
                                                     <ContentDescription className="text-xss sm:text-sm 2xl:text-2xl text-c-contrast">{tagline}</ContentDescription>
                                                 )}
                                             </div>
-                                            <ContentButton>More Info</ContentButton>
+                                            <ContentButton>{sliderData.sliderButton}</ContentButton>
                                         </div>
                                     </div>
                                 </div>
@@ -155,7 +148,7 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
                     </Swiper>
                 </div>
             </section>
-            <div className="swiper-home-pagination absolute !w-auto !top-[310px] md:!top-[350px] lg:!top-[40vw] xl:!top-[35vw] 2xl:!top-[35vw] !left-1/2 !-translate-x-1/2 z-30 space-x-1 [&>*]:!transition-all [&>span]:hover:!cursor-pointer [&>span]:!w-[5px] [&>span]:!h-[5px] [&>span]:md:!w-[6px] [&>span]:md:!h-[6px] [&>span]:lg:!w-[12px] [&>span]:lg:!h-[12px] [&>span]:!bg-c-secondary [&>span]:!bg-opacity-50 [&>span]:!inline-block [&>span]:!rounded-[10px] [&>.swiper-home-pagination-bullet-active]:!w-[15px] [&>.swiper-home-pagination-bullet-active]:md:!w-[16px] [&>.swiper-home-pagination-bullet-active]:lg:!w-[36px] [&>.swiper-home-pagination-bullet-active]:!bg-opacity-100">
+            <div className="swiper-home-pagination absolute !w-auto !top-[310px] md:!top-[350px] lg:!top-[40vw] xl:!top-[35vw] 2xl:!top-[35vw] !left-1/2 !-translate-x-1/2 z-30 space-x-1 lg:space-x-[10px] [&>*]:!transition-all [&>span]:hover:!cursor-pointer [&>span]:!w-[5px] [&>span]:!h-[5px] [&>span]:md:!w-[6px] [&>span]:md:!h-[6px] [&>span]:lg:!w-[12px] [&>span]:lg:!h-[12px] [&>span]:!bg-c-white [&>span]:!inline-block [&>span]:!rounded-[10px] [&>.swiper-home-pagination-bullet-active]:!w-[15px] [&>.swiper-home-pagination-bullet-active]:md:!w-[16px] [&>.swiper-home-pagination-bullet-active]:lg:!w-[36px] [&>.swiper-home-pagination-bullet-active]:!bg-c-secondary">
             </div>
             <div suppressHydrationWarning={true} className='mt-[-200px] lg:mt-[-150px] xl:mt-[-250px] 2xl:mt-[-312px] w-full lg:h-[700px] xl:h-[940px] 2xl:h-[1100px] relative hidden lg:block text-poppins text-shadow z-10'>
                 <Image

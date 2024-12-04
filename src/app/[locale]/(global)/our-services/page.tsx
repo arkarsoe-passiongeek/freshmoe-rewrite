@@ -72,8 +72,8 @@ export default async function OurService({ params }: { params: Promise<{ locale:
                 className="bg-cover bg-center"
                 style={{ backgroundImage: "url('/images/our-services/about3-6.png')" }}
             >
-                <div className="container mx-auto flex md:flex-row flex-col items-center py-10 gap-14 md:gap-10 lg:gap-[100px] 2xl:gap-[150px] h-auto relative">
-                    <div className="lg:w-2/4 xl:w-[630px] w-full">
+                <div className="container mx-auto flex md:flex-row flex-col items-center justify-center py-10 2xl:py-24 gap-14 md:gap-10 lg:gap-[100px] 2xl:gap-[150px] h-auto relative">
+                    <div className="lg:w-2/4 xl:w-[630px] w-full lg:flex-1">
                         <div className="p-2">
                             <div className="text-c-contrast text-center md:text-start">
                                 <div className='space-y-5'>
@@ -103,8 +103,8 @@ export default async function OurService({ params }: { params: Promise<{ locale:
                             </div>
                         </div>
                     </div>
-                    <div className="w-full lg:w-2/4 xl:w-3/5 lg:block">
-                        <div className="h-full overflow-hidden flex justify-center lg:justify-end">
+                    <div className="w-full lg:w-2/4 xl:w-3/5 lg:flex-1">
+                        <div className="h-full overflow-hidden flex justify-center">
                             <Image
                                 // src={content?.image_6 ? `${IMAGE_URL}/${content.image_6}` : AAAbout3}
                                 src={AAAbout3}
@@ -112,8 +112,7 @@ export default async function OurService({ params }: { params: Promise<{ locale:
                                 width={100}
                                 height={100}
                                 alt=""
-
-                                className="object-cover w-full md:w-[350px] lg:w-full xl:w-[90%] 2xl:w-[80%] h-auto filter object-center transition duration-200"
+                                className="object-cover w-full md:w-[350px] lg:w-full xl:w-[90%] 2xl:w-[870px] h-auto filter object-center transition duration-200"
                             />
                         </div>
                     </div>
