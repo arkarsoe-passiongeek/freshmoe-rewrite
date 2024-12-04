@@ -6,13 +6,13 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 
-export type LanguageCodes = 'en' | 'mm' | 'th' | 'ae' | 'cn';
+export type LanguageCodes = 'en' | 'mm' | 'th' | 'ar' | 'cn';
 
 const languageOptions: { [key in LanguageCodes]: string } = {
   en: 'English',
   mm: 'မြန်မာ',
   th: 'ภาษาไทย',
-  ae: 'العربية',
+  ar: 'العربية',
   cn: '中文',
 };
 

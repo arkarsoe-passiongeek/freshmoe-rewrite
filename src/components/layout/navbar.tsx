@@ -34,7 +34,7 @@ const countryOptions = [
     {
         continent: 'global',
         countries: [
-            { value: 'global', label: 'Global', flag: 'global', area: 'global', languages: ['en', 'mm', 'th', 'ae', 'cn'] },
+            { value: 'global', label: 'Global', flag: 'global', area: 'global', languages: ['en', 'mm', 'th', 'ar', 'cn'] },
         ]
     },
     {
@@ -47,7 +47,7 @@ const countryOptions = [
     {
         continent: 'middle east',
         countries: [
-            { value: 'ae', label: 'United Arab Emirates', flag: 'ae', area: 'middle east', languages: ['ae', 'en'] },
+            { value: 'ae', label: 'United Arab Emirates', flag: 'ae', area: 'middle east', languages: ['ar', 'en'] },
         ]
     }
 ]
@@ -223,6 +223,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
     }, [])
 
     const handleToggle = () => {
+        const bgWrapper = document.querySelector('#bg-wrapper')
         const sidebarElement = document.querySelector<HTMLDivElement>('#sidebar')
         const upperMenuElement = document.querySelector<HTMLDivElement>('#upper-menu')
         const upperMenuWrapper =
@@ -234,9 +235,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
         if (sidebarElement && sidebarWrapper) {
             if (sidebar == true) {
                 const classesToRemove = ['bg-[#000]', 'bg-opacity-20'];
-                const classesToRemoveWidth = ['w-full'];
                 sidebarWrapper?.classList.add(...classesToRemove);
-                sidebarWrapper?.classList.add(...classesToRemoveWidth);
                 sidebarElement?.classList.remove('-left-80')
                 sidebarElement?.classList.add('left-0')
                 sidebarWrapper?.classList.remove('invisible')
@@ -244,8 +243,6 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                 navbarElement?.classList.add('bg-white')
                 setSidebar(false)
                 document.documentElement.style.overflowY = 'hidden'
-                // document.body.style.overflowY = 'hidden' 
-                //close upper menu when sidebar is open
                 upperMenuElement?.classList.add('-top-[104px]')
                 upperMenuElement?.classList.remove('top-0')
                 upperMenuWrapper?.classList.add('invisible')
@@ -255,14 +252,13 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                 if (navbar) {
                     navbar.style.backgroundColor = '#fff';
                 }
+                bgWrapper?.classList.remove('invisible')
                 //
             } else {
                 const classesToRemove = ['bg-[#000]', 'bg-opacity-20'];
-                const classesToRemoveWidth = ['w-full'];
                 const classesToAddWidth = ['w-[50%]'];
                 upperMenuWrapper?.classList.add(...classesToRemove);
                 upperMenuWrapper?.classList.remove(...classesToAddWidth);
-                upperMenuWrapper?.classList.add(...classesToRemoveWidth);
 
                 sidebarElement?.classList.add('-left-80')
                 sidebarElement?.classList.remove('left-0')
@@ -277,7 +273,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                 if (navbar) {
                     navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
                 }
-
+                bgWrapper?.classList.add('invisible')
             }
         }
     }
@@ -286,6 +282,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
     const handleUpperMenuToggle = () => {
         // if(localActive !== 'en_global'){
         // alert("Sidebar "+sidebar+" Upper "+upperMenu)
+        const bgWrapper = document.querySelector('#bg-wrapper')
         const sidebarElement = document.querySelector<HTMLDivElement>('#sidebar')
         const upperMenuElement = document.querySelector<HTMLDivElement>('#upper-menu')
         const navbar = document.getElementById("navbar");
@@ -297,9 +294,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
         if (upperMenuElement && upperMenuWrapper) {
             // if(!sidebar){
             const classesToRemove = ['bg-[#000]', 'bg-opacity-20'];
-            const classesToRemoveWidth = ['w-full'];
             upperMenuWrapper.classList.remove(...classesToRemove);
-            upperMenuWrapper.classList.remove(...classesToRemoveWidth);
             if (upperMenu == true) {
                 upperMenuElement?.classList.remove('-top-[104px]')
                 upperMenuElement?.classList.add('top-0')
@@ -307,11 +302,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                 upperMenuWrapper?.classList.remove('opacity-0')
                 upperMenuElement?.classList.add('animate-dropdown'); // Trigger dropdown animation
                 const classesToRemove = ['bg-[#000]', 'bg-opacity-20'];
-                const classesToRemoveWidth = ['w-full'];
-                const classesToAddWidth = ['w-[50%]'];
                 upperMenuWrapper?.classList.add(...classesToRemove);
-                upperMenuWrapper?.classList.remove(...classesToAddWidth);
-                upperMenuWrapper?.classList.add(...classesToRemoveWidth);
                 if (navbar) navbar.style.backgroundColor = '#fff';
 
                 sidebarElement?.classList.add('-left-80')
@@ -325,7 +316,8 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                 navbarElement?.classList.add('bg-white')
                 setUpperMenu(false)
                 document.documentElement.style.overflowY = 'hidden'
-                // document.body.style.overflowY = 'hidden' 
+                // document.body.style.overflowY = 'hidden'
+                bgWrapper?.classList.remove('invisible')
             } else {
                 upperMenuElement?.classList.add('-top-[104px]')
                 upperMenuElement?.classList.remove('top-0')
@@ -336,6 +328,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                 if (navbar && (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80)) navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
                 setUpperMenu(true)
                 document.documentElement.style.overflowY = 'visible'
+                bgWrapper?.classList.add('invisible')
             }
         }
     }
@@ -353,12 +346,13 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
         if (newPrefix !== locale) {
             router.replace(pathname, { locale: newPrefix })
         }
+        console.log(newPrefix)
         setLanguageChanging(false)
     }
 
     return (
         <>
-            <div className='fixed w-full top-0 z-50'>
+            <div className='fixed w-full top-0 z-[60]'>
                 <div className="bg-c-primary w-full p-[20px] brand-line-green"></div>
                 <div className="bg-c-white w-full p-[1px] brand-line-white"></div>
                 <div className="bg-c-secondary w-full p-[3.95px] brand-line-red"></div>
@@ -484,7 +478,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
             </div >
             {/* <!-- start mobile sidebar --> */}
             <div
-                className="z-40 fixed h-full left-0 top-[105px] md:top-[111px] xl:top-[119px] lg:top-[130px]  invisible transition-all duration-500 bg-[#000] bg-opacity-20"
+                className="z-50 fixed h-full left-0 top-[105px] md:top-[111px] xl:top-[119px] lg:top-[130px]  invisible transition-all duration-500 bg-[#000] bg-opacity-20"
                 id="sidebar-wrapper"
             >
                 <div
@@ -515,11 +509,11 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
 
             {/* start language menu */}
             <div
-                className="z-40 fixed top-0 h-full left-0 invisible transition-all duration-500 bg-[#000] bg-opacity-20"
+                className="z-50 fixed top-0 h-full left-0 invisible transition-all duration-500"
                 id="upper-menu-wrapper"
             >
                 <div
-                    className="z-40 fixed h-[100vh] w-full lg:w-[45%] bg-c-white right-0 flex flex-col transition-all duration-500"
+                    className={`z-50 fixed h-[100vh] w-full lg:w-[45%] bg-c-white right-0 flex flex-col transition-all duration-500 ${upperMenu ? '-top-[104px]' : 'top-0'}`}
                     id="upper-menu"
                 >
                     <div className="container pt-[100px] lg:pt-[150px] mx-auto flex flex-col gap-6 lg:flex-row w-full items-center py-[0.8rem] max-w-[1790px] px-[2rem] mt-10">
@@ -547,8 +541,10 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                             {languageChanging ? <PiSpinner className='w-[30px] h-[30px]' /> : "Confirm"}
                         </button>
                     </div>
-
                 </div>
+            </div>
+
+            <div id='bg-wrapper' className={`w-[100vw] h-[100vh] z-40 bg-c-black opacity-50 fixed transition-all invisible`}>
             </div>
         </>
     )

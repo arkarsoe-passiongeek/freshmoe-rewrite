@@ -25,7 +25,7 @@ const Card = ({ imageSrc, title, description }: { imageSrc: any, title: any, des
                 className="mb-4 lg:mb-[24px] object-cover w-full h-auto filter object-center transition duration-200 rounded-[10px]"
             />
             <div className='space-y-2 lg:space-y-4'>
-                <h3 className="text-lg capitalize font-semibold xl:text-3xl text-c-primary">
+                <h3 className="text-lg capitalize font-semibold xl:text-2xl text-c-primary">
                     {title}
                 </h3>
                 <p className='text-c-contrast text-sm lg:text-lg'>
