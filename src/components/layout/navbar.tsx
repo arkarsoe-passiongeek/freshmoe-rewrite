@@ -221,7 +221,6 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
 
     // set current country and selected country on page load
     useEffect(() => {
-        console.log(locale)
         countryOptions.map(continent => {
             continent.countries.map(country => {
                 if (country.value === locale.split('_')[1]) {
@@ -262,14 +261,8 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                 upperMenuWrapper?.classList.add('opacity-0')
                 document.documentElement.style.overflowY = 'hidden'
                 setUpperMenu(true)
-                if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-                    if (navbar) {
-                        navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
-                    }
-                } else {
-                    if (navbar) {
-                        navbar.style.backgroundColor = '#fff';
-                    }
+                if (navbar) {
+                    navbar.style.backgroundColor = '#fff';
                 }
                 //
             } else {
@@ -289,6 +282,11 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                 setSidebar(true)
 
                 document.documentElement.style.overflowY = 'visible'
+
+                if (navbar) {
+                    navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
+                }
+
             }
         }
     }
@@ -360,8 +358,6 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
 
     const handleConfirmChangeLanguage = () => {
         let newPrefix: any = `${selectedLanguage}_${selectedCountry.value}`
-        console.log(pathname)
-        console.log(newPrefix)
         router.replace(pathname, { locale: newPrefix })
     }
 

@@ -13,7 +13,6 @@ const DownloadHandler = ({ downloadApps }: { downloadApps: any }) => {
 
     const handleDownloadChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const selectedValue = event.target.value;
-        console.log("Selected version File Path:", selectedValue);
         setDownloadUrl(selectedValue)
     };
 
@@ -31,13 +30,10 @@ const DownloadHandler = ({ downloadApps }: { downloadApps: any }) => {
             if (response.data.status == 422) {
                 alert("error")
             } else {
-                console.log(response.data.data.appUrl)
                 setDownloadUrl(response.data.data.appUrl)
                 const link = document.createElement('a');
-                console.log(response.data.data.appUrl)
                 link.href = `${response.data.data.appUrl}`;
                 link.setAttribute('download', 'retail.apk');
-                console.log(response.data.data.appUrl)
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);

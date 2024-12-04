@@ -105,7 +105,6 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
 
     const handleSwiperInit = (swiper: any) => {
         // Start an animation for the swiper container
-        // console.log("swiper is initalized!")
     };
 
     return (
@@ -122,10 +121,11 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
                         slidesPerView={1}
                         loop={false}
                         modules={[Autoplay, Pagination]}
+                        a11y={{ enabled: false }}
                     >
                         {data?.map(({ id, image, tagline, title, buttons }) => (
                             <SwiperSlide key={id} virtualIndex={id} className="">
-                                <div className="min-h-[280px] md:min-h-[400px] 2xl:min-h-[850px] relative">
+                                <div className="min-h-[280px] md:min-h-[400px] xl:min-h-[600px] 2xl:min-h-[850px] relative">
                                     <Image
                                         unoptimized
                                         src={Slider1 || image}
@@ -136,7 +136,7 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
                                         priority
                                     />
                                     <div className="w-full h-full absolute left-0 top-0 bg-green-100 opacity-10"></div>
-                                    <div className="container left-0 right-0 mx-auto absolute flex justify-end top-[10%] 2xl:top-[25%]">
+                                    <div className="container left-0 right-0 mx-auto absolute flex justify-end top-[10%] lg:top-[4vw] 2xl:top-[25%]">
                                         <div className="w-full text-center lg:text-start lg:w-[40%] 2xl:w-[661px] h-full">
                                             <div className="mb-[10px] lg:mb-[32px] 2xl:space-y-[16px] 2xl:mb-[48px]">
                                                 <ContentHeader className="text-base sm:text-base xl:text-5xl">

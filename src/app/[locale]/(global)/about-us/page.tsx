@@ -36,7 +36,6 @@ export default async function AboutUs({ params }: { params: Promise<{ locale: st
     formData.append('country', locale.split('_')[0]);
 
     const { data: content }: any = await fetchAboutUsContent(formData)
-    console.log(content)
 
     return (
         <div className="bg-white h-auto relative pb-[7rem] md:pb-[9rem] mt-[104px] sm:mt-[110px] md:mt-[115px] lg:mt-[100px] xl:mt-[110px] 2xl:mt-[120px]">

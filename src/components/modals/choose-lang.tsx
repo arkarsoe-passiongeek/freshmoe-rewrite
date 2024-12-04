@@ -43,7 +43,6 @@ const ChooseLang: React.FC<ChildProps> = ({ onClickParent }) => {
 
 
     const handleClickChild = () => {
-        console.log('Clicked child!');
         document.documentElement.style.overflowY = 'visible';
         document.body.style.overflowY = 'visible';
         onClickParent();

@@ -49,13 +49,13 @@ const Contact: React.FC<ContactProps> = ({ contactData, locale }) => {
             />
             <div className="container mx-auto relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between pb-10 lg:py-10 h-auto">
                 <div className="flex flex-col">
-                    <a href="#" className="">
+                    <Link href="/">
                         <Image
                             src={freshMoeLogo}
                             alt=""
                             className="w-[100px] lg:w-[10rem] 2xl:w-[200px] h-auto lg:h-[100px] mb-[20px] lg:mb-[32px]"
                         />
-                    </a>
+                    </Link>
                     <div className='space-y-[20px] lg:space-y-[15px] 2xl:space-y-[24px] mb-[50px]'>
                         <div className="flex space-x-4">
                             <div className="flex items-center text-base 2xl:text-lg">
@@ -104,11 +104,9 @@ const Contact: React.FC<ContactProps> = ({ contactData, locale }) => {
                 </div>
 
                 <div className="flex flex-col gap-5 pt-11 md:pt-0 md:justify-self-end lg:justify-self-auto">
-                    <a href="#" className="">
-                        <h2 className="text-c-primary font-semibold text-lg 2xl:text-2xl">
-                            {contactData.quickLinks}
-                        </h2>
-                    </a>
+                    <h2 className="text-c-primary font-semibold text-lg 2xl:text-2xl">
+                        {contactData.quickLinks}
+                    </h2>
 
                     <div className="flex flex-col gap-5 2xl:gap-[40px] text-sm 2xl:text-lg">
                         <Link href={`/${locale}/about-us`} className='hover:text-c-secondary w-fit'>{contactData.link1}</Link>
@@ -121,11 +119,9 @@ const Contact: React.FC<ContactProps> = ({ contactData, locale }) => {
                 </div>
 
                 <div className="flex flex-col gap-5 items-right pt-11 lg:pt-0 md:col-span-2 lg:col-span-1">
-                    <a href="#" className="">
-                        <h2 className="text-c-primary font-semibold text-lg 2xl:text-2xl">
-                            {contactData.contactForm}
-                        </h2>
-                    </a>
+                    <h2 className="text-c-primary font-semibold text-lg 2xl:text-2xl">
+                        {contactData.contactForm}
+                    </h2>
                     <div className="flex flex-col gap-5 lg:gap-[24px] text-c-contrast text-base lg:text-md xl:text-lg lg:text-base">
                         <input
                             type="text"

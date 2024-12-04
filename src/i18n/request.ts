@@ -11,7 +11,6 @@ export default getRequestConfig(async ({ requestLocale }) => {
     }
 
     let messageName = locale.split('_')[0]
-    console.log(messageName)
 
     return {
         locale,
