@@ -23,7 +23,6 @@ import ReactHtmlParser from 'html-react-parser';
 import { getTranslations } from 'next-intl/server'
 import { fetchProfileContent } from '@/services/page/fetch-profile-content'
 import BannerHeader from '@/components/layout/banner-header'
-import ProfileBanner from "@/public/images/profile/br-profile-header-1.png"
 import ContentHeader from '@/components/custom/content/content-header'
 import ContentDescription from '@/components/custom/content/content-description'
 
@@ -64,7 +63,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
 
     return (
         <div className="mt-[98px] sm:mt-[110px] md:mt-[115px] lg:mt-[100px] xl:mt-[110px] 2xl:mt-[120px]">
-            <BannerHeader locale={locale} imageSrc={ProfileBanner} text={content?.title_1 || t('profile')} />
+            <BannerHeader locale={locale} text={content?.title_1 || t('profile')} />
             {/* Client And Future Plan */}
             <div className="container mx-auto flex flex-col-reverse md:flex-row items-center my-10 gap-[20px] lg:gap-[40px] xl:gap-[80px] 2xl:gap-[104px] lg:my-[50px] 2xl:my-[150px]">
                 <div className="w-full lg:w-1/2">

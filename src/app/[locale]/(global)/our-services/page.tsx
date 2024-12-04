@@ -10,7 +10,6 @@ import RetailShop from '@/public/images/our-services/RetailShop.png'
 import { getTranslations } from 'next-intl/server'
 import { fetchOurServicesContent } from '@/services/page/fetch-our-services-content'
 import BannerHeader from '@/components/layout/banner-header'
-import OurServicesBanner from "@/public/images/our-services/br-our-services-header-1.png"
 import ContentHeader from '@/components/custom/content/content-header';
 import ContentDescription from '@/components/custom/content/content-description';
 
@@ -50,7 +49,7 @@ export default async function OurService({ params }: { params: Promise<{ locale:
 
     return (
         <div className="bg-white h-auto relative mt-[98px] sm:mt-[110px] md:mt-[115px] lg:mt-[100px] xl:mt-[110px]">
-            <BannerHeader locale={locale} imageSrc={OurServicesBanner} text={content?.title_1 || t('service')} />
+            <BannerHeader locale={locale} text={content?.title_1 || t('service')} />
             <div className="container mx-auto flex flex-col gap-10 lg:gap-16 xl:gap-[120px] py-10 md:pb-20 xl:pb-[150px]">
                 <div className="text-center text-c-contrast md:max-w-lg xl:max-w-[1000px] mx-auto">
                     <ContentHeader>

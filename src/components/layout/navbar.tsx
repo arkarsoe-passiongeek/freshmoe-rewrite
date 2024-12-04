@@ -3,16 +3,16 @@ import Image from 'next/image'
 import freshMoeLogo from '../../../public/images/freshmoeLogo.png'
 import {
     MdOutlineKeyboardArrowUp,
-    MdOutlineKeyboardArrowDown,
+    MdOutlineKeyboardArrowDown
 } from 'react-icons/md'
 import { FaBars } from 'react-icons/fa6'
 import { RxCross1 } from "react-icons/rx";
 import { useState, useEffect } from 'react'
 import { CiGlobe } from "react-icons/ci";
-import { PiTranslate } from "react-icons/pi";
+import { PiSpinner, PiTranslate } from "react-icons/pi";
 import Flag from 'react-world-flags';
-import { CCountrySelect } from '../custom/c-country-select'
-import { CLanguageSelect } from '../custom/c-language-select'
+import { CCountrySelect } from '@/components/custom/c-country-select'
+import { CLanguageSelect } from '@/components/custom/c-language-select'
 import { getLanguageName, LanguageCodes } from '@/lib/utils'
 import { Link, usePathname, useRouter } from '@/i18n/routing'
 
@@ -63,6 +63,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
     const [selectedLanguage, setSelectedLanguage] = useState<LanguageCodes>(locale.split('_')[0] as LanguageCodes);
     const [currentCountry, setCurrentCountry] = useState<any>()
     const [currentLanguage] = useState<LanguageCodes>(locale.split('_')[0] as LanguageCodes)
+    const [languageChanging, setLanguageChanging] = useState(false)
 
     const navList = [
         {
@@ -347,8 +348,12 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
     // end language select modal open
 
     const handleConfirmChangeLanguage = () => {
+        setLanguageChanging(true)
         let newPrefix: any = `${selectedLanguage}_${selectedCountry.value}`
-        router.replace(pathname, { locale: newPrefix })
+        if (newPrefix !== locale) {
+            router.replace(pathname, { locale: newPrefix })
+        }
+        setLanguageChanging(false)
     }
 
     return (
@@ -535,10 +540,11 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
 
                     <div className="absolute bottom-0 w-full py-4 flex justify-center items-center">
                         <button
-                            className="bg-c-primary text-white text-sm py-[0.8rem] rounded-[10px] w-full lg:w-[500px] mx-6 flex justify-center items-center hover:bg-c-primary focus:bg-c-primary"
+                            disabled={languageChanging}
+                            className={`text-white text-sm lg:text-base py-[0.8rem] rounded-[10px] w-full h-full lg:w-[500px] mx-6 flex justify-center items-center  ${languageChanging ? 'bg-c-contrast hover:bg-c-contrast' : 'bg-c-primary hover:bg-c-primary'}`}
                             onClick={handleConfirmChangeLanguage}
                         >
-                            Confirm
+                            {languageChanging ? <PiSpinner className='w-[30px] h-[30px]' /> : "Confirm"}
                         </button>
                     </div>
 

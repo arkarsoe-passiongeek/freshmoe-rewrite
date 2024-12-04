@@ -6,7 +6,6 @@ import AboutUs4 from '@/public/images/about-us/aboutus-4-4.png'
 import AboutUs5 from '@/public/images/about-us/aboutus-5.png'
 import { fetchAboutUsContent } from '@/services/page/fetch-about-us-content'
 import BannerHeader from '@/components/layout/banner-header'
-import AboutUsBanner from "@/public/images/about-us/br-contact-us-header-1.png"
 import { getTranslations } from 'next-intl/server'
 import ReactHtmlParser from 'html-react-parser'
 import ContentHeader from '@/components/custom/content/content-header'
@@ -36,7 +35,7 @@ export default async function AboutUs({ params }: { params: Promise<{ locale: st
 
     return (
         <div className="bg-white h-auto relative pb-[7rem] md:pb-[9rem] mt-[104px] sm:mt-[110px] md:mt-[115px] lg:mt-[100px] xl:mt-[110px] 2xl:mt-[120px]">
-            <BannerHeader locale={locale} imageSrc={AboutUsBanner} text={content?.title_1 || t('about')} />
+            <BannerHeader locale={locale} text={content?.title_1 || t('about')} />
             <div className="container mx-auto my-10 flex flex-col md:flex-row gap-10 2xl:gap-[140px] items-center">
                 <div className="w-full text-center md:text-start md:w-1/2 2xl:max-w-[1000px] p-0 text-c-contrast">
                     <ContentHeader>

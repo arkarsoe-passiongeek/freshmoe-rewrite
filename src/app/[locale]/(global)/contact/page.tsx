@@ -2,7 +2,6 @@ import ReactHtmlParser from 'html-react-parser';
 import { getTranslations } from 'next-intl/server';
 import { fetchContactContent } from '@/services/page/fetch-contact-content';
 import BannerHeader from '@/components/layout/banner-header';
-import ContentHeader from '@/components/custom/content/content-header';
 import ContentDescription from '@/components/custom/content/content-description';
 
 export default async function Contact({ params }: { params: Promise<{ locale: string }> }) {

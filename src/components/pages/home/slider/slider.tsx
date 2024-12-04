@@ -36,7 +36,7 @@ const ChooseUsContent = ({ title, des, imageSrc, alt, layout }: { title: any, de
                 <div className='w-16 h-[2px] rounded-sm bg-white mb-1'></div>
                 <p className='text-c-white text-[10px] xl:text-base font-normal tracking-tight'>{des}</p>
             </div>
-            <Image width={60} height={60} src={imageSrc} alt={alt} className='underline w-[70px] h-[70px] 2xl:w-[70px] 2xl:h-[72px]' />
+            <Image width={60} height={60} src={imageSrc} alt={alt} className='underline w-auto h-auto 2xl:w-[70px] 2xl:h-[72px]' />
         </>
     )
 }
@@ -44,7 +44,7 @@ const ChooseUsContent = ({ title, des, imageSrc, alt, layout }: { title: any, de
 const ChooseUsContentMobile = ({ title, des, imageSrc, alt }: { title: any, des: any, alt?: any, imageSrc: any, layout?: any }) => {
     return (
         <div className="flex flex-col justify-center items-center text-center mx-auto min-w-[270px] max-w-sm md:max-w-md">
-            <Image src={imageSrc} alt={alt} width={60} height={60} className='w-[60px] h-[62px] md:w-[40px] md:h-[40px] mb-[15px]' priority />
+            <Image src={imageSrc} alt={alt} width={60} height={60} className='w-auto h-auto md:w-[40px] md:h-[40px] mb-[15px]' />
             <div className="px-4 flex flex-col items-center">
                 <p className='text-c-white text-base md:text-xl font-medium mb-1'>{title}</p>
                 <div className='w-10 h-[2.5px] rounded-md bg-white mb-[10px]'></div>
@@ -148,7 +148,7 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
                     </Swiper>
                 </div>
             </section>
-            <div className="swiper-home-pagination absolute !w-auto !top-[310px] md:!top-[350px] lg:!top-[40vw] xl:!top-[35vw] 2xl:!top-[35vw] !left-1/2 !-translate-x-1/2 z-30 space-x-1 lg:space-x-[10px] [&>*]:!transition-all [&>span]:hover:!cursor-pointer [&>span]:!w-[5px] [&>span]:!h-[5px] [&>span]:md:!w-[6px] [&>span]:md:!h-[6px] [&>span]:lg:!w-[12px] [&>span]:lg:!h-[12px] [&>span]:!bg-c-white [&>span]:!inline-block [&>span]:!rounded-[10px] [&>.swiper-home-pagination-bullet-active]:!w-[15px] [&>.swiper-home-pagination-bullet-active]:md:!w-[16px] [&>.swiper-home-pagination-bullet-active]:lg:!w-[36px] [&>.swiper-home-pagination-bullet-active]:!bg-c-secondary">
+            <div className="swiper-home-pagination absolute h-auto !w-auto !top-[310px] md:!top-[350px] lg:!top-[40vw] xl:!top-[35vw] 2xl:!top-[35vw] !left-1/2 !-translate-x-1/2 z-30 space-x-1 lg:space-x-[10px] [&>*]:!transition-all [&>span]:hover:!cursor-pointer [&>span]:!w-[5px] [&>span]:!h-[5px] [&>span]:md:!w-[6px] [&>span]:md:!h-[6px] [&>span]:lg:!w-[12px] [&>span]:lg:!h-[12px] [&>span]:!bg-c-white [&>span]:!inline-block [&>span]:!rounded-[10px] [&>.swiper-home-pagination-bullet-active]:!w-[15px] [&>.swiper-home-pagination-bullet-active]:md:!w-[16px] [&>.swiper-home-pagination-bullet-active]:lg:!w-[36px] [&>.swiper-home-pagination-bullet-active]:!bg-c-secondary">
             </div>
             <div suppressHydrationWarning={true} className='mt-[-200px] lg:mt-[-150px] xl:mt-[-250px] 2xl:mt-[-312px] w-full lg:h-[700px] xl:h-[940px] 2xl:h-[1100px] relative hidden lg:block text-poppins text-shadow z-10'>
                 <Image
