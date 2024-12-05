@@ -107,6 +107,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
     }
 
     const closeAllMenu = () => {
+        const bgWrapper = document.querySelector('#bg-wrapper')
         const sidebarElement = document.querySelector<HTMLDivElement>('#sidebar')
         const upperMenuElement = document.querySelector<HTMLDivElement>('#upper-menu')
         const upperMenuWrapper =
@@ -160,6 +161,8 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                 navbar.style.backgroundColor = '#fff';
             }
         }
+
+        bgWrapper?.classList.add('invisible')
     }
 
     // making the navbar transparent on scroll
