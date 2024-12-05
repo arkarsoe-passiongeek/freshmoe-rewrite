@@ -40,12 +40,12 @@ export default async function LocaleLayout({
     // side is the easiest way to get started
     const messages = await getMessages();
 
-    const lang: LangMap = {
-        'mm': 'my-MM'
+    const getLang = (locale: string) => {
+        return `${locale.split('_')[0]}-${locale.split('_')[1].toUpperCase()}`
     }
 
     return (
-        <html lang={lang[locale]}>
+        <html lang={getLang(locale)}>
             <body className={outfit.className}>
                 <NextIntlClientProvider messages={messages}>
                     {children}

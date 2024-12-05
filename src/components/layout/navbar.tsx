@@ -15,6 +15,7 @@ import { CCountrySelect } from '@/components/custom/c-country-select'
 import { CLanguageSelect } from '@/components/custom/c-language-select'
 import { getLanguageName, LanguageCodes } from '@/lib/utils'
 import { Link, usePathname, useRouter } from '@/i18n/routing'
+import { COUNTRY_OPTIONS } from '@/lib/constant'
 
 interface NavbarProps {
     locale: string;
@@ -30,27 +31,7 @@ interface NavbarProps {
     };
 }
 
-const countryOptions = [
-    {
-        continent: 'global',
-        countries: [
-            { value: 'global', label: 'Global', flag: 'global', area: 'global', languages: ['en', 'mm', 'th', 'ar', 'cn'] },
-        ]
-    },
-    {
-        continent: 'asia pacific',
-        countries: [
-            { value: 'mm', label: 'Myanmar', flag: 'mm', area: 'asia pacific', languages: ['mm', 'en'] },
-            { value: 'th', label: 'Thailand', flag: 'th', area: 'asia pacific', languages: ['th', 'en'] },
-        ]
-    },
-    {
-        continent: 'middle east',
-        countries: [
-            { value: 'ae', label: 'United Arab Emirates', flag: 'ae', area: 'middle east', languages: ['ar', 'en'] },
-        ]
-    }
-]
+const countryOptions = COUNTRY_OPTIONS
 
 const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
     const pathname = usePathname()
