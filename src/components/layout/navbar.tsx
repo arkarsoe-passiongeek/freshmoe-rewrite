@@ -57,8 +57,8 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
     const router = useRouter()
     const [lang, setLang] = useState('')
     const [open, setOpen] = useState(false)
-    const [sidebar, setSidebar] = useState(true)
-    const [upperMenu, setUpperMenu] = useState(true)
+    const [sidebar, setSidebar] = useState(false)
+    const [upperMenu, setUpperMenu] = useState(false)
     const [selectedCountry, setSelectedCountry] = useState(countryOptions[0].countries[0]);
     const [selectedLanguage, setSelectedLanguage] = useState<LanguageCodes>(locale.split('_')[0] as LanguageCodes);
     const [currentCountry, setCurrentCountry] = useState<any>()
@@ -107,62 +107,8 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
     }
 
     const closeAllMenu = () => {
-        const bgWrapper = document.querySelector('#bg-wrapper')
-        const sidebarElement = document.querySelector<HTMLDivElement>('#sidebar')
-        const upperMenuElement = document.querySelector<HTMLDivElement>('#upper-menu')
-        const upperMenuWrapper =
-            document.querySelector<HTMLDivElement>('#upper-menu-wrapper')
-        const globes = document.querySelectorAll<HTMLElement>('.globe');
-        const localeButton = document.getElementById('locale-button')
-        const navbar = document.getElementById("navbar");
-        const sidebarWrapper = document.querySelector<HTMLDivElement>('#sidebar-wrapper')
-        sidebarElement?.classList.add('-left-80')
-        sidebarElement?.classList.remove('left-0')
-        sidebarWrapper?.classList.add('invisible')
-        sidebarWrapper?.classList.add('opacity-0')
-        document.documentElement.style.overflowY = 'hidden'
-        document.body.style.overflowY = 'hidden'
-        setSidebar(true)
-        document.documentElement.style.overflowY = 'visible'
-        document.body.style.overflowY = 'visible'
-        globes.forEach(globe => {
-            globe.style.visibility = 'visible';
-        });
-        if (localeButton) {
-            localeButton.style.visibility = 'visible';
-        }
-        if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-            if (navbar) {
-                navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
-            }
-        } else {
-            if (navbar) {
-                navbar.style.backgroundColor = '#fff';
-            }
-        }
-
-        upperMenuElement?.classList.add('-top-[104px]')
-        upperMenuElement?.classList.remove('top-0')
-        upperMenuWrapper?.classList.add('invisible')
-        upperMenuWrapper?.classList.add('opacity-0')
-        document.documentElement.style.overflowY = 'hidden'
-        document.body.style.overflowY = 'hidden'
-        setUpperMenu(true)
-        document.documentElement.style.overflowY = 'visible'
-        document.body.style.overflowY = 'visible'
-
-
-        if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-            if (navbar) {
-                navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
-            }
-        } else {
-            if (navbar) {
-                navbar.style.backgroundColor = '#fff';
-            }
-        }
-
-        bgWrapper?.classList.add('invisible')
+        setUpperMenu(false)
+        setSidebar(false)
     }
 
     // making the navbar transparent on scroll
@@ -226,114 +172,14 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
     }, [])
 
     const handleToggle = () => {
-        const bgWrapper = document.querySelector('#bg-wrapper')
-        const sidebarElement = document.querySelector<HTMLDivElement>('#sidebar')
-        const upperMenuElement = document.querySelector<HTMLDivElement>('#upper-menu')
-        const upperMenuWrapper =
-            document.querySelector<HTMLDivElement>('#upper-menu-wrapper')
-        const navbar = document.getElementById("navbar");
-        const navbarElement = document.querySelector<HTMLDivElement>('#navbar')
-        const sidebarWrapper =
-            document.querySelector<HTMLDivElement>('#sidebar-wrapper')
-        if (sidebarElement && sidebarWrapper) {
-            if (sidebar == true) {
-                const classesToRemove = ['bg-[#000]', 'bg-opacity-20'];
-                sidebarWrapper?.classList.add(...classesToRemove);
-                sidebarElement?.classList.remove('-left-80')
-                sidebarElement?.classList.add('left-0')
-                sidebarWrapper?.classList.remove('invisible')
-                sidebarWrapper?.classList.remove('opacity-0')
-                navbarElement?.classList.add('bg-white')
-                setSidebar(false)
-                document.documentElement.style.overflowY = 'hidden'
-                upperMenuElement?.classList.add('-top-[104px]')
-                upperMenuElement?.classList.remove('top-0')
-                upperMenuWrapper?.classList.add('invisible')
-                upperMenuWrapper?.classList.add('opacity-0')
-                document.documentElement.style.overflowY = 'hidden'
-                setUpperMenu(true)
-                if (navbar) {
-                    navbar.style.backgroundColor = '#fff';
-                }
-                bgWrapper?.classList.remove('invisible')
-                //
-            } else {
-                const classesToRemove = ['bg-[#000]', 'bg-opacity-20'];
-                const classesToAddWidth = ['w-[50%]'];
-                upperMenuWrapper?.classList.add(...classesToRemove);
-                upperMenuWrapper?.classList.remove(...classesToAddWidth);
-
-                sidebarElement?.classList.add('-left-80')
-                sidebarElement?.classList.remove('left-0')
-                sidebarWrapper?.classList.add('invisible')
-                sidebarWrapper?.classList.add('opacity-0')
-                document.documentElement.style.overflowY = 'visible'
-                document.body.style.overflowY = 'visible'
-                setSidebar(true)
-
-                document.documentElement.style.overflowY = 'visible'
-
-                if (navbar) {
-                    navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
-                }
-                bgWrapper?.classList.add('invisible')
-            }
-        }
+        setSidebar(!sidebar)
+        setUpperMenu(false)
     }
 
     // handle language select modal
     const handleUpperMenuToggle = () => {
-        // if(localActive !== 'en_global'){
-        // alert("Sidebar "+sidebar+" Upper "+upperMenu)
-        const bgWrapper = document.querySelector('#bg-wrapper')
-        const sidebarElement = document.querySelector<HTMLDivElement>('#sidebar')
-        const upperMenuElement = document.querySelector<HTMLDivElement>('#upper-menu')
-        const navbar = document.getElementById("navbar");
-        const navbarElement = document.querySelector<HTMLDivElement>('#navbar')
-        const upperMenuWrapper =
-            document.querySelector<HTMLDivElement>('#upper-menu-wrapper')
-        const sidebarWrapper =
-            document.querySelector<HTMLDivElement>('#sidebar-wrapper')
-        if (upperMenuElement && upperMenuWrapper) {
-            // if(!sidebar){
-            const classesToRemove = ['bg-[#000]', 'bg-opacity-20'];
-            upperMenuWrapper.classList.remove(...classesToRemove);
-            if (upperMenu == true) {
-                upperMenuElement?.classList.remove('-top-[104px]')
-                upperMenuElement?.classList.add('top-0')
-                upperMenuWrapper?.classList.remove('invisible')
-                upperMenuWrapper?.classList.remove('opacity-0')
-                upperMenuElement?.classList.add('animate-dropdown'); // Trigger dropdown animation
-                const classesToRemove = ['bg-[#000]', 'bg-opacity-20'];
-                upperMenuWrapper?.classList.add(...classesToRemove);
-                if (navbar) navbar.style.backgroundColor = '#fff';
-
-                sidebarElement?.classList.add('-left-80')
-                sidebarElement?.classList.remove('left-0')
-                sidebarWrapper?.classList.add('invisible')
-                sidebarWrapper?.classList.add('opacity-0')
-                setSidebar(true)
-                if (navbar) {
-                    navbar.style.backgroundColor = '#fff';
-                }
-                navbarElement?.classList.add('bg-white')
-                setUpperMenu(false)
-                document.documentElement.style.overflowY = 'hidden'
-                // document.body.style.overflowY = 'hidden'
-                bgWrapper?.classList.remove('invisible')
-            } else {
-                upperMenuElement?.classList.add('-top-[104px]')
-                upperMenuElement?.classList.remove('top-0')
-                upperMenuWrapper?.classList.add('invisible')
-                upperMenuWrapper?.classList.add('opacity-0')
-                document.body.style.overflowY = 'visible'
-
-                if (navbar && (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80)) navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
-                setUpperMenu(true)
-                document.documentElement.style.overflowY = 'visible'
-                bgWrapper?.classList.add('invisible')
-            }
-        }
+        setUpperMenu(!upperMenu)
+        setSidebar(false)
     }
     // end handle language select modal
 
@@ -366,7 +212,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                                 className={`hover:text-c-primary font-bold cursor-pointer ${pathname === `/${lang}` ? 'text-c-secondary' : ''
                                     } `}
                             >
-                                {sidebar ? (
+                                {!sidebar ? (
                                     <span
                                         className="mt-0"
                                         id="close-sidebar"
@@ -400,7 +246,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                                 })
                             }
                         </ul>
-                        {sidebar ? (
+                        {!sidebar ? (
                             <span
                                 className="block md:hidden mt-0 w-[16px]"
                                 id="close-sidebar"
@@ -467,7 +313,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                                         {getLanguageName(`${currentLanguage}`)}
                                     </div>
                                     <div>
-                                        {!upperMenu ? (
+                                        {upperMenu ? (
                                             <MdOutlineKeyboardArrowUp className="md:w-[20px] md:h-[20px] lg:w-[20px] lg:h-[20px]" />
                                         ) : (
                                             <MdOutlineKeyboardArrowDown className="md:w-[20px] md:h-[20px] lg:w-[20px] lg:h-[20px]" />
@@ -481,73 +327,63 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
             </div >
             {/* <!-- start mobile sidebar --> */}
             <div
-                className="z-50 fixed h-full left-0 top-[105px] md:top-[111px] xl:top-[119px] lg:top-[130px]  invisible transition-all duration-500 bg-[#000] bg-opacity-20"
-                id="sidebar-wrapper"
+                className={`z-50 fixed h-full w-full lg:w-[600px] bg-c-white top-[105px] md:top-[111px] xl:top-[119px] lg:top-[130px] flex flex-col transition-all duration-500 ${sidebar ? 'opacity-100 translate-x-[0px]' : 'opacity-0  translate-x-[-80px] invisible'}`}
+                id="sidebar"
             >
-                <div
-                    className="fixed h-full w-full lg:w-[600px] bg-c-white top-[105px] md:top-[111px] xl:top-[119px] lg:top-[130px] -left-80 flex flex-col transition-all duration-500"
-                    id="sidebar"
-                >
-                    <div className="text-c-black space-y-[22px] pl-6 pt-12">
-                        {
-                            navList.map(each => {
-                                return (
-                                    <div key={each.name} className="ml-4 mt-1">
-                                        <Link href={`${each.url}`} prefetch
-                                            className={`text-[14px] lg:text-base flex flex-start font-medium hover:text-c-secondary text-poppins 
+                <div className="text-c-black space-y-[22px] pl-6 pt-12">
+                    {
+                        navList.map(each => {
+                            return (
+                                <div key={each.name} className="ml-4 mt-1">
+                                    <Link href={`${each.url}`} prefetch
+                                        className={`text-[14px] lg:text-base flex flex-start font-medium hover:text-c-secondary text-poppins 
                   ${isNavActive(each.url) ? 'text-c-secondary' : ''}
                   `}
-                                            onClick={closeAllMenu}
-                                        >
-                                            {each.name}
-                                        </Link>
-                                    </div>
-                                )
-                            })
-                        }
-                    </div>
+                                        onClick={closeAllMenu}
+                                    >
+                                        {each.name}
+                                    </Link>
+                                </div>
+                            )
+                        })
+                    }
                 </div>
             </div>
             {/* <!-- end mobile sidebar --> */}
 
             {/* start language menu */}
             <div
-                className="z-50 fixed top-0 h-full left-0 invisible transition-all duration-500"
-                id="upper-menu-wrapper"
+                className={`z-50 fixed h-[100vh] w-full lg:w-[45%] bg-c-white right-0 flex flex-col transition-all duration-500 ${upperMenu ? 'opacity-100 translate-y-[0px]' : 'opacity-0  translate-y-[-80px] invisible'}`}
+                id="upper-menu"
             >
-                <div
-                    className={`z-50 fixed h-[100vh] w-full lg:w-[45%] bg-c-white right-0 flex flex-col transition-all duration-500 ${upperMenu ? '-top-[104px]' : 'top-0'}`}
-                    id="upper-menu"
-                >
-                    <div className="container pt-[100px] lg:pt-[150px] mx-auto flex flex-col gap-6 lg:flex-row w-full items-center py-[0.8rem] max-w-[1790px] px-[2rem] mt-10">
-                        <div className="w-full lg:w-[50%]">
-                            <label htmlFor="country" className="block lg:text-lg font-medium text-c-black mb-2">
-                                Select Your Country
-                            </label>
-                            <CCountrySelect defaultValue='global' onValueChange={handleChangeCountry} continents={countryOptions} value={selectedCountry?.value ?? 'global'} placeholder="Select Your Country" />
-                        </div>
-
-                        <div className="w-full lg:w-[50%]">
-                            <label htmlFor="country" className="block lg:text-lg font-medium text-c-black mb-2">
-                                Choose Language
-                            </label>
-                            <CLanguageSelect items={selectedCountry.languages} placeholder='Select Your Language' onValueChange={setSelectedLanguage} value={selectedLanguage} defaultValue='en' />
-                        </div>
+                <div className="container pt-[100px] lg:pt-[150px] mx-auto flex flex-col gap-6 lg:flex-row w-full items-center py-[0.8rem] max-w-[1790px] px-[2rem] mt-10">
+                    <div className="w-full lg:w-[50%]">
+                        <label htmlFor="country" className="block lg:text-lg font-medium text-c-black mb-2">
+                            Select Your Country
+                        </label>
+                        <CCountrySelect defaultValue='global' onValueChange={handleChangeCountry} continents={countryOptions} value={selectedCountry?.value ?? 'global'} placeholder="Select Your Country" />
                     </div>
 
-                    <div className="absolute bottom-[10%] lg:bottom-0 w-full py-4 flex justify-center items-center">
-                        <button
-                            disabled={languageChanging}
-                            className={`text-white text-sm lg:text-base py-[0.8rem] rounded-[10px] w-full h-full lg:w-[500px] mx-6 flex justify-center items-center  ${languageChanging ? 'bg-c-contrast hover:bg-c-contrast' : 'bg-c-primary hover:bg-c-primary'}`}
-                            onClick={handleConfirmChangeLanguage}
-                        >
-                            {languageChanging ? <PiSpinner className='w-[30px] h-[30px]' /> : "Confirm"}
-                        </button>
+                    <div className="w-full lg:w-[50%]">
+                        <label htmlFor="country" className="block lg:text-lg font-medium text-c-black mb-2">
+                            Choose Language
+                        </label>
+                        <CLanguageSelect items={selectedCountry.languages} placeholder='Select Your Language' onValueChange={setSelectedLanguage} value={selectedLanguage} defaultValue='en' />
                     </div>
+                </div>
+
+                <div className="absolute bottom-[10%] lg:bottom-0 w-full py-4 flex justify-center items-center">
+                    <button
+                        disabled={languageChanging}
+                        className={`text-white text-sm lg:text-base py-[0.8rem] rounded-[10px] w-full h-full lg:w-[500px] mx-6 flex justify-center items-center  ${languageChanging ? 'bg-c-contrast hover:bg-c-contrast' : 'bg-c-primary hover:bg-c-primary'}`}
+                        onClick={handleConfirmChangeLanguage}
+                    >
+                        {languageChanging ? <PiSpinner className='w-[30px] h-[30px]' /> : "Confirm"}
+                    </button>
                 </div>
             </div>
 
-            <div id='bg-wrapper' className={`w-[100vw] h-[100vh] z-40 bg-c-black opacity-50 fixed invisible`}>
+            <div id='bg-wrapper' className={`w-[100vw] h-[100vh] z-40 bg-c-black transition-all duration-500 fixed ${(upperMenu || sidebar) ? 'opacity-50' : 'opacity-0 invisible'}`}>
             </div>
         </>
     )

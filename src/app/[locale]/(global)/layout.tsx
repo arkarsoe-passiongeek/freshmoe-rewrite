@@ -59,7 +59,7 @@ export default async function GlobalLayout({
         <div className="bg-white-2 h-full w-full min-h-[100vh] flex flex-col justify-between">
             <div className='relative'>
                 <Navbar locale={locale} navData={navData} />
-                <div className='mt-[94px] md:mt-[114px] lg:mt-[142px]'>
+                <div className='mt-[94px] md:mt-[114px] lg:mt-[140px]'>
                     {children}
                 </div>
             </div>
