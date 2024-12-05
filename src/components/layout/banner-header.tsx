@@ -18,8 +18,7 @@ const BannerHeader: React.FC<BannerHeaderProps> = ({ text, imageSrc, locale }) =
                     priority
                     className="object-cover w-full h-auto filter object-center transition duration-200"
                 />
-                <h1 className={`text-poppins absolute top-[40%] left-[49%] md:left-[51%] ${locale == INTL_PREFIX_BY_COUNTRY.myanmar ? ' left-[47vw] sm:left-[48%] md:left-[51%] lg:left-[50%] 2xl:left-[51%] text-md ' : 'left-[47%] md:left-[51%] xl:left-1/2 text-xl '}  transform -translate-x-1/2 -translate-y-1/2 font-bold text-white text-[3vw] md:text-2xl
-        lg:text-3xl xl:text-[2.2vw] 2xl:text-[2.5vw]`}>
+                <h1 className={`container mx-auto w-full left-0 right-0 text-center absolute top-1/2 -translate-y-1/2 text-c-white text-[16px] md:text-xl lg:text-2xl xl:3xl 2xl:4xl font-semibold`}>
                     {text}
                 </h1>
             </div>

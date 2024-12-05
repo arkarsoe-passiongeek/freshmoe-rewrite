@@ -535,7 +535,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                         </div>
                     </div>
 
-                    <div className="absolute bottom-0 w-full py-4 flex justify-center items-center">
+                    <div className="absolute bottom-10 lg:bottom-0 w-full py-4 flex justify-center items-center">
                         <button
                             disabled={languageChanging}
                             className={`text-white text-sm lg:text-base py-[0.8rem] rounded-[10px] w-full h-full lg:w-[500px] mx-6 flex justify-center items-center  ${languageChanging ? 'bg-c-contrast hover:bg-c-contrast' : 'bg-c-primary hover:bg-c-primary'}`}
@@ -547,7 +547,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                 </div>
             </div>
 
-            <div id='bg-wrapper' className={`w-[100vw] h-[100vh] z-40 bg-c-black opacity-50 fixed transition-all invisible`}>
+            <div id='bg-wrapper' className={`w-[100vw] h-[100vh] z-40 bg-c-black opacity-50 fixed invisible`}>
             </div>
         </>
     )

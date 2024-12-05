@@ -21,7 +21,7 @@ interface CLanguageSelectProps {
 export function CLanguageSelect({ items, placeholder, ...rest }: CLanguageSelectProps) {
     return (
         <Select {...rest}>
-            <SelectTrigger className="text-sm lg:text-base p-[1rem] h-[58px] [&_span]:!h-[28px]">
+            <SelectTrigger className="text-sm lg:text-base p-[1rem] h-[58px] [&_span]:!h-[28px] [&_span]:!flex [&_span]:!items-center">
                 <SelectValue placeholder={placeholder} />
             </SelectTrigger>
             <SelectContent>
