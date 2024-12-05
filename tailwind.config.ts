@@ -34,6 +34,7 @@ export default {
 				'sm': '375px', // Small devices (e.g., iPhone 6/7/8)
 				'md': '768px', // Tablets and small laptops
 				'lg': '1024px', // Desktops and laptops
+				'2lg': '1280px', // 2 Desktops and laptops
 				'xl': '1440px', // Larger desktops
 				'2xl': '1920px', // Extra large screens (e.g., Full HD monitors)
 			},
