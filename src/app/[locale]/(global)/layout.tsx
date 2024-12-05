@@ -5,6 +5,15 @@ import { setRequestLocale } from 'next-intl/server';
 import Navbar from '@/components/layout/navbar';
 import Footer from '@/components/layout/footer';
 import Contact from '@/components/layout/contact';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: {
+        template: '%s | FreshMoe - Fruit & Vegetables',
+        default: 'FreshMoe - Fruit & Vegetables',
+    },
+    description: 'FreshMoe website',
+};
 
 export default async function GlobalLayout({
     children,

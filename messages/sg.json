@@ -2,6 +2,28 @@
     "NotFoundPage": {
         "title": "Not found"
     },
+    "Metadata": {
+        "LandingPage": {
+            "title": "Home Page",
+            "description": "testing"
+        },
+        "AboutUsPage": {
+            "title": "About Us Page",
+            "description": "testing"
+        },
+        "OurServicePage": {
+            "title": "Our Services Page",
+            "description": "testing"
+        },
+        "ProfilePage": {
+            "title": "Profile Page",
+            "description": "testing"
+        },
+        "ContactPage": {
+            "title": "Contact Page",
+            "description": "testing"
+        }
+    },
     "LandingPage": {
         "home": "Home",
         "about-us": "About Us",

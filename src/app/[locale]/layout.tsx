@@ -5,9 +5,14 @@ import { routing } from '@/i18n/routing';
 import { setRequestLocale } from 'next-intl/server';
 import "./globals.css"
 import { Outfit } from 'next/font/google'
+import { Metadata } from 'next';
 
-type LangMap = {
-    [key: string]: string; // or more specifically, you can define known locales like 'en', 'my', etc.
+export const metadata: Metadata = {
+    title: {
+        template: '%s | FreshMoe - Fruit & Vegetables',
+        default: 'FreshMoe - Fruit & Vegetables',
+    },
+    description: 'FreshMoe website',
 };
 
 const outfit = Outfit({
