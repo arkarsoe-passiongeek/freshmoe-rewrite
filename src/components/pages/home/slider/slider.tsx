@@ -102,7 +102,7 @@ const Slider: React.FC<SliderProps> = ({ data, sliderData }) => {
 
     return (
         <>
-            <section suppressHydrationWarning={true} className="w-full max-h-screen relative mt-[107px] md:mt-[115px] lg:mt-[105px] 2xl:mt-[117px]">
+            <section suppressHydrationWarning={true} className="w-full max-h-screen relative mt-[107px] md:mt-[115px] lg:mt-[-2px] 2xl:mt-[117px]">
                 <div className="swiper-container">
                     <Swiper
                         onInit={handleSwiperInit}
