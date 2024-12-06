@@ -319,7 +319,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
             </div >
             {/* <!-- start mobile sidebar --> */}
             <div
-                className={`z-50 fixed h-full w-full lg:w-[600px] bg-c-white top-[114px] md:top-[116px] lg:top-[140px] xl:top-[140px] flex flex-col transition-all duration-500 ${sidebar ? 'opacity-100 translate-x-[0px]' : 'opacity-0 translate-x-[-80px] invisible'}`}
+                className={`z-50 fixed h-full w-full lg:w-[600px] bg-c-white top-[112px] md:top-[116px] lg:top-[140px] xl:top-[140px] flex flex-col transition-all duration-500 ${sidebar ? 'opacity-100 translate-x-[0px]' : 'opacity-0 translate-x-[-80px] invisible'}`}
                 id="sidebar"
             >
                 <div className="text-c-black space-y-[22px] pl-6 pt-12">
