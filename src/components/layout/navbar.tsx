@@ -90,6 +90,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
     const closeAllMenu = () => {
         setUpperMenu(false)
         setSidebar(false)
+        document.body.style.overflow = 'auto'
     }
 
     // making the navbar transparent on scroll
@@ -120,7 +121,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                         (navbarItems[i] as HTMLElement).style.color = "#555";
                     }
                 } else {
-                    navbar.style.backgroundColor = "#fff"; // Reset background color
+                    navbar.style.backgroundColor = "bg-c-white"; // Reset background color
                     // arrowColor.style.backgroundColor = "#000";
                     for (let i = 0; i < navbarItems.length; i++) {
                         (navbarItems[i] as HTMLElement).style.color = "#000"; // Change text color to black
@@ -155,12 +156,22 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
     const handleToggle = () => {
         setSidebar(!sidebar)
         setUpperMenu(false)
+        if (!sidebar) {
+            document.body.style.overflow = 'hidden'
+        } else {
+            document.body.style.overflow = 'auto'
+        }
     }
 
     // handle language select modal
     const handleUpperMenuToggle = () => {
         setUpperMenu(!upperMenu)
         setSidebar(false)
+        if (!upperMenu) {
+            document.body.style.overflow = 'hidden'
+        } else {
+            document.body.style.overflow = 'auto'
+        }
     }
     // end handle language select modal
 
@@ -186,7 +197,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                 <div className="bg-c-primary w-full p-[20px] brand-line-green"></div>
                 <div className="bg-c-white w-full p-[1px] brand-line-white"></div>
                 <div className="bg-c-secondary w-full p-[3.95px] brand-line-red"></div>
-                <nav className="shadow-lg w-full flex lg:justify-between items-center transition" id="navbar">
+                <nav className={`shadow-lg w-full flex lg:justify-between items-center transition ${(sidebar || upperMenu) ? '!bg-c-white' : ''}`} id="navbar">
                     <div className="container mx-auto flex lg:justify-between items-center py-[0.8rem]">
                         <ul className="xl:flex-1 font-bold hidden md:flex nav items-center gap-4" id="nav-item">
                             <li
@@ -220,7 +231,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                   ${isNavActive(each.url) ? 'text-c-primary' : ''}
                   `}
                                             >
-                                                <Link href={`${each.url}`} prefetch>{each.name}</Link>
+                                                <Link href={`${each.url}`} onClick={closeAllMenu} prefetch>{each.name}</Link>
                                             </li>
                                         )
                                     }

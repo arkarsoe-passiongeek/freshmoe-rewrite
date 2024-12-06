@@ -80,28 +80,6 @@ body {
   }
 }
 
-@layer utilities {
-  @keyframes dropdown {
-    0% {
-      transform: translateY(-80px);
-      opacity: 0;
-    }
-
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-
-  .animate-dropdown {
-    animation: dropdown 0.3s ease-in-out forwards;
-  }
-
-  .animate-hide {
-    animation: dropdown 0.3s ease-in-out reverse forwards;
-  }
-}
-
 
 /* global configuration for swiper */
 .swiper-wrapper {

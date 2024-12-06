@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 export const metadata: Metadata = {
     title: 'Maintain Page',
-    description: 'The page for maintain page.',
+    description: 'The page for maintenance.',
 };
 
 const MaintainPage = () => {
