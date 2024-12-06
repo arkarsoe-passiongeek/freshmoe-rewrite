@@ -107,7 +107,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
             const btn_text = document.getElementById("btn_text");
 
             if (navbar) {
-                if (document.body.scrollTop > 113 || document.documentElement.scrollTop > 113) {
+                if (document.body.scrollTop > 70 || document.documentElement.scrollTop > 70) {
                     navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
                     if (profile_icon) {
                         profile_icon.style.backgroundColor = "transparent";
@@ -197,7 +197,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
                 <div className="bg-c-primary w-full p-[20px] brand-line-green"></div>
                 <div className="bg-c-white w-full p-[1px] brand-line-white"></div>
                 <div className="bg-c-secondary w-full p-[3.95px] brand-line-red"></div>
-                <nav className={`shadow-lg w-full flex lg:justify-between items-center transition ${(sidebar || upperMenu) ? '!bg-c-white' : ''}`} id="navbar">
+                <nav className={`shadow-lg w-full flex lg:justify-between items-center ${(sidebar || upperMenu) ? '!bg-c-white' : ''}`} id="navbar">
                     <div className="container mx-auto flex lg:justify-between items-center py-[0.8rem]">
                         <ul className="xl:flex-1 font-bold hidden md:flex nav items-center gap-4" id="nav-item">
                             <li
@@ -319,7 +319,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
             </div >
             {/* <!-- start mobile sidebar --> */}
             <div
-                className={`z-50 fixed h-full w-full lg:w-[600px] bg-c-white top-[105px] md:top-[111px] xl:top-[119px] lg:top-[130px] flex flex-col transition-all duration-500 ${sidebar ? 'opacity-100 translate-x-[0px]' : 'opacity-0  translate-x-[-80px] invisible'}`}
+                className={`z-50 fixed h-full w-full lg:w-[600px] bg-c-white top-[114px] md:top-[116px] lg:top-[140px] xl:top-[140px] flex flex-col transition-all duration-500 ${sidebar ? 'opacity-100 translate-x-[0px]' : 'opacity-0 translate-x-[-80px] invisible'}`}
                 id="sidebar"
             >
                 <div className="text-c-black space-y-[22px] pl-6 pt-12">
