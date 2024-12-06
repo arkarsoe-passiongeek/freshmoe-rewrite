@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 
-const LottieAnimation = dynamic(() => import("@/components/layout/not-found"));
+const LottieAnimation = dynamic(() => import("@/components/layout/not-found"), { ssr: false });
 
 export const metadata: Metadata = {
     title: 'Not Found Page',
