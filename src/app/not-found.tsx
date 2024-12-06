@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
-import dynamic from 'next/dynamic';
+// import dynamic from 'next/dynamic';
 
-const LottieAnimation = dynamic(() => import("@/components/layout/not-found"), { ssr: false });
+// const LottieAnimation = dynamic(() => import("@/components/layout/not-found"));
 
 export const metadata: Metadata = {
     title: 'Not Found Page',
@@ -13,7 +13,8 @@ export default function NotFound() {
         <html lang="en">
             <body>
                 <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <LottieAnimation />
+                    {/* <LottieAnimation /> */}
+                    not found
                 </div>;
             </body>
         </html>
