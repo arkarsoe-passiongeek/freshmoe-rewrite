@@ -107,7 +107,7 @@ const Navbar: React.FC<NavbarProps> = ({ locale, navData }) => {
             const btn_text = document.getElementById("btn_text");
 
             if (navbar) {
-                if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+                if (document.body.scrollTop > 113 || document.documentElement.scrollTop > 113) {
                     navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
                     if (profile_icon) {
                         profile_icon.style.backgroundColor = "transparent";
