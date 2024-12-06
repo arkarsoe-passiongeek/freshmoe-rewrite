@@ -18,7 +18,7 @@ const BannerHeader: React.FC<BannerHeaderProps> = ({ text, imageSrc, locale }) =
                     priority
                     className="object-cover w-full h-[80px] md:h-auto filter object-center transition duration-200"
                 />
-                <h1 className={`container mx-auto w-full left-0 right-0 text-center absolute top-[40%] -translate-y-1/2 text-c-white text-[16px] md:text-xl lg:text-2xl xl:3xl 2xl:4xl font-semibold`}>
+                <h1 className={`container mx-auto w-full left-0 right-0 text-center absolute top-[40%] -translate-y-1/2 text-c-white text-lg md:text-xl lg:text-2xl xl:3xl 2xl:4xl font-semibold`}>
                     {text}
                 </h1>
             </div>
